@@ -1,0 +1,39 @@
+[
+    {
+      "id": 3,
+      "name": "Women's Boots Shoes Maca",
+      "size":40,
+      "color": "black",
+      "price": 120,
+      "quantity": 1,
+      "image": "images/item-3.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Men's Taja Commissioner",
+      "size":37,
+      "color": "brown",
+      "price": 139,
+      "quantity": 2,
+      "image": "images/item-7.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Casual Sneakers",
+      "size":40,
+      "color": "brown",
+      "price": 99,
+      "quantity": 1,
+      "image": "images/item-2.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Classic Leather Jacket",
+      "size":37,
+      "color": "black",
+      "price": 199,
+      "quantity": 3,
+      "image": "images/item-1.jpg"
+    }
+  ]
+  

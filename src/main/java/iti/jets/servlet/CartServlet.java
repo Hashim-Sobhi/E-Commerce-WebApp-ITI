@@ -1,10 +1,4 @@
-package iti.jets;
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+package iti.jets.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,15 +6,19 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-@WebServlet("/bestseller")
-public class BestSellerServlet extends HttpServlet {
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
         // Get the absolute path of products.json inside webapp
-        String filePath = getServletContext().getRealPath("/products.json");
+        String filePath = getServletContext().getRealPath("/items.json");
 
         File file = new File(filePath);
         if (!file.exists()) {
@@ -37,5 +35,5 @@ public class BestSellerServlet extends HttpServlet {
         out.print(jsonData);
         out.flush();
     }
-
+    
 }
