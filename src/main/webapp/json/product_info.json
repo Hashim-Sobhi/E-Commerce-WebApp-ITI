@@ -1,0 +1,284 @@
+[
+  {
+    "product_info_id": 1,
+    "product_id": 1,
+    "size": 35,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 2,
+    "product_id": 1,
+    "size": 36,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 3,
+    "product_id": 1,
+    "size": 37,
+    "color": "Brown"
+  },
+  {
+    "product_info_id": 4,
+    "product_id": 1,
+    "size": 38,
+    "color": "Brown"
+  },
+  {
+    "product_info_id": 5,
+    "product_id": 1,
+    "size": 39,
+    "color": "Beige"
+  },
+  {
+    "product_info_id": 6,
+    "product_id": 1,
+    "size": 40,
+    "color": "Beige"
+  },
+  {
+    "product_info_id": 7,
+    "product_id": 1,
+    "size": 41,
+    "color": "Blue"
+  },
+  {
+    "product_info_id": 8,
+    "product_id": 1,
+    "size": 42,
+    "color": "Blue"
+  },
+  {
+    "product_info_id": 9,
+    "product_id": 1,
+    "size": 43,
+    "color": "Red"
+  },
+  {
+    "product_info_id": 10,
+    "product_id": 1,
+    "size": 44,
+    "color": "Red"
+  },
+  {
+    "product_info_id": 11,
+    "product_id": 1,
+    "size": 45,
+    "color": "Gray"
+  },
+  {
+    "product_info_id": 12,
+    "product_id": 1,
+    "size": 46,
+    "color": "Gray"
+  },
+  {
+    "product_info_id": 13,
+    "product_id": 1,
+    "size": 47,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 14,
+    "product_id": 2,
+    "size": 40,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 15,
+    "product_id": 2,
+    "size": 41,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 16,
+    "product_id": 2,
+    "size": 42,
+    "color": "Gray"
+  },
+  {
+    "product_info_id": 17,
+    "product_id": 2,
+    "size": 43,
+    "color": "Red"
+  },
+  {
+    "product_info_id": 18,
+    "product_id": 2,
+    "size": 44,
+    "color": "Red"
+  },
+  {
+    "product_info_id": 19,
+    "product_id": 3,
+    "size": 39,
+    "color": "White"
+  },
+  {
+    "product_info_id": 20,
+    "product_id": 3,
+    "size": 40,
+    "color": "White"
+  },
+  {
+    "product_info_id": 21,
+    "product_id": 3,
+    "size": 41,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 22,
+    "product_id": 3,
+    "size": 42,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 23,
+    "product_id": 3,
+    "size": 43,
+    "color": "Gray"
+  },
+  {
+    "product_info_id": 24,
+    "product_id": 4,
+    "size": 38,
+    "color": "Brown"
+  },
+  {
+    "product_info_id": 25,
+    "product_id": 4,
+    "size": 39,
+    "color": "Brown"
+  },
+  {
+    "product_info_id": 26,
+    "product_id": 4,
+    "size": 40,
+    "color": "Gray"
+  },
+  {
+    "product_info_id": 27,
+    "product_id": 4,
+    "size": 41,
+    "color": "Gray"
+  },
+  {
+    "product_info_id": 28,
+    "product_id": 4,
+    "size": 42,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 29,
+    "product_id": 4,
+    "size": 43,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 30,
+    "product_id": 2,
+    "size": 45,
+    "color": "Blue"
+  },
+  {
+    "product_info_id": 31,
+    "product_id": 2,
+    "size": 46,
+    "color": "Blue"
+  },
+  {
+    "product_info_id": 32,
+    "product_id": 2,
+    "size": 47,
+    "color": "Gray"
+  },
+  {
+    "product_info_id": 33,
+    "product_id": 2,
+    "size": 48,
+    "color": "Gray"
+  },
+  {
+    "product_info_id": 34,
+    "product_id": 2,
+    "size": 49,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 35,
+    "product_id": 2,
+    "size": 50,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 36,
+    "product_id": 3,
+    "size": 44,
+    "color": "White"
+  },
+  {
+    "product_info_id": 37,
+    "product_id": 3,
+    "size": 45,
+    "color": "White"
+  },
+  {
+    "product_info_id": 38,
+    "product_id": 3,
+    "size": 46,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 39,
+    "product_id": 3,
+    "size": 47,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 40,
+    "product_id": 3,
+    "size": 48,
+    "color": "Red"
+  },
+  {
+    "product_info_id": 41,
+    "product_id": 3,
+    "size": 49,
+    "color": "Red"
+  },
+  {
+    "product_info_id": 42,
+    "product_id": 4,
+    "size": 44,
+    "color": "Brown"
+  },
+  {
+    "product_info_id": 43,
+    "product_id": 4,
+    "size": 45,
+    "color": "Brown"
+  },
+  {
+    "product_info_id": 44,
+    "product_id": 4,
+    "size": 46,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 45,
+    "product_id": 4,
+    "size": 47,
+    "color": "Black"
+  },
+  {
+    "product_info_id": 46,
+    "product_id": 4,
+    "size": 48,
+    "color": "Red"
+  },
+  {
+    "product_info_id": 47,
+    "product_id": 4,
+    "size": 49,
+    "color": "Red"
+  }
+]

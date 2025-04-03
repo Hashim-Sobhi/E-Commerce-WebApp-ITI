@@ -1,0 +1,50 @@
+[
+  {
+    "product_id": 1,
+    "name": "Women's Boots Shoes Maca",
+    "description": "Perfect for any season, the Women's Boots Shoes Maca offer a blend of comfort and style. Whether you're heading to work or going out with friends, these boots will keep your feet cozy and fashionable. With a sleek design and versatile color options, they're a must-have addition to your wardrobe.",
+    "price": 139.00,
+    "image": [
+      "images/item-13.jpg",
+      "images/item-14.jpg",
+      "images/item-15.jpg",
+      "images/item-16.jpg"
+    ]
+  },
+  {
+    "product_id": 2,
+    "name": "Men's Taja Commissioner",
+    "description": "The Men's Taja Commissioner shoes are the perfect combination of durability and style. Designed for those who need reliable footwear that doesn't compromise on looks, these shoes are made to endure while keeping you comfortable throughout your day. Ideal for both casual and semi-formal occasions.",
+    "price": 139.00,
+    "image": [
+      "images/item-5.jpg",
+      "images/item-6.jpg",
+      "images/item-7.jpg",
+      "images/item-8.jpg"
+    ]
+  },
+  {
+    "product_id": 3,
+    "name": "Casual Sneakers",
+    "description": "Comfort meets style in the Casual Sneakers. Made for everyday wear, these sneakers are perfect for a laid-back look. Featuring a breathable material and lightweight construction, they're the ideal choice for a casual stroll or a weekend outing. Versatile and easy to pair with any casual outfit.",
+    "price": 99.99,
+    "image": [
+      "images/item-1.jpg",
+      "images/item-2.jpg",
+      "images/item-3.jpg",
+      "images/item-4.jpg"
+    ]
+  },
+  {
+    "product_id": 4,
+    "name": "Classic Leather Jacket",
+    "description": "The Classic Leather Jacket combines timeless design with modern comfort. Crafted from high-quality leather, this jacket offers both warmth and style. Perfect for those cooler days, it pairs effortlessly with jeans or chinos, giving you that edgy yet classic look.",
+    "price": 199.99,
+    "image": [
+      "images/item-9.jpg",
+      "images/item-10.jpg",
+      "images/item-11.jpg",
+      "images/item-12.jpg"
+    ]
+  }
+]

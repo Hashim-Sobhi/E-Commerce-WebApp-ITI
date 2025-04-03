@@ -1,4 +1,4 @@
-package iti.jets;
+package iti.jets.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,9 +18,8 @@ public class BestSellerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-
         // Get the absolute path of products.json inside webapp
-        String filePath = getServletContext().getRealPath("/products.json");
+        String filePath = getServletContext().getRealPath("/json/products.json");
 
         File file = new File(filePath);
         if (!file.exists()) {

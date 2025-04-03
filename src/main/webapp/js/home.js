@@ -8,7 +8,6 @@ function bestSeller() {
             let products = JSON.parse(xhr.responseText);
             console.log(products);
             renderProducts(products);
-
         }
     };
 
@@ -16,17 +15,19 @@ function bestSeller() {
 }
 
 function renderProducts(products) {
-    let container = document.getElementById("bestsellerview"); // The parent div where products will be added
+    let container = document.getElementById("bestsellerview");
 
     products.forEach(product => {
+
         let productHTML = `
             <div class="col-lg-3 mb-4 text-center">
                 <div class="product-entry border">
-                    <a href="product-detail?id=${product.id}" class="prod-img">
-                        <img src="${product.image}" class="img-fluid" alt="${product.name}">
+                    <a href="product-detail.jsp?product_id=${product.product_id}" class="prod-img">
+                        <img src="${product.image[0]}" class="img-fluid" alt="${product.name}">
+          
                     </a>
                     <div class="desc">
-                        <h2><a href="#">${product.name}</a></h2>
+                        <h2>${product.name}</h2>
                         <span class="price">$${product.price}</span>
                     </div>
                 </div>
