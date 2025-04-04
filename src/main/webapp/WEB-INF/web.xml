@@ -5,6 +5,35 @@
          version= "5.0"
          metadata-complete= "false">
 
+  <servlet>
+    <servlet-name>IndexServletJSP</servlet-name>
+    <jsp-file>/index.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>IndexServletJSP</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ProductDetailJSP</servlet-name>
+    <jsp-file>/product-detail.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ProductDetailJSP</servlet-name>
+    <url-pattern>/product</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ShopJSP</servlet-name>
+    <jsp-file>/shop.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ShopJSP</servlet-name>
+    <url-pattern>/shop</url-pattern>
+  </servlet-mapping>
 
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

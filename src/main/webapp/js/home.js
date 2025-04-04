@@ -22,7 +22,7 @@ function renderProducts(products) {
         let productHTML = `
             <div class="col-lg-3 mb-4 text-center">
                 <div class="product-entry border">
-                    <a href="product-detail.jsp?product_id=${product.product_id}" class="prod-img">
+                    <a href="product?product_id=${product.product_id}" class="prod-img">
                         <img src="${product.image[0]}" class="img-fluid" alt="${product.name}">
           
                     </a>
