@@ -35,6 +35,10 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 
+	<!--Font AwEsome-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
 	</head>
 	<body>
 		
@@ -108,15 +112,17 @@
 				<div class="row row-pb-md">
 					<div class="col-md-3 col-lg-3 mb-4 text-center">
 						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-							</a>
-							<div class="desc">
-								<h2><a href="#">Women's Boots Shoes Maca</a></h2>
-								<span class="price">$139.00</span>
-							</div>
+						  <a href="#" class="prod-img">
+							<img src="images/item-7.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+							<i class="fas fa-heart heart-icon"></i>
+						  </a>
+						  <div class="desc">
+							<h2><a href="#">Women's Boots Shoes Maca</a></h2>
+							<span class="price">$139.00</span>
+						  </div>
 						</div>
-					</div>
+					  </div>
+										
 					<div class="col-md-3 col-lg-3 mb-4 text-center">
 						<div class="product-entry border">
 							<a href="#" class="prod-img">

@@ -19,7 +19,7 @@ function getItems() {
 }
 
 function renderItems(items) {
-    let container = document.getElementById("itemsView"); // The parent div where products will be added
+    let container = document.getElementById("itemsView"); 
     container.innerHTML = ""; 
 
     items.forEach(item => {
@@ -52,7 +52,7 @@ function renderItems(items) {
                 </div>
                 <div class="one-eight text-center">
                     <div class="display-tc">
-                        <button style="border:none" onclick="removeItem(${item.id})">
+                        <button style="border:none;cursor: pointer;" onclick="removeItem(${item.id})">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>

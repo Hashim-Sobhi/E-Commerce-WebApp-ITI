@@ -7727,6 +7727,51 @@ h1, h2, h3, h4, h5,
       color: #000;
       font-weight: 400; }
 
+    .product-entry {
+      position: relative;
+  }
+  
+  .heart-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: transparent;
+      border: none;
+      outline:none;
+      color: rgba(235, 232, 232);
+      /* background-color: ; */
+      cursor: pointer;
+  }
+  
+
+  .heart-btn:focus {
+    outline: none;
+}
+
+.heart-btn:hover {
+    color: rgba(136,200,188,255);
+}
+    
+/* #wishlistItemsView {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px; 
+  justify-content: flex-start; 
+} */
+
+/* .product-entry {
+  flex: 0 1 calc(25% - 16px);
+  box-sizing: border-box; 
+} */
+
+
+/* .removing {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.3s ease-in-out;
+} */
+
+
 .block-27 ul, .block-27 ul li {
   padding: 0;
   margin: 0;
