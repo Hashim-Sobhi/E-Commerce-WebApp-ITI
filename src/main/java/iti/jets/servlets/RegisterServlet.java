@@ -1,8 +1,10 @@
-package com.iti.controller;
+package iti.jets.servlets;
 
-import com.iti.dao.UserDao;
-import com.iti.model.User;
+
 import java.io.IOException;
+
+import iti.jets.dao.UserDao;
+import iti.jets.entities.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

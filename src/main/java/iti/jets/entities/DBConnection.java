@@ -1,4 +1,4 @@
-package com.iti.model;
+package iti.jets.entities;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

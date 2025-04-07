@@ -1,4 +1,4 @@
-package com.iti.model;
+package iti.jets.entities;
 
 public class User {
     private int id;

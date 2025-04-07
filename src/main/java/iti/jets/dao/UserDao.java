@@ -1,7 +1,9 @@
-package com.iti.dao;
+package iti.jets.dao;
 
-import com.iti.model.DBConnection;
-import com.iti.model.User;
+
+
+import iti.jets.entities.DBConnection;
+import iti.jets.entities.User;
 
 import java.sql.*;
 import java.util.ArrayList;
