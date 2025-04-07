@@ -19,6 +19,13 @@ import java.util.List;
 public class ShopServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+//        String[] brands = request.getParameterValues("brand");
+//        String[] sizes = request.getParameterValues("size");
+//        String[] colors = request.getParameterValues("color");
+//        System.out.println("Brand: " + Arrays.toString(brands));
+//        System.out.println("Size: " + Arrays.toString(sizes));
+//        System.out.println("Color: " + Arrays.toString(colors));
+
         String path = getServletContext().getRealPath("/json/products.json");
         Jsonb jsonb = JsonbBuilder.create();
         List<Product> products = jsonb.fromJson(new FileReader(path), new ArrayList<Product>() {}.getClass().getGenericSuperclass());

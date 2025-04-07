@@ -74,7 +74,7 @@
             <div class="container">
                 <div class="card p-4">
                     <h4 class="text-center">Order History</h4>
-                    <table class="table table-bordered">
+                    <table class="table-info">
                         <thead class="thead-dark">
                         <tr>
                             <th>Order ID</th>
