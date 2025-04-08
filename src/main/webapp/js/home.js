@@ -1,6 +1,6 @@
 function bestSeller() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/project/bestseller", true);
+    xhr.open("GET", "http://localhost:9090/project/bestseller", true);
     xhr.setRequestHeader("Accept", "application/json");
 
     xhr.onreadystatechange = function () {
