@@ -1,4 +1,4 @@
-package iti.jets.entities;
+package iti.jets.model.enums;
 
 public enum ShoeSize {
     SIZE_35(35), SIZE_36(36), SIZE_37(37), SIZE_38(38), SIZE_39(39),

@@ -6,13 +6,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import iti.jets.dao.UserDao;
-import iti.jets.entities.User;
+import iti.jets.model.entities.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {

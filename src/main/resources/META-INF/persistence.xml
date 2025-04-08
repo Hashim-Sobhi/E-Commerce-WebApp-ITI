@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd" version="3.0">
+
+    <persistence-unit name="jetsEcommercePU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>iti.jets.model.entities.User</class>
+        <class>iti.jets.model.entities.UserAddress</class>
+        <class>iti.jets.model.entities.Order</class>
+        <class>iti.jets.model.entities.OrderItem</class>
+        <class>iti.jets.model.entities.Product</class>
+        <class>iti.jets.model.entities.ProductImg</class>
+        <class>iti.jets.model.entities.ProductInfo</class>
+        <class>iti.jets.model.entities.ShoppingCart</class>
+        <class>iti.jets.model.entities.Wishlist</class>
+
+        <properties>
+            <!-- JDBC configuration -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jets_projects_ecommerce_db"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="root"/>
+
+            <!-- Hibernate configuration -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create / update / validate / none -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/> <!-- Adds SQL comments for easier debugging -->
+
+        </properties>
+    </persistence-unit>
+
+</persistence>

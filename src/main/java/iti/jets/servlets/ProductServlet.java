@@ -1,7 +1,7 @@
 //package iti.jets.servlets;
 //
 //import iti.jets.dao.ProductDao;
-//import iti.jets.entities.Product;
+//import iti.jets.model.entities.Product;
 //import java.io.IOException;
 //import jakarta.servlet.ServletException;
 //import jakarta.servlet.annotation.WebServlet;

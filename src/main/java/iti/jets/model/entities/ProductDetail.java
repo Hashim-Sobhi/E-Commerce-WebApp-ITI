@@ -1,4 +1,4 @@
-package iti.jets.entities;
+package iti.jets.model.entities;
 
 public class ProductDetail {
     int product_info_id;

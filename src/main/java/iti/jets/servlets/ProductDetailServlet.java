@@ -1,7 +1,7 @@
 package iti.jets.servlets;
 
-import iti.jets.entities.Product;
-import iti.jets.entities.ProductDetail;
+import iti.jets.model.entities.Product;
+import iti.jets.model.entities.ProductDetail;
 import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
@@ -14,14 +14,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @WebServlet("/productdetail")
