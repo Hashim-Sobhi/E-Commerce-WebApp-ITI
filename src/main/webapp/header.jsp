@@ -26,6 +26,7 @@
                             <ul class="dropdown">
                                 <li><a href="add-to-wishlist.jsp">Wishlist</a></li>
                                 <li><a href="login.jsp">Login</a></li>
+                                <li><a href="register.jsp">Register</a></li>
                             </ul>
                         </li>
                         <li class="<%= "6".equals(id) ? "active" : "" %>"><a href="shop?id=6">Shop</a></li>

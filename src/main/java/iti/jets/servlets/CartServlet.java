@@ -1,4 +1,4 @@
-package iti.jets.servlet;
+package iti.jets.servlets;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class CartServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         // Get the absolute path of products.json inside webapp
-        String filePath = getServletContext().getRealPath("/items.json");
+        String filePath = getServletContext().getRealPath("/json/items.json");
 
         File file = new File(filePath);
         if (!file.exists()) {
