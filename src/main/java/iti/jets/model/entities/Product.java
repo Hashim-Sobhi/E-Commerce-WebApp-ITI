@@ -67,7 +67,6 @@ public class Product {
         this.updatedAt = updatedAt;
     }
     public Product(String name, String description, Category category, Gender gender, Double price, String brand, Timestamp addedAt, Integer sold, Timestamp updatedAt) {
-        this.productId = productId;
         this.name = name;
         this.description = description;
         this.category = category;
