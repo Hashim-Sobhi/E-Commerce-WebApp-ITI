@@ -30,8 +30,12 @@ public class Order {
     private UserAddress userAddress;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "order_status", nullable = false, length = 20)
-    private OrderStatus orderStatus;
+    @Column(name = "order_status", nullable = false,
+    columnDefinition = """
+    ENUM('PENDING', 'CONFIRMED', 'SHIPPED', 'DELIVERED', 'CANCELLED', 'RETURNED') DEFAULT 'PENDING'
+    """
+    )
+    private OrderStatus orderStatus = OrderStatus.PENDING;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;

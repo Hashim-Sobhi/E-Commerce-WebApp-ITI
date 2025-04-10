@@ -1,0 +1,14 @@
+package iti.jets.model.dtos;
+
+
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+@Data
+public class ProductSummaryDTO {
+    private Integer product_id;
+    private String name;
+    private BigDecimal price;
+    private String img;
+}

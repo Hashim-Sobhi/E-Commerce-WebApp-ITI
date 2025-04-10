@@ -76,7 +76,7 @@ function renderProducts(products) {
             <div class="col-lg-4 mb-4 text-center">
                 <div class="product-entry border">
                     <a href="product?product_id=${product.product_id}" class="prod-img">
-                        <img src="${product.image[0]}" class="img-fluid" alt="${product.name}">
+                        <img src="${product.img}" class="img-fluid" alt="${product.name}">
           
                     </a>
                     <div class="desc">

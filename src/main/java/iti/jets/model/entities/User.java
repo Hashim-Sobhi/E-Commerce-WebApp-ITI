@@ -31,13 +31,14 @@ public class User {
     @Column(name = "birthdate")
     private Date birthdate;
 
-    @Column(name = "job")
+    @Column(name = "job", length = 50)
     private String job;
 
     @Column(name = "credit_limit", nullable = false, precision = 10, scale = 2)
     private BigDecimal creditLimit;
 
-    @Column(name = "interests")
+    @Lob
+    @Column(name = "interests", columnDefinition = "TEXT")
     private String interests;
 
     @Column(name = "created_at", nullable = false)

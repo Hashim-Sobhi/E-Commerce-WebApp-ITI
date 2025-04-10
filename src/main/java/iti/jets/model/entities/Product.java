@@ -3,6 +3,8 @@ package iti.jets.model.entities;
 import iti.jets.model.enums.Category;
 import iti.jets.model.enums.Gender;
 import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class Product {
     private Gender gender;
 
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
-    private Double price;
+    private BigDecimal price;
 
     @Column(name = "brand", nullable = false, length = 25)
     private String brand;
@@ -47,14 +49,14 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductInfo> productInfos;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<ProductImg> productImgs;
 
     // constructors
     public Product() {
     }
 
-    public Product(Integer productId, String name, String description, Category category, Gender gender, Double price, String brand, Timestamp addedAt, Integer sold, Timestamp updatedAt) {
+    public Product(Integer productId, String name, String description, Category category, Gender gender, BigDecimal price, String brand, Timestamp addedAt, Integer sold, Timestamp updatedAt) {
         this.productId = productId;
         this.name = name;
         this.description = description;
@@ -66,7 +68,7 @@ public class Product {
         this.sold = sold;
         this.updatedAt = updatedAt;
     }
-    public Product(String name, String description, Category category, Gender gender, Double price, String brand, Timestamp addedAt, Integer sold, Timestamp updatedAt) {
+    public Product(String name, String description, Category category, Gender gender, BigDecimal price, String brand, Timestamp addedAt, Integer sold, Timestamp updatedAt) {
         this.name = name;
         this.description = description;
         this.category = category;
@@ -119,11 +121,11 @@ public class Product {
         this.gender = gender;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

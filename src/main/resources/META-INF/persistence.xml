@@ -5,16 +5,6 @@
     <persistence-unit name="jetsEcommercePU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>iti.jets.model.entities.User</class>
-        <class>iti.jets.model.entities.UserAddress</class>
-        <class>iti.jets.model.entities.Order</class>
-        <class>iti.jets.model.entities.OrderItem</class>
-        <class>iti.jets.model.entities.Product</class>
-        <class>iti.jets.model.entities.ProductImg</class>
-        <class>iti.jets.model.entities.ProductInfo</class>
-        <class>iti.jets.model.entities.ShoppingCart</class>
-        <class>iti.jets.model.entities.Wishlist</class>
-
         <properties>
             <!-- JDBC configuration -->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
