@@ -25,6 +25,8 @@
                             <a href="index">Home</a>
                             <ul class="dropdown">
                                 <li><a href="add-to-wishlist.jsp">Wishlist</a></li>
+                                <li><a href="login.jsp">Login</a></li>
+                                <li><a href="register.jsp">Register</a></li>
                             </ul>
                         </li>
                         <li class="<%= "6".equals(id) ? "active" : "" %>"><a href="shop?id=6">Shop</a></li>
@@ -33,14 +35,13 @@
                         <li class="<%= "4".equals(id) ? "active" : "" %>"><a href="about.jsp?id=4">About</a></li>
                         <li class="<%= "5".equals(id) ? "active" : "" %>"><a href="contact.jsp?id=5">Contact</a></li>
 
-                        <li class="<%= "7".equals(id) ? "active profile" : "profile" %>">
-                            <a href="profile.jsp?id=7"><i class="icon-user"></i> Profile</a>
-                        </li>
                         <li class="<%= "6".equals(id) ? "active cart" : "cart" %>">
                             <a href="cart.jsp?id=6"><i class="icon-shopping-cart"></i> Cart [0]</a>
                         </li>
 
-
+                        <li class="<%= "7".equals(id) ? "active profile" : "profile" %>">
+                            <a href="profile.jsp?id=7"><i class="icon-user"></i> Profile</a>
+                        </li>
                     </ul>
                 </div>
             </div>
