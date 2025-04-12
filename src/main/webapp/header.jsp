@@ -31,6 +31,8 @@
                             id = "5";
                         else if(uri.contains("profile"))
                             id = "6";
+                        else if(uri.contains("wishlist"))
+                            id = "7";
                     %>
                     <ul>
                         <li class="<%= "1".equals(id) ? "active has-dropdown" : "has-dropdown" %>">
@@ -48,10 +50,15 @@
                         <li class="<%= "5".equals(id) ? "active cart" : "cart" %>">
                             <a href="cart.jsp"><i class="icon-shopping-cart"></i> Cart [0]</a>
                         </li>
-
+                        <li class="<%= "7".equals(id) ? "active cart" : "cart" %>">
+                            <a href="add-to-wishlist.jsp?id=8"><i class="icon-heart2"></i></a>
+                        </li>
                         <li class="<%= "6".equals(id) ? "active profile" : "profile" %>">
                             <a href="profile.jsp"><i class="icon-user"></i> Profile</a>
                         </li>
+
+
+
                     </ul>
                 </div>
             </div>

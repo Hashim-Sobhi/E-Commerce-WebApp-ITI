@@ -42,6 +42,26 @@
 	<div id="page">
 
 		<%@include file="header.jsp"%>
+		<%@ page import="jakarta.servlet.http.HttpSession,iti.jets.model.dtos.UserDTO"%>
+		<% 
+			HttpSession LoggInsession = request.getSession(false);
+			if(LoggInsession == null)
+			{
+				System.out.println("sesion null");
+			} 
+			else
+			{
+				Integer loggedIn = (Integer)LoggInsession.getAttribute("loggedIn");
+				if(loggedIn != null)
+				{
+					System.out.println("User Id = "+loggedIn);
+				}
+				else
+				{
+					System.out.println("null");
+				}
+			}
+		 %>
 
 		<aside id="colorlib-hero">
 			<div class="flexslider">

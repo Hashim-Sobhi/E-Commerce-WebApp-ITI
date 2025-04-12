@@ -1,14 +1,9 @@
 package iti.jets.model.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 @Entity
 @Table(name = "UserAddress")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserAddress {
 
     @Id
@@ -31,4 +26,74 @@ public class UserAddress {
 
     @Column(name = "is_default", nullable = false)
     private Boolean isDefault;
+
+    // constructors
+    public UserAddress() {
+    }
+
+    public UserAddress(Integer addressId, User user, String state, String street, Integer buildingNumber, Boolean isDefault) {
+        this.addressId = addressId;
+        this.user = user;
+        this.state = state;
+        this.street = street;
+        this.buildingNumber = buildingNumber;
+        this.isDefault = isDefault;
+    }
+
+    public UserAddress(User user, String state, String street, Integer buildingNumber, Boolean isDefault) {
+        this.user = user;
+        this.state = state;
+        this.street = street;
+        this.buildingNumber = buildingNumber;
+        this.isDefault = isDefault;
+    }
+
+    // Getters and setters
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public Integer getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public void setBuildingNumber(Integer buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public Boolean getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+    }
 }

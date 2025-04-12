@@ -38,76 +38,122 @@
 
 </head>
 <body>
-<div class="colorlib-loader"></div>
-<div id="page">
     <%@include file="header.jsp"%>
+    <div class="d-flex justify-content-center align-items-center" style="padding-top: 70px;" >
+        <!-- Main Content -->
+        <div style= "width: 900px;">
+            <div class = "card p-4">
+                <h4 style="margin-bottom: 0;">Register</h4>
+                <p style="font-size: 10px;margin-top: 0";>Please fill in the information below</p>
+                <form action="register" method="post" onsubmit="validateRegister(event)">
 
-    <div class="main-container">
-        <div class="row">
-            <div class = "container">
-                <div class = "card p-4">
-                    <h2 class="text-center">Please Register</h2>
-                    <form action="RegisterServlet" method="post">
+                    <div class = "form-group">
+                        <label><b>First Name *</b></label>
+                        <input type="text" class="form-control" name="fname" >
+                    </div>
 
-                        <div class = "form-group">
-                            <label><b>First Name:</b></label>
-                            <input type="text" class="form-control" name="fname" required><br>
+                    <div class="form-group">
+                        <label><b>Last Name *</b></label>
+                        <input type="text" class="form-control" name="lname" >
+                    </div>
+
+                    <div class="form-group">
+                        <label><b>Phone Number *</b></label>
+                        <input type="text" class="form-control" name="phone_number">
+                    </div>
+                    
+                    <div class = "form-group">
+                        <label><b>Email *</b></label>
+                        <input type="email" class="form-control" name="email" >
+                    </div>
+
+                    <div class="form-group">
+                        <label><b>Password *</b></label>
+                        <input type="password" class="form-control" name="password" >
+                    </div>
+
+                    <div class="form-group">
+                        <label><b>Confirm Password *</b></label>
+                        <input type="password" class="form-control" name="confirmPassword" >
+                    </div>
+
+                    
+                    <div style="display: flex; gap: 15px;" class="form-group">
+                        <div>
+                            <label><b>Building Number *</b></label>
+                            <input type="number" class="form-control" name="building_number" style="width: 150px;height: 42px;" >
                         </div>
-
-                        <div class="form-group">
-                            <label><b>Last Name:</b></label>
-                            <input type="text" class="form-control" name="lname" required><br>
+                        <div>
+                            <label><b>Street *</b></label>
+                            <input type="text" class="form-control" name="street" style="width: 150px;height: 42px" >
                         </div>
-
-                        <div class = "form-group">
-                            <label><b>Address:</b></label>
-                            <input type="text" class="form-control" name="address" required><br>
+                        <div>
+                            <label><b>State *</b></label>
+                            <select class="form-control" name="state" style="width: 150px; height: 42px;" >
+                                <option value="Alexandria">Alexandria</option>
+                                <option value="Assiut">Assiut</option>
+                                <option value="Aswan">Aswan</option>
+                                <option value="Beheira">Beheira</option>
+                                <option value="Beni Suef">Beni Suef</option>
+                                <option value="Cairo">Cairo</option>
+                                <option value="Dakahlia">Dakahlia</option>
+                                <option value="Damietta">Damietta</option>
+                                <option value="Fayoum">Fayoum</option>
+                                <option value="Gharbia">Gharbia</option>
+                                <option value="Giza">Giza</option>
+                                <option value="Ismailia">Ismailia</option>
+                                <option value="Kafr ElSheikh">Kafr ElSheikh</option>
+                                <option value="Luxor">Luxor</option>
+                                <option value="Matrouh">Matrouh</option>
+                                <option value="Menofia">Menofia</option>
+                                <option value="Minya">Minya</option>
+                                <option value="New Valley">New Valley</option>
+                                <option value="North Sinai">North Sinai</option>
+                                <option value="Port Said">Port Said</option>
+                                <option value="Qaliubiya">Qaliubiya</option>
+                                <option value="Qena">Qena</option>
+                                <option value="Red Sea">Red Sea</option>
+                                <option value="Sharkia">Sharkia</option>
+                                <option value="Sohag">Sohag</option>
+                                <option value="South Sinai">South Sinai</option>
+                                <option value="Suez">Suez</option>
+                                <!-- Add more states here -->
+                            </select>                            
                         </div>
+                    </div>
+                            
 
-                        <div class="form-group">
-                            <label><b>Credit Limit:</b></label>
-                            <input type="number" class="form-control" name="credit_limit" step="0.01" required><br>
-                        </div>
+                    <div class = "form-group">
+                        <label><b>Birthdate:</b></label>
+                        <input type="date" class="form-control" name="birthdate">
+                    </div>
 
-                        <div class = "form-group">
-                            <label><b>Email:</b></label>
-                            <input type="email" class="form-control" name="email" required><br>
-                        </div>
+                    <div class="form-group">
+                        <label><b>Credit Limit:</b></label>
+                        <input type="number" class="form-control" name="credit_limit" step="0.01" >
+                    </div>
+                            
+                    <div class = "form-group">
+                        <label><b>Job Title:</b></label>
+                        <input type="text" class="form-control" name="job">
+                    </div>
 
-                        <div class="form-group">
-                            <label><b>Password</b></label>
-                            <input type="password" class="form-control" name="password" required><br>
-                        </div>
+                    <div class="form-group">
+                        <label><b>Interests:</b></label>
+                        <textarea name="interest" class="form-control"></textarea>
+                    </div>
 
-                        <div class = "form-group">
-                            <label><b>Job Title:</b></label>
-                            <input type="text" class="form-control" name="job"><br>
-                        </div>
-
-                        <div class="form-control">
-                            <label><b>Interests:</b></label>
-                            <textarea name="interest" class="form-control"></textarea><br>
-                        </div>
-
-                        <div class = "form-group">
-                            <label><b>Birthdate:</b></label>
-                            <input type="date" class="form-control" name="birthdate"><br>
-                        </div>
-
-                        <div class="form-group">
-                            <label><b>Phone Number:</b></label>
-                            <input type="text" class="form-control" name="phone_number"><br>
-                        </div>
-
-                        <input type="submit" class = "btn btn-primary" value="Register">
-                    </form>
-                </div>
+                    <button style="width:100px" class = "btn btn-primary">Register</button>
+                </form>
             </div>
+            <div style="text-align: center;padding-top:10px;">Already have an account?<a href="login.jsp" style="color: rgba(136,200,188,255);"> Login</a></div>                
         </div>
     </div>
     <%@include file="footer.jsp"%>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 </div>
-<script src="js/validateRegister.js"></script>
 
 <!-- jQuery -->
 <script src="js/template/jquery.min.js"></script>
@@ -132,5 +178,8 @@
 <script src="js/template/jquery.stellar.min.js"></script>
 <!-- Main -->
 <script src="js/template/main.js"></script>
+<!--Register-->
+<script src="js/validateRegister.js"></script>
+
 </body>
 </html>
