@@ -21,8 +21,8 @@ public class UserAddress {
     @Column(name = "street", nullable = false, columnDefinition = "TEXT")
     private String street;
 
-    @Column(name = "department_number", nullable = false)
-    private Integer departmentNumber;
+    @Column(name = "building_number", nullable = false)
+    private Integer buildingNumber;
 
     @Column(name = "is_default", nullable = false)
     private Boolean isDefault;
@@ -31,20 +31,20 @@ public class UserAddress {
     public UserAddress() {
     }
 
-    public UserAddress(Integer addressId, User user, String state, String street, Integer departmentNumber, Boolean isDefault) {
+    public UserAddress(Integer addressId, User user, String state, String street, Integer buildingNumber, Boolean isDefault) {
         this.addressId = addressId;
         this.user = user;
         this.state = state;
         this.street = street;
-        this.departmentNumber = departmentNumber;
+        this.buildingNumber = buildingNumber;
         this.isDefault = isDefault;
     }
 
-    public UserAddress(User user, String state, String street, Integer departmentNumber, Boolean isDefault) {
+    public UserAddress(User user, String state, String street, Integer buildingNumber, Boolean isDefault) {
         this.user = user;
         this.state = state;
         this.street = street;
-        this.departmentNumber = departmentNumber;
+        this.buildingNumber = buildingNumber;
         this.isDefault = isDefault;
     }
 
@@ -81,12 +81,12 @@ public class UserAddress {
         this.street = street;
     }
 
-    public Integer getDepartmentNumber() {
-        return departmentNumber;
+    public Integer getBuildingNumber() {
+        return buildingNumber;
     }
 
-    public void setDepartmentNumber(Integer departmentNumber) {
-        this.departmentNumber = departmentNumber;
+    public void setBuildingNumber(Integer buildingNumber) {
+        this.buildingNumber = buildingNumber;
     }
 
     public Boolean getIsDefault() {

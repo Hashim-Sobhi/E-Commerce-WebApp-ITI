@@ -29,7 +29,7 @@ CREATE TABLE UserAddress (
     user_id INT NOT NULL,
     state VARCHAR(50) NOT NULL,
     street TEXT NOT NULL,
-    department_number INT NOT NULL,
+    building_number INT NOT NULL,
     is_default BOOLEAN NOT NULL DEFAULT FALSE,
     CONSTRAINT fk_user
         FOREIGN KEY (user_id) REFERENCES User(user_id)

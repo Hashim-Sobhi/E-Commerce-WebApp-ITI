@@ -1,65 +1,174 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
-    const emailInput = document.querySelector("input[name='email']");
-    const emailMessage = document.createElement("span");
-    emailInput.parentNode.appendChild(emailMessage);
+function validateRegister(e) {
+    e.preventDefault();
 
-    emailInput.addEventListener("input", function () {
-        const email = emailInput.value.trim();
+    // Get form elements
+    const fname = document.querySelector('[name="fname"]');
+    const lname = document.querySelector('[name="lname"]');
+    const buildingNumber = document.querySelector('[name="building_number"]');
+    const street = document.querySelector('[name="street"]');
+    const state = document.querySelector('[name="state"]');
+    const creditLimit = document.querySelector('[name="credit_limit"]');
+    const email = document.querySelector('[name="email"]');
+    const password = document.querySelector('[name="password"]');
+    const confirmPassword = document.querySelector('[name="confirmPassword"]');
+    const job = document.querySelector('[name="job"]');
+    const interest = document.querySelector('[name="interest"]');
+    const birthdate = document.querySelector('[name="birthdate"]');
+    const phoneNumber = document.querySelector('[name="phone_number"]');
 
-        if (email === "") {
-            emailMessage.textContent = "";
+    // if it exists
+    let errorMessage = document.getElementById("error-message");
+    if (errorMessage) {
+        errorMessage.remove();
+    }
+
+    if(!fname.value)
+    {
+        showError('[name="fname"]' , "First Name is required.");
+        return;
+    }
+
+    if(!lname.value)
+    {
+        showError('[name="lname"]' , "Last Name is required.");
+        return;
+    }
+    
+    if(!phoneNumber.value)
+    {
+        showError('[name="phone_number"]' , "Phone Number is required.");
+        return;
+    }
+
+    const phoneRegex = /^[0-9]{11}$/;
+    if (!phoneRegex.test(phoneNumber.value)) {
+        showError('[name="phone_number"]' , "Please enter a valid phone number (11 digits).");  
+        return;
+    }
+
+    if(!email.value)
+    {
+        showError('[name="email"]' , "Email is required.");
+        return;
+
+    }
+    else
+    {
+        var found = false;
+        $.ajax({
+            url: '/project/validateEmail',
+            type: 'POST',
+            async:false,
+            data: { email: email.value },
+            success: function(data) {
+                if (!data.found) {
+                    found = true;
+                }
+            },
+            error: function() {
+                console.log("Error in ajax");
+            }
+        });
+        if(found){
+            showError('[name="email"]' , "Email is already exist.");
             return;
         }
 
-        // AJAX request to check if email is unique
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "CheckEmailServlet", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    }
+    
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email.value)) {
+        showError('[name="email"]' , "Please enter a valid email.");
+        return;
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                if (xhr.responseText === "exists") {
-                    emailMessage.textContent = "❌ Email is already taken!";
-                    emailMessage.style.color = "red";
-                } else {
-                    emailMessage.textContent = "✔ Email is available!";
-                    emailMessage.style.color = "green";
-                }
-            }
-        };
+    }
+    
 
-        xhr.send("email=" + encodeURIComponent(email));
+
+    if(!password.value)
+    {
+        showError('[name="password"]' , "Password is required.");
+        return;
+
+    }
+
+    if(password.value.length < 8)
+    {
+        showError('[name="password"]' , "Password must be at least 8 characters.");
+        return;
+    }
+
+    if(password.value !== confirmPassword.value)
+        {
+        showError('[name="confirmPassword"]' , "Confirm Password  don't match.");
+        return;
+    }
+
+    if(!buildingNumber.value)
+    {
+        showError('[name="building_number"]' , "Building Number is required.");   
+        return;
+
+    }
+
+    if(!street.value)
+    {
+        showError('[name="street"]' , "Street is required.");   
+        return;
+
+    }
+
+    if(!state.value)
+    {
+        showError('[name="state"]' , "state is required.");   
+        return;
+    }
+
+    console.log("Form data being submitted...");
+
+    const data = {
+        fname: document.querySelector('[name="fname"]').value,
+        lname: document.querySelector('[name="lname"]').value,
+        phone_number: document.querySelector('[name="phone_number"]').value,
+        email: document.querySelector('[name="email"]').value,
+        password: document.querySelector('[name="password"]').value,
+        building_number: document.querySelector('[name="building_number"]').value,
+        street: document.querySelector('[name="street"]').value,
+        state: document.querySelector('[name="state"]').value,
+        birthdate: document.querySelector('[name="birthdate"]').value,
+        credit_limit: document.querySelector('[name="credit_limit"]').value,
+        job: document.querySelector('[name="job"]').value,
+        interest: document.querySelector('[name="interest"]').value,
+    };
+
+    $.ajax({
+        url: "/project/register", 
+        type: "POST",
+        data: data, 
+        success: function(response) {
+            // Handle success
+            // alert("Registration successful!");
+            
+            // Redirect to login.jsp
+            window.location.href = "login.jsp"; 
+        },
+        error: function(error) {
+            // Handle error
+            // alert("An error occurred during registration. Please try again.");
+            console.error(error); 
+        }
     });
+    
+};
 
-    form.addEventListener("submit", function (event) {
-        const email = emailInput.value;
-        const phoneNumber = document.querySelector("input[name='phone_number']").value;
-
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const phonePattern = /^01\d{9}$/;
-
-        let isValid = true;
-        let errorMessage = "";
-
-        if (!emailPattern.test(email)) {
-            isValid = false;
-            errorMessage += "❌ Invalid email format.\n";
-        }
-
-        if (!phonePattern.test(phoneNumber)) {
-            isValid = false;
-            errorMessage += "❌ Phone number must start with '01' and be exactly 11 digits.\n";
-        }
-
-        if (emailMessage.textContent === "❌ Email is already taken!") {
-            isValid = false;
-            errorMessage += "❌ Email must be unique.\n";
-        }
-
-        if (!isValid) {
-            alert(errorMessage);
-            event.preventDefault();
-        }
-    });
-});
+function showError(str, message) {
+    let emailInput = document.querySelector(str);
+    let errorDiv = document.createElement("div");
+    errorDiv.id = "error-message";
+    errorDiv.style.color = "red";
+    errorDiv.style.fontSize = "0.9em";
+    errorDiv.style.marginTop = "5px";
+    errorDiv.style.textAlign = "left";
+    errorDiv.textContent = message;
+    emailInput.parentNode.appendChild(errorDiv);
+}

@@ -4,7 +4,7 @@ VALUES
     ('Aya Mostafa', '01033334444', 'aya@example.com', 'pass456', '1998-08-21', 'Designer', 8000.00, 'CLASSIC,SNEAKERS'),
     ('Youssef Kamal', '01055556666', 'youssef@example.com', 'pass789', '1997-12-01', 'Developer', 12000.00, 'SNEAKERS,CLASSIC');
 
-INSERT INTO UserAddress (user_id, state, street, department_number, is_default)
+INSERT INTO UserAddress (user_id, state, street, building_number, is_default)
 VALUES
     (1, 'Cairo', 'Tahrir St.', 5, true),
     (2, 'Giza', 'Mohandessin Ave.', 3, true),

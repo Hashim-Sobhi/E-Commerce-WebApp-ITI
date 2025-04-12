@@ -42,6 +42,27 @@
 
 <div id="page">
     <%@include file="header.jsp"%>
+    <%@ page import="jakarta.servlet.http.HttpSession" %>
+    <% 
+        HttpSession LoggInsession = request.getSession(false);
+        if(LoggInsession == null)
+        {
+            System.out.println("sesion null");
+        } 
+        else
+        {
+            Integer loggedIn = (Integer)LoggInsession.getAttribute("loggedIn");
+            if(loggedIn != null)
+            {
+                System.out.println("User Id = " + loggedIn);
+            }
+            else
+            {
+                response.sendRedirect("/project/login.jsp");              
+            }
+        }
+    %>
+
 
     <div class="main-container">
         <div class="row">

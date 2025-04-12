@@ -7,10 +7,11 @@
 
         <properties>
             <!-- JDBC configuration -->
+            <!-- <property name="packagesToScan" value="iti.jets.model.entities"/> -->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jets_projects_ecommerce_db"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="jakarta.persistence.jdbc.password" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="1234"/>
 
             <!-- Hibernate configuration -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>

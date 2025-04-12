@@ -41,6 +41,13 @@
     <div id="page" class="d-flex justify-content-center align-items-center" style="padding-top: 70px;" >
         <!-- Main Content -->
         <div style= "width: 450px;">
+            <% if(request.getAttribute("errorMessage") != null){ %>
+                <div style="background-color: #f8d7da; color: #721c24; text-align: center;border-radius: 5px; max-width: 450px; padding-top: 2px;">
+                    <p>Incorrect email or password, Please try again.</p>
+                </div>
+            <% } %>
+            
+
             <div class="card p-4">
                 <h4>Log in</h4>
                 <form method="post" action="/project/login">
@@ -59,10 +66,15 @@
                     <button class="btn btn-primary" id="login">Login</button>
                 </form>                
             </div>
+            <div style="text-align: center;padding-top:10px;">Don't have an account ?<a href="register.jsp" style="color: rgba(136,200,188,255);"> Register</a></div>                
         </div>
     </div>
 
     <%@include file="footer.jsp"%>
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

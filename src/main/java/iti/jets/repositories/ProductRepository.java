@@ -1,7 +1,5 @@
 package iti.jets.repositories;
 
-
-import iti.jets.Managers.DatabaseManager;
 import iti.jets.model.entities.Product;
 import jakarta.persistence.EntityManager;
 
