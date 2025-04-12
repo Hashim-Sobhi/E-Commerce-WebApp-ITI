@@ -15,6 +15,11 @@
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>IndexServletJSP</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>ProductDetailJSP</servlet-name>
     <jsp-file>/product-detail.jsp</jsp-file>

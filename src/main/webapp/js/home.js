@@ -1,6 +1,6 @@
 function bestSeller() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:9090/project/bestseller", true);
+    xhr.open("GET", "http://localhost:8080/project/bestseller", true);
     xhr.setRequestHeader("Accept", "application/json");
 
     xhr.onreadystatechange = function () {
@@ -23,8 +23,7 @@ function renderProducts(products) {
             <div class="col-lg-3 mb-4 text-center">
                 <div class="product-entry border">
                     <a href="product?product_id=${product.product_id}" class="prod-img">
-                        <img src="${product.image[0]}" class="img-fluid" alt="${product.name}">
-          
+                        <img src="${product.img}" class="img-fluid" alt="${product.name}">
                     </a>
                     <div class="desc">
                         <h2>${product.name}</h2>

@@ -57,7 +57,7 @@
 					   					<h2 class="head-2">Shoes</h2>
 					   					<h2 class="head-3">Collection</h2>
 					   					<p class="category"><span>New trending shoes</span></p>
-					   					<p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+					   					<p><a href="shop" class="btn btn-primary">Shop Collection</a></p>
 				   					</div>
 				   				</div>
 				   			</div>
@@ -75,7 +75,7 @@
 					   					<h2 class="head-2">Sale</h2>
 					   					<h2 class="head-3"><strong class="font-weight-bold">50%</strong> Off</h2>
 					   					<p class="category"><span>Big sale sandals</span></p>
-					   					<p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+					   					<p><a href="shop" class="btn btn-primary">Shop Collection</a></p>
 				   					</div>
 				   				</div>
 				   			</div>
@@ -93,7 +93,7 @@
 					   					<h2 class="head-2">Arrival</h2>
 					   					<h2 class="head-3">up to <strong class="font-weight-bold">30%</strong> off</h2>
 					   					<p class="category"><span>New stylish shoes for men</span></p>
-					   					<p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+					   					<p><a href="shop" class="btn btn-primary">Shop Collection</a></p>
 				   					</div>
 				   				</div>
 				   			</div>
@@ -119,17 +119,17 @@
 				<div class="row">
 					<div class="col-sm-6 text-center">
 						<div class="featured">
-							<a href="#" class="featured-img" style="background-image: url(images/men.jpg);"></a>
+							<a href="shop?category=men" class="featured-img" style="background-image: url(images/men.jpg);"></a>
 							<div class="desc">
-								<h2><a href="#">Shop Men's Collection</a></h2>
+								<h2><a href="shop?category=men">Shop Men's Collection</a></h2>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-6 text-center">
 						<div class="featured">
-							<a href="#" class="featured-img" style="background-image: url(images/women.jpg);"></a>
+							<a href="shop?category=women" class="featured-img" style="background-image: url(images/women.jpg);"></a>
 							<div class="desc">
-								<h2><a href="#">Shop Women's Collection</a></h2>
+								<h2><a href="shop?category=women">Shop Women's Collection</a></h2>
 							</div>
 						</div>
 					</div>
@@ -149,7 +149,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<p><a href="#" class="btn btn-primary btn-lg">Shop All Products</a></p>
+						<p><a href="shop" class="btn btn-primary btn-lg">Shop All Products</a></p>
 					</div>
 				</div>
 			</div>

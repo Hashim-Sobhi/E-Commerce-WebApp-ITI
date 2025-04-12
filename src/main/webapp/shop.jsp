@@ -47,7 +47,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="bread"><span><a href="index.jsp">Home</a></span> / <span>Shop</span></p>
+                    <p class="bread"><span><a href="home">Home</a></span> / <span>Shop</span></p>
                 </div>
             </div>
         </div>
@@ -58,11 +58,10 @@
             <div class="row">
                 <div class="col">
                     <div class="breadcrumbs-img" style="background-image: url(images/cover-img-1.jpg);">
-                        <h2>Women's</h2>
                     </div>
-                    <div class="menu text-center">
-                        <p><a href="#">New Arrivals</a> <a href="#">Best Sellers</a> <a href="#">Extended Widths</a> <a href="#">Sale</a></p>
-                    </div>
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
@@ -100,8 +99,61 @@
     </div>
 
     <div class="colorlib-product">
+
         <div class="container">
             <div class="row">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="d-flex flex-wrap align-items-center gap-3">
+                                <!-- Order By Label + Buttons -->
+                                <div class="d-flex align-items-center me-3">
+                                    <label class="me-2 mb-0"><b>Order By:</b></label>
+                                    <div class="btn-group btn-group-toggle">
+                                        <label class="btn btn-light btn-sm">
+                                            <input type="radio" name="orderBy" value="bestseller"> <b>Best Seller</b>
+                                        </label>
+                                        <label class="btn btn-light btn-sm">
+                                            <input type="radio" name="orderBy" value="newArrival"> <b>New Arrival</b>
+                                        </label>
+                                        <label class="btn btn-light btn-sm">
+                                            <input type="radio" name="orderBy" value="none"> <b>None</b>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Category Label + Buttons -->
+                                <div class="d-flex align-items-center">
+                                    <label class="me-2 mb-0"><b>Category:</b></label>
+                                    <div class="btn-group btn-group-toggle">
+                                        <label class="btn btn-light btn-sm">
+                                            <input type="radio" name="category" value="men"> <b>Men</b>
+                                        </label>
+                                        <label class="btn btn-light btn-sm">
+                                            <input type="radio" name="category" value="women"> <b>Women</b>
+                                        </label>
+                                        <label class="btn btn-light btn-sm">
+                                            <input type="radio" name="category" value="all"> <b>All</b>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reset Button (Right aligned) -->
+                        <div class="col-auto text-end">
+                            <button class="btn btn-sm btn-danger" id="resetFilterBtn">
+                                Reset <span class="icon-cross ms-1"></span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
                 <div class="col-lg-3 col-xl-3">
                     <div class="row">
                         <!-- Brand Filter -->
@@ -170,14 +222,7 @@
                     <div class="row">
                         <div class="col-md-12 text-center">
                             <div class="block-27">
-                                <ul>
-                                    <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
-                                    <li class="active"><span>1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+                                <ul class="ProductPagination">
                                 </ul>
                             </div>
                         </div>

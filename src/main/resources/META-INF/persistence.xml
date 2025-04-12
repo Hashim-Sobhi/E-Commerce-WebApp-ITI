@@ -15,8 +15,8 @@
             <!-- Hibernate configuration -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create / update / validate / none -->
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
+<!--            <property name="hibernate.show_sql" value="true"/>-->
+<!--            <property name="hibernate.format_sql" value="true"/>-->
             <property name="hibernate.use_sql_comments" value="true"/> <!-- Adds SQL comments for easier debugging -->
 
         </properties>

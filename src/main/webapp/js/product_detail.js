@@ -7,8 +7,9 @@ function loadProduct(product_id) {
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(JSON.parse(xhr.responseText));
+
             product = JSON.parse(xhr.responseText);
+            console.log(product);
             renderProduct();
         }
     }
@@ -22,8 +23,8 @@ function renderProduct() {
     let color_list = document.getElementById("color_list");
     let html = '';
 
-    for (let i = 0; i < product.product_info.length; i++) {
-        let color = product.product_info[i].color;
+    for (let i = 0; i < product.productInfo.length; i++) {
+        let color = product.productInfo[i].color;
         if (!colors.has(color)) {
             colors.add(color);
 
@@ -40,22 +41,23 @@ function renderProduct() {
 
     document.querySelectorAll("img").forEach(img => {
         if(img.getAttribute("data_id") === "image_0") {
-            img.setAttribute("src", product.image[0]);
+            img.setAttribute("src", product.img[0]);
         }
         else if(img.getAttribute("data_id") === "image_1") {
-            img.setAttribute("src", product.image[1]);
+            img.setAttribute("src", product.img[1]);
         }
         else if(img.getAttribute("data_id") === "image_2") {
-            img.setAttribute("src", product.image[2]);
+            img.setAttribute("src", product.img[2]);
         }
         else if(img.getAttribute("data_id") === "image_3") {
-            img.setAttribute("src", product.image[3]);
+            img.setAttribute("src", product.img[3]);
         }
     });
 
 }
 
 function showSizes(event) {
+    selectedSize = null;
     if (event.target && event.target.type === 'radio') {
         // Get the value of the selected radio button
         let labels = document.querySelectorAll("#color_list .btn");
@@ -74,9 +76,9 @@ function showSizes(event) {
         let sizes = new Set();
 
         // Collect sizes for the selected color
-        for (let i = 0; i < product.product_info.length; i++) {
-            if (product.product_info[i].color === selectedColor) {
-                sizes.add(product.product_info[i].size);
+        for (let i = 0; i < product.productInfo.length; i++) {
+            if (product.productInfo[i].color === selectedColor) {
+                sizes.add(product.productInfo[i].size);
             }
         }
 
@@ -108,5 +110,49 @@ function chooseSize(event) {
         selectedLabel.classList.add("active");
         selectedSize = event.target.value;
         console.log(selectedSize);
+        console.log(selectedColor);
     }
 }
+
+function addToCart() {
+    if (selectedColor == null || selectedSize == null) {
+        alert("Please select a color & size");
+        return;
+    }
+
+    let quantity = parseInt(document.getElementById("quantity").value);
+    if (isNaN(quantity) || quantity <= 0) {
+        alert("Please enter a valid quantity.");
+        return;
+    }
+
+    let selectedProduct = product.productInfo.find(info =>
+        info.color === selectedColor && (String)(info.size) === selectedSize
+    );
+
+    if (!selectedProduct) {
+        alert("Error: Selected product not found.");
+        return;
+    }
+
+    if (quantity > selectedProduct.quantity) {
+        alert("Only " + selectedProduct.quantity + " items are available.");
+        return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingItem = cart.find(item => item.product_info_id === selectedProduct.product_info_id);
+    if (existingItem) {
+        existingItem.quantity = quantity;
+        alert("quantity updated successfully.");
+    } else {
+        cart.push({ product_info_id: selectedProduct.product_info_id, quantity: quantity });
+        alert("Item added to cart");
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    console.log(cart);
+}
+

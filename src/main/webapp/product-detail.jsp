@@ -49,7 +49,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<p class="bread"><span><a href="index.jsp">Home</a></span> / <span>Product Details</span></p>
+						<p class="bread"><span><a href="home">Home</a></span> / <span>Product Details</span></p>
 					</div>
 				</div>
 			</div>
@@ -124,7 +124,7 @@
                   	</div>
                   	<div class="row">
 	                  	<div class="col-sm-12 text-center">
-									<p class="addtocart"><a href="cart.jsp" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
+									<p class="addtocart"><a href="javascript:void(0);" class="btn btn-primary btn-addtocart" onclick="addToCart();"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
 								</div>
 							</div>
 						</div>

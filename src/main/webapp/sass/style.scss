@@ -761,7 +761,7 @@ h1, h2, h3, h4, h5,
 	}
 	.btn{
 		// height: 50px;
-		@include border-radius(4px)
+		@include border-radius(4px);
 		display: table;
 		i{
 			display: table-cell;

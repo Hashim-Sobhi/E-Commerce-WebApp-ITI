@@ -1,40 +1,29 @@
 package iti.jets.servlets;
 
+import iti.jets.model.dtos.ProductSummaryDTO;
+import iti.jets.services.ProductService;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.persistence.EntityManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import java.util.List;
 
 @WebServlet("/bestseller")
 public class BestSellerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EntityManager em = (EntityManager) request.getAttribute("entityManager");
+        List<ProductSummaryDTO> productSummaries = ProductService.getBestSellerProducts(em);
         response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        // Get the absolute path of products.json inside webapp
-        String filePath = getServletContext().getRealPath("/json/products.json");
-
-        File file = new File(filePath);
-        if (!file.exists()) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            response.getWriter().write("{\"error\": \"File not found\"}");
-            return;
-        }
-
-        // Read the file content
-        String jsonData = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
-
-        // Send JSON response
+        Jsonb jsonb = JsonbBuilder.create();
         PrintWriter out = response.getWriter();
-        out.print(jsonData);
-        out.flush();
+        out.write(jsonb.toJson(productSummaries));
     }
-
 }

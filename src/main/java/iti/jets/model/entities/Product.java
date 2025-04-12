@@ -15,7 +15,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private Integer productId;
+    private Integer product_id;
 
     @Column(name = "name", nullable = false, length = 255)
     private String name;
@@ -57,7 +57,7 @@ public class Product {
     }
 
     public Product(Integer productId, String name, String description, Category category, Gender gender, BigDecimal price, String brand, Timestamp addedAt, Integer sold, Timestamp updatedAt) {
-        this.productId = productId;
+        this.product_id = productId;
         this.name = name;
         this.description = description;
         this.category = category;
@@ -81,12 +81,14 @@ public class Product {
     }
 
     // Getters and setters
-    public Integer getProductId() {
-        return productId;
+
+
+    public Integer getProduct_id() {
+        return product_id;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setProduct_id(Integer product_id) {
+        this.product_id = product_id;
     }
 
     public String getName() {
