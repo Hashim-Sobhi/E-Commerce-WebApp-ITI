@@ -1,12 +1,12 @@
-<!-- <%@ page import="com.iti.dao.ProductDao, com.iti.model.Product, java.util.List" %> -->
+<%@ page import="com.iti.dao.UserDao, com.iti.model.User, java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Product Management</title>
+    <title>User Management</title>
     <script>
-        function confirmDelete(productId) {
-            if (confirm("Are you sure you want to delete this product?")) {
-                window.location.href = "ProductServlet?action=delete&id=" + productId;
+        function confirmDelete(userId) {
+            if (confirm("Are you sure you want to delete this user?")) {
+                window.location.href = "UserServlet?action=delete&id=" + userId;
             }
         }
     </script>
@@ -48,54 +48,47 @@
 <div id="page">
     <div class="container">
         <div class="card p-4">
-            <h2 class="text-center">Product Management</h2>
-
+            <h2 class="text-center">User Management</h2>
+    
             <table class="table table-bordered">
                 <thead class="thead-dark"></thead>
                 <tr>
-                    <th>ID</th> <th>Name</th> <th>Description</th> <th>Price</th> <th>Category</th> <th>Gender</th> <th>Actions</th>
+                    <th>ID</th> <th>First Name</th> <th>Last Name</th> <th>Email</th> <th>Job</th> <th>Phone</th> <th>Actions</th>
                 </tr>
-                <!-- <%
-                    ProductDao productDao = new ProductDao();
-                    List<Product> products = productDao.getAllProducts();
-                    for (Product product : products) {
-                %> -->
+                <%
+                    UserDao userDao = new UserDao();
+                    List<User> users = userDao.getAllUsers();
+                    for (User user : users) {
+                %>
                 <tr>
-                    <!-- <td><%= product.getId() %></td>
-                    <td><%= product.getName() %></td>
-                    <td><%= product.getDescription() %></td>
-                    <td><%= product.getPrice() %></td>
-                    <td><%= product.getCategory() %></td>
-                    <td><%= product.getGender() %></td>
+                    <td><%= user.getId() %></td>
+                    <td><%= user.getFname() %></td>
+                    <td><%= user.getLname() %></td>
+                    <td><%= user.getEmail() %></td>
+                    <td><%= user.getJob() %></td>
+                    <td><%= user.getPhone() %></td>
                     <td>
-                        <a href="editProduct.jsp?id=<%= product.getId() %>">Edit</a>
-                        <a href="javascript:void(0);" onclick="confirmDelete(<%= product.getId() %>)">Delete</a>
-                    </td> -->
+                        <a href="editUser.jsp?id=<%= user.getId() %>">Edit</a>
+                        <a href="javascript:void(0);" onclick="confirmDelete(<%= user.getId() %>)">Delete</a>
+                    </td>
                 </tr>
-                <!-- <% } %> -->
+                <% } %>
             </table>
         </div>
     </div>
 
-    <!-- <h3>Add New Product</h3>
-    <form action="ProductServlet" method="post">
+    <h3>Add New User</h3>
+    <form action="UserServlet" method="post">
         <input type="hidden" name="action" value="add">
-        <input type="text" name="name" placeholder="Product Name" required>
-        <textarea name="description" placeholder="Description" required></textarea>
-        <input type="number" name="price" step="0.01" placeholder="Price" required>
-        <select name="category">
-            <option value="CLASSIC">Classic</option>
-            <option value="CASUAL">Casual</option>
-            <option value="SNEAKER">Sneaker</option>
-        </select>
-        <select name="gender">
-            <option value="MALE">Male</option>
-            <option value="FEMALE">Female</option>
-            <option value="UNISEX">Unisex</option>
-        </select>
-        <input type="submit" value="Add Product">
-    </form> -->
-    <%@include file="footer.jsp"%>
+        <input type="text" name="fname" placeholder="First Name" required>
+        <input type="text" name="lname" placeholder="Last Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="job" placeholder="Job">
+        <input type="text" name="phone" placeholder="Phone">
+        <input type="submit" value="Add User">
+    </form>
+    <%@include file="../footer.jsp"%>
 </div>
 <!-- jQuery -->
 <script src="js/template/jquery.min.js"></script>

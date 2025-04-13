@@ -1,15 +1,11 @@
-<%@ page import="com.iti.dao.UserDao, com.iti.model.User, java.util.List" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="iti.jets.model.dtos.ProductManageDTO" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
-    <title>User Management</title>
-    <script>
-        function confirmDelete(userId) {
-            if (confirm("Are you sure you want to delete this user?")) {
-                window.location.href = "UserServlet?action=delete&id=" + userId;
-            }
-        }
-    </script>
+    <title>Product Management</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -48,47 +44,35 @@
 <div id="page">
     <div class="container">
         <div class="card p-4">
-            <h2 class="text-center">User Management</h2>
-    
+            <h2 class="text-center">Product Management</h2>
+
             <table class="table table-bordered">
                 <thead class="thead-dark"></thead>
                 <tr>
-                    <th>ID</th> <th>First Name</th> <th>Last Name</th> <th>Email</th> <th>Job</th> <th>Phone</th> <th>Actions</th>
+                    <th>ID</th> <th>Name</th> <th>Description</th> <th>Price</th> <th>Quantity</th>
                 </tr>
+                </thead>
+                <tbody>
                 <%
-                    UserDao userDao = new UserDao();
-                    List<User> users = userDao.getAllUsers();
-                    for (User user : users) {
+                    List<ProductManageDTO> products = (List<ProductManageDTO>) request.getAttribute("products");
+                    if (products != null) {
+                        for (ProductManageDTO p : products) {
                 %>
                 <tr>
-                    <td><%= user.getId() %></td>
-                    <td><%= user.getFname() %></td>
-                    <td><%= user.getLname() %></td>
-                    <td><%= user.getEmail() %></td>
-                    <td><%= user.getJob() %></td>
-                    <td><%= user.getPhone() %></td>
-                    <td>
-                        <a href="editUser.jsp?id=<%= user.getId() %>">Edit</a>
-                        <a href="javascript:void(0);" onclick="confirmDelete(<%= user.getId() %>)">Delete</a>
-                    </td>
+                    <td><%= p.getProduct_id() %></td>
+                    <td><%= p.getName() %></td>
+                    <td><%= p.getPrice() %></td>
+                    <td><%= p.getQuantity() %></td>
                 </tr>
-                <% } %>
+                <%
+                        }
+                    }
+                %>
+                </tbody>
             </table>
         </div>
     </div>
 
-    <h3>Add New User</h3>
-    <form action="UserServlet" method="post">
-        <input type="hidden" name="action" value="add">
-        <input type="text" name="fname" placeholder="First Name" required>
-        <input type="text" name="lname" placeholder="Last Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="text" name="job" placeholder="Job">
-        <input type="text" name="phone" placeholder="Phone">
-        <input type="submit" value="Add User">
-    </form>
-    <%@include file="footer.jsp"%>
 </div>
 <!-- jQuery -->
 <script src="js/template/jquery.min.js"></script>
