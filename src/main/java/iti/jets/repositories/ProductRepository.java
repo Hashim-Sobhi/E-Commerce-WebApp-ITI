@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ProductRepository {
+
     public static List<Product> getFilteredProducts(
             String[] brands, String[] sizes, String[] colors,
             String orderBy, String category, String page,

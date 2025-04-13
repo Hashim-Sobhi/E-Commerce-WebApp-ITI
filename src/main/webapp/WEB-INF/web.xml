@@ -5,6 +5,27 @@
          version= "5.0"
          metadata-complete= "false">
 
+
+  <servlet>
+      <servlet-name>AdminProduct</servlet-name>
+      <servlet-class>iti.jets.servlets.ProductManagementServlet</servlet-class>
+  </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminProduct</servlet-name>
+        <url-pattern>/adminproduct</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminUser</servlet-name>
+        <servlet-class>iti.jets.servlets.UserManagementServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminUser</servlet-name>
+        <url-pattern>/adminuser</url-pattern>
+    </servlet-mapping>
+
   <servlet>
     <servlet-name>IndexServletJSP</servlet-name>
     <jsp-file>/index.jsp</jsp-file>

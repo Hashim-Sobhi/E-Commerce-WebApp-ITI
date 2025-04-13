@@ -1,10 +1,10 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="iti.jets.model.dtos.ProductManageDTO" %>
+<%@ page import="iti.jets.model.dtos.UserManageDTO" %>
 <%@ page import="java.util.List" %>
 <html>
 <head>
-    <title>Product Management</title>
+    <title>Users</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,27 +42,30 @@
 <body>
 <div class="colorlib-loader"></div>
 <div id="page">
+
     <div class="container">
         <div class="card p-4">
-            <h2 class="text-center">Product Management</h2>
+            <h2 class="text-center">Users Review</h2>
 
             <table class="table table-bordered">
                 <thead class="thead-dark"></thead>
                 <tr>
-                    <th>ID</th> <th>Name</th> <th>Description</th> <th>Price</th> <th>Quantity</th>
+                    <th>ID</th> <th>Name</th> <th>Phone Number</th> <th>Email</th> <th>Job</th> <th>BirthDate</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
-                    List<ProductManageDTO> products = (List<ProductManageDTO>) request.getAttribute("products");
-                    if (products != null) {
-                        for (ProductManageDTO p : products) {
+                    List<UserManageDTO> users = (List<UserManageDTO>) request.getAttribute("users");
+                    if (users != null) {
+                        for (UserManageDTO u : users) {
                 %>
                 <tr>
-                    <td><%= p.getProduct_id() %></td>
-                    <td><%= p.getName() %></td>
-                    <td><%= p.getPrice() %></td>
-                    <td><%= p.getQuantity() %></td>
+                    <td><%= u.getId() %></td>
+                    <td><%= u.getName() %></td>
+                    <td><%= u.getPhoneNumber() %></td>
+                    <td><%= u.getEmail() %></td>
+                    <td><%= u.getJob() %></td>
+                    <td><%= u.getBirthdate() %></td>
                 </tr>
                 <%
                         }
