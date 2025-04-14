@@ -39,7 +39,10 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <!-- Flaticons  -->
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
+    <!-- Sweet alerts Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+    <script src="js/alerts.js"></script>
     <!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
 </head>

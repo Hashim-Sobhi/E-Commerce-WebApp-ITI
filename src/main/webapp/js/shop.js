@@ -169,16 +169,17 @@ function renderPagination(totalPages) {
     pagination.innerHTML = ''; // Clear existing pagination
 
     // First page button - Show only if not the first page
-    if (currentPage > 1) {
         let firstPage = document.createElement('li');
-        firstPage.innerHTML = `<a href="javascript:void(0);" onclick="changePage(${currentPage - 1})"><i class="ion-ios-arrow-back"></i></a>`;
+        firstPage.innerHTML = `<a href="javascript:void(0);" onclick="changePage(${currentPage - 1})"><i class="ion-ios-arrow-back" ></i></a>`;
         pagination.appendChild(firstPage);
+    if (currentPage === 1) {
+        firstPage.firstElementChild.classList.add('linkDisabled');
     }
 
     // Page number buttons
     for (let i = 1; i <= totalPages; i++) {
         let pageItem = document.createElement('li');
-        pageItem.innerHTML = `<a href="javascript:void(0);" onclick="changePage(${i})">${i}</a>`;
+        pageItem.innerHTML = `<a  href="javascript:void(0);" onclick="changePage(${i})">${i}</a>`;
         if (i === currentPage) {
             pageItem.classList.add('active'); // Mark current page as active
         }
@@ -186,10 +187,11 @@ function renderPagination(totalPages) {
     }
 
     // Last page button - Show only if not the last page
-    if (currentPage < totalPages) {
         let lastPage = document.createElement('li');
         lastPage.innerHTML = `<a href="javascript:void(0);" onclick="changePage(${currentPage + 1})"><i class="ion-ios-arrow-forward"></i></a>`;
         pagination.appendChild(lastPage);
+    if (currentPage === totalPages) {
+        lastPage.firstElementChild.classList.add('linkDisabled');
     }
 }
 

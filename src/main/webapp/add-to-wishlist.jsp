@@ -37,7 +37,10 @@
 
 	<!--Font AwEsome-->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
+		<!-- Sweet alerts Library -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+		<script src="js/alerts.js"></script>
 	</head>
 	<body onload="getWishlistItem()">
 		
@@ -132,30 +135,30 @@
 	</div>
 	
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+	<script src="js/template/jquery.min.js"></script>
    <!-- popper -->
-   <script src="js/popper.min.js"></script>
+   <script src="js/template/popper.min.js"></script>
    <!-- bootstrap 4.1 -->
-   <script src="js/bootstrap.min.js"></script>
+   <script src="js/template/bootstrap.min.js"></script>
    <!-- jQuery easing -->
-   <script src="js/jquery.easing.1.3.js"></script>
+   <script src="js/template/jquery.easing.1.3.js"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/template/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="js/template/jquery.flexslider-min.js"></script>
 	<!-- Owl carousel -->
-	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/template/owl.carousel.min.js"></script>
 	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
+	<script src="js/template/jquery.magnific-popup.min.js"></script>
+	<script src="js/template/magnific-popup-options.js"></script>
 	<!-- Date Picker -->
-	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/template/bootstrap-datepicker.js"></script>
 	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/template/jquery.stellar.min.js"></script>
 	<!-- Main -->
-	<script src="js/main.js"></script>
+	<script src="js/template/main.js"></script>
 	<!-- wishlist -->
-	<script src="js/wishtlist.js"></script>
+	<script src="js/wishlist.js"></script>
 
 	</body>
 </html>
