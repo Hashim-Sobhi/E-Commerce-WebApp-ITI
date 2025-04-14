@@ -651,6 +651,7 @@ pre {
   -ms-flex-order: 9;
   order: 9; }
 
+  
 .order-10 {
   -webkit-box-ordinal-group: 11;
   -ms-flex-order: 10;
@@ -4015,6 +4016,23 @@ input[type="button"].btn-block {
   padding-right: 0;
   padding-left: 0;
   border-radius: 0; }
+
+
+  #emptyCart {
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      color: #721c24; 
+      border: 1px solid white; 
+      height: 40vh; 
+      text-align: center; 
+  }
+
+  #emptyCart p {
+      font-size: 20px;
+  }
+
+
 
 .alert {
   position: relative;
@@ -7678,7 +7696,7 @@ h1, h2, h3, h4, h5,
 .colorlib-partner,
 .colorlib-intro,
 .colorlib-product {
-  padding: 7em 0;
+  padding: 4em 0;
   clear: both; }
 
 .colorlib-intro {

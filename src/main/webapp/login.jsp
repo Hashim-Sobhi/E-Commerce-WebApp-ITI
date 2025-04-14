@@ -41,16 +41,13 @@
     <div id="page" class="d-flex justify-content-center align-items-center" style="padding-top: 70px;" >
         <!-- Main Content -->
         <div style= "width: 450px;">
-            <% if(request.getAttribute("errorMessage") != null){ %>
-                <div style="background-color: #f8d7da; color: #721c24; text-align: center;border-radius: 5px; max-width: 450px; padding-top: 2px;">
-                    <p>Incorrect email or password, Please try again.</p>
-                </div>
-            <% } %>
-            
+            <div id="errorDiv" style="background-color: #f8d7da; color: #721c24; text-align: center; border-radius: 5px; max-width: 450px; padding-top: 2px; display: none;">
+                <p id="errorMessage"></p>
+            </div>            
 
             <div class="card p-4">
                 <h4>Log in</h4>
-                <form method="post" action="/project/login">
+                <form method="post" action="/project/login" onsubmit="handleLoginForm(event)">
                     <div class="form-group">
                         <label><b>Email Address </b></label>
                         <input type="text" class="form-control" name="email" id="email" required>
@@ -77,28 +74,29 @@
     <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- jQuery -->
-<script src="js/jquery.min.js"></script>
+<script src="js/template/jquery.min.js"></script>
 <!-- popper -->
-<script src="js/popper.min.js"></script>
+<script src="js/template/popper.min.js"></script>
 <!-- bootstrap 4.1 -->
-<script src="js/bootstrap.min.js"></script>
+<script src="js/template/bootstrap.min.js"></script>
 <!-- jQuery easing -->
-<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/template/jquery.easing.1.3.js"></script>
 <!-- Waypoints -->
-<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/template/jquery.waypoints.min.js"></script>
 <!-- Flexslider -->
-<script src="js/jquery.flexslider-min.js"></script>
+<script src="js/template/jquery.flexslider-min.js"></script>
 <!-- Owl carousel -->
-<script src="js/owl.carousel.min.js"></script>
+<script src="js/template/owl.carousel.min.js"></script>
 <!-- Magnific Popup -->
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/magnific-popup-options.js"></script>
+<script src="js/template/jquery.magnific-popup.min.js"></script>
+<script src="js/template/magnific-popup-options.js"></script>
 <!-- Date Picker -->
-<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/template/bootstrap-datepicker.js"></script>
 <!-- Stellar Parallax -->
-<script src="js/jquery.stellar.min.js"></script>
+<script src="js/template/jquery.stellar.min.js"></script>
+<!-- Main -->
+<script src="js/template/main.js"></script>
 <!-- Login -->
 <script src="js/login.js"></script>
 

@@ -78,7 +78,7 @@
 				</div>
 				<div class="row row-pb-lg">
 					<div class="col-md-12">
-						<div class="product-name d-flex">
+						<div class="product-name d-flex" style="display:none;" id="itemBoard">
 							<div class="one-forth text-left px-4">
 								<span>Product Details</span>
 							</div>
@@ -102,7 +102,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row row-pb-lg">
+				<div class="row row-pb-lg" style="display: none;" id="calcBoard">
 					<div class="col-md-12">
 						<div class="total-wrap">
 							<div class="row">
@@ -196,29 +196,30 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 	
+	
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-   <!-- popper -->
-   <script src="js/popper.min.js"></script>
-   <!-- bootstrap 4.1 -->
-   <script src="js/bootstrap.min.js"></script>
-   <!-- jQuery easing -->
-   <script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/template/jquery.min.js"></script>
+	<!-- popper -->
+	<script src="js/template/popper.min.js"></script>
+	<!-- bootstrap 4.1 -->
+	<script src="js/template/bootstrap.min.js"></script>
+	<!-- jQuery easing -->
+	<script src="js/template/jquery.easing.1.3.js"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/template/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="js/template/jquery.flexslider-min.js"></script>
 	<!-- Owl carousel -->
-	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/template/owl.carousel.min.js"></script>
 	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
+	<script src="js/template/jquery.magnific-popup.min.js"></script>
+	<script src="js/template/magnific-popup-options.js"></script>
 	<!-- Date Picker -->
-	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/template/bootstrap-datepicker.js"></script>
 	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/template/jquery.stellar.min.js"></script>
 	<!-- Main -->
-	<script src="js/main.js"></script>
+	<script src="js/template/main.js"></script>
 	<!--cart-->
 	<script src="js/cart.js"></script>
 

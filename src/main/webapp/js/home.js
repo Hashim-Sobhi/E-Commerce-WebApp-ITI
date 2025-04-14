@@ -36,3 +36,8 @@ function renderProducts(products) {
         container.innerHTML += productHTML;
     });
 }
+
+// if(loggedIn)
+// {
+//     localStorage.setItem("user-Id" , loggedIn);
+// }

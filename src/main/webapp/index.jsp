@@ -147,7 +147,7 @@
 					</div>
 					<div class="col-sm-6 text-center">
 						<div class="featured">
-							<a href="shop?category=women" class="featured-img" style="background-image: url(images/women.jpg);"></a>
+						<a href="shop?category=women" class="featured-img" style="background-image: url(images/item-24.jpg);"></a>
 							<div class="desc">
 								<h2><a href="shop?category=women">Shop Women's Collection</a></h2>
 							</div>
@@ -155,7 +155,74 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
+
+
+		<div class="colorlib-product">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-4 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(images/item-17.jpg);">
+								<h2>Casual</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>	
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(images/item-18.jpg);">
+								<h2>Classic</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>	
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(images/item-19.jpg);">
+								<h2>Sneakers</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>	
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>	
+
+		<!-- <div class="colorlib-featured">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(images/img_bg_2.jpg);">
+								<h2>Casuals</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(images/women.jpg);">
+								<h2>Dress</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(images/item-11.jpg);">
+								<h2>Sports</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	
 
 		<div class="colorlib-product">
 			<div class="container" id="products-view">

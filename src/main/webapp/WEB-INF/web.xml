@@ -81,6 +81,32 @@
     <url-pattern>/validateEmail</url-pattern>
   </servlet-mapping>
 
+<servlet>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <servlet-class>iti.jets.servlets.AddToCartServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <url-pattern>/addToCart</url-pattern>
+  </servlet-mapping>
+
+
+
+  <servlet>
+    <servlet-name>UpdateQuantityServlet</servlet-name>
+    <servlet-class>iti.jets.servlets.UpdateQuantityServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UpdateQuantityServlet</servlet-name>
+    <url-pattern>/updateQuantity</url-pattern>
+  </servlet-mapping>
+
+
+
+UpdateQuantityServlet
+
   <listener>
     <listener-class>iti.jets.listeners.RequestListener</listener-class>
   </listener>

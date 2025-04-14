@@ -1,5 +1,6 @@
 package iti.jets.model.dtos;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import iti.jets.model.entities.ProductDetail;
@@ -24,7 +25,11 @@ import lombok.Setter;
 public class ShoppingCartDTO {
     private int itemId;
     private int userId;
-    //private ProductDetailDTO productDetail;
+    private String name;
+    private int size;
+    private String color;
+    private BigDecimal price;    
     private int quantity;
+    private String img;
     private Timestamp addedAt;
 }

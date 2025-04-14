@@ -25,15 +25,15 @@ public class LoginServlet extends HttpServlet {
 
         if(loggedUser != null)
         {
-            HttpSession session = req.getSession(true);
-            session.setAttribute("loggedIn", loggedUser.getUserId());
-            resp.sendRedirect("/project/index.jsp");           
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write("{ \"userId\": \"" + loggedUser.getUserId() + "\" }");
+            return;
         }
         else {
-            req.setAttribute("errorMessage", "Incorrect email or password, Please try again."); 
-            // resp.sendRedirect("/project/login.jsp");           
-            RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
-            rd.forward(req, resp);
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write("{ \"errorMessage\": \"Incorrect email or password. Please try again.\" }");
         }
     }
 

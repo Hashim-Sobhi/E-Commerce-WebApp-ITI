@@ -48,13 +48,13 @@
                         <li class="<%= "4".equals(id) ? "active" : "" %>"><a href="contact.jsp">Contact</a></li>
 
                         <li class="<%= "5".equals(id) ? "active cart" : "cart" %>">
-                            <a href="cart.jsp"><i class="icon-shopping-cart"></i> Cart [0]</a>
+                            <a href="cart.jsp"><i class="icon-shopping-cart"></i></a>
                         </li>
                         <li class="<%= "7".equals(id) ? "active cart" : "cart" %>">
                             <a href="add-to-wishlist.jsp?id=8"><i class="icon-heart2"></i></a>
                         </li>
                         <li class="<%= "6".equals(id) ? "active profile" : "profile" %>">
-                            <a href="profile.jsp"><i class="icon-user"></i> Profile</a>
+                            <a href="profile.jsp"><i class="icon-user"></i></a>
                         </li>
 
 

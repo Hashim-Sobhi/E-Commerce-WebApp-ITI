@@ -1,12 +1,6 @@
-let loginButton = document.getElementById("login");
+function handleLoginForm(event) {
+    event.preventDefault(); 
 
-loginButton.addEventListener("click", function (event) {
-    //event.preventDefault(); 
-    handleLoginButton();
-});
-
-
-function handleLoginButton() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let checkBox = document.getElementById("rememberme");
@@ -37,6 +31,36 @@ function handleLoginButton() {
 
     console.log("Email:", email);
     console.log("Password:", password);
+
+
+    $.ajax({
+        url: '/project/login',
+        type: 'POST',
+        async:false,
+        data: {
+            email: email,
+            password: password
+        },
+        success: function(data) {
+            if (data.userId) {
+                localStorage.setItem('loggedInUserId', data.userId);
+                window.location.href = "/project/index.jsp";
+            }
+            else {
+                document.getElementById("email").value = "";
+                document.getElementById("password").value = "";
+                $("#errorMessage").text(data.errorMessage);
+                $("#errorDiv").show();
+            }
+            
+        },
+        error: function() {
+            console.log("Error in ajax");
+        }
+    });
+
+
+
     // $.post("/project/login", { email: $("#email").val(), password: $("#password").val() });
 }
 
@@ -50,7 +74,7 @@ function handleLoginButton() {
 // }
 
 function validateEmail(email) {
-    let emailPattern = /^[a-zA-Z]+[a-zA-Z0-9]*@gmail\.(com)$/;
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(email);
 }
 

@@ -115,14 +115,22 @@ function chooseSize(event) {
 }
 
 function addToCart() {
+    let logged = localStorage.getItem("loggedInUserId");
+
+
+    if (document.getElementById('newDiv'))
+    {
+        document.getElementById('newDiv').remove();
+    }
+
     if (selectedColor == null || selectedSize == null) {
-        alert("Please select a color & size");
+        errorMessage("Please select a color & size");
         return;
     }
 
     let quantity = parseInt(document.getElementById("quantity").value);
     if (isNaN(quantity) || quantity <= 0) {
-        alert("Please enter a valid quantity.");
+        errorMessage("Please enter a valid quantity.");
         return;
     }
 
@@ -131,12 +139,12 @@ function addToCart() {
     );
 
     if (!selectedProduct) {
-        alert("Error: Selected product not found.");
+        errorMessage("Error: Selected product not found.");
         return;
     }
 
     if (quantity > selectedProduct.quantity) {
-        alert("Only " + selectedProduct.quantity + " items are available.");
+        errorMessage("Only " + selectedProduct.quantity + " items are available.");
         return;
     }
 
@@ -145,14 +153,104 @@ function addToCart() {
     let existingItem = cart.find(item => item.product_info_id === selectedProduct.product_info_id);
     if (existingItem) {
         existingItem.quantity = quantity;
-        alert("quantity updated successfully.");
+
+        if(logged != null)
+        {
+        $.ajax({
+            url: '/project/updateQuantity',
+            type: 'POST',
+            async: false,
+            data: {
+                userId: logged,
+                product_id: product.product_id,
+                product_info_id: selectedProduct.product_info_id,
+                quantity: quantity 
+            },
+            error: function() {
+                console.log("Error in ajax");
+            }
+        });
+    }
+        successMessage("Quantity updated successfully.");
+
+
     } else {
-        cart.push({ product_info_id: selectedProduct.product_info_id, quantity: quantity });
-        alert("Item added to cart");
+        cart.push({
+                   product_id: product.product_id,
+                   product_info_id: selectedProduct.product_info_id,
+                   quantity: quantity });
+
+        successMessage("Item added to cart");
+
+        if(logged != null)
+        {
+            $.ajax({
+                url: '/project/addToCart',
+                type: 'POST',
+                async: false,
+                data: {
+                    userId: logged,
+                    product_id: product.product_id,
+                    product_info_id: selectedProduct.product_info_id,
+                    quantity: quantity 
+                },
+                error: function() {
+                    console.log("Error in ajax");
+                }
+            });
+        
+        }
+     
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
     console.log(cart);
+  
 }
+
+function errorMessage(message) {
+ 
+    const addToCartButton = document.querySelector('.btn-addtocart');
+
+    if (!document.getElementById('newDiv')) {
+        const newDiv = document.createElement('div');
+        newDiv.id = 'newDiv'; 
+        newDiv.textContent = message;
+
+        newDiv.style.marginTop = '10px';
+        // newDiv.style.padding = '10px';
+        // newDiv.style.backgroundColor = 'red'; 
+        newDiv.style.color = 'red'; 
+        // newDiv.style.border = '1px solid #c3e6cb';
+        newDiv.style.borderRadius = '5px'; 
+        newDiv.style.textAlign = 'left'; 
+
+        // Insert the new div after the "Add to Cart" button
+        addToCartButton.parentNode.appendChild(newDiv);
+    }
+}
+function successMessage(message) {
+    // Get the toast element
+    const toastElement = document.getElementById('myToast');
+
+    // Update the toast message
+    const toastBody = document.getElementById('toastMessage');
+    toastBody.textContent = message;
+
+    // Remove the `d-none` class to make the toast visible
+    toastElement.classList.remove('d-none');
+
+    // Initialize the toast
+    const toast = new bootstrap.Toast(toastElement);
+
+    // Show the toast
+    toast.show();
+}
+
+
+
+
+
+
 

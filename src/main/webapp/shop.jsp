@@ -67,37 +67,6 @@
         </div>
     </div>
 
-    <div class="colorlib-featured">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 text-center">
-                    <div class="featured">
-                        <div class="featured-img featured-img-2" style="background-image: url(images/img_bg_2.jpg);">
-                            <h2>Casuals</h2>
-                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <div class="featured">
-                        <div class="featured-img featured-img-2" style="background-image: url(images/women.jpg);">
-                            <h2>Dress</h2>
-                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <div class="featured">
-                        <div class="featured-img featured-img-2" style="background-image: url(images/item-11.jpg);">
-                            <h2>Sports</h2>
-                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="colorlib-product">
 
         <div class="container">

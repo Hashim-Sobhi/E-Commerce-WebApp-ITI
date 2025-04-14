@@ -1,70 +1,92 @@
 let subTotal = 0 ;
 let discount = 0 ;
 let delivery = 0 ;
-
+let cartItems = [];
+let quantities = [];
 
 function getItems() {
+    let cartLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
+    // let cart = JSON.stringify(cartLocalStorage);
+    if(cartLocalStorage.length > 0)
+    {
+        cartLocalStorage.forEach(item => cartItems.push(item.product_info_id));
+        cartLocalStorage.forEach(q => quantities.push(q.quantity));
+    }
+    console.log(cartItems);
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "cart", true);
+    xhr.open("GET", `cart?cart=${cartItems}&quantity=${quantities}`, true);
 
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            let items = JSON.parse(xhr.responseText);
-            console.log(items);
-            renderItems(items);
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let items = JSON.parse(xhr.responseText); 
+                console.log(items);
+                renderItems(items); 
+            } 
+            else {
+                renderItems([]);
+            }
         }
     };
 
     xhr.send();
+
 }
 
 function renderItems(items) {
     let container = document.getElementById("itemsView"); 
     container.innerHTML = ""; 
+    
+    if(items.length == 0)
+    {
+        container.innerHTML = '<div id="emptyCart"><p>Cart is Empty</p></div>';
+    }
+    else
+    {
+        $("#itemBoard").show();
+        items.forEach(item => {
+            let productHTML = `
+                <div class="product-cart d-flex" item-id="${item.itemId}">
+                    <div class="one-forth">
+                        <div class="product-img" style="background-image: url(${item.img});">
+                        </div>
+                        <div class="display-tc">
+                            <h3>${item.name}</h3>
+                            <h3 style="color: rgb(136,200,188,255);">${item.size}, ${item.color}</h3>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <span class="price" id="price">$${item.price}</span>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc"> 
+                            <span class="price" name="quantity" id="quantity">${item.quantity}</span>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <span class="price" id="total">$${(item.quantity * item.price).toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <button style="border:none;cursor: pointer;" onclick="removeItem(${item.itemId})">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
 
-    items.forEach(item => {
-        let productHTML = `
-            <div class="product-cart d-flex" item-id="${item.id}">
-                <div class="one-forth">
-                    <div class="product-img" style="background-image: url(${item.image});">
-                    </div>
-                    <div class="display-tc">
-                        <h3>${item.name}</h3>
-                        <h3 style="color: rgb(136,200,188,255);">${item.size}, ${item.color}</h3>
-                    </div>
-                </div>
-                <div class="one-eight text-center">
-                    <div class="display-tc">
-                        <span class="price" id="price">$${item.price}</span>
-                    </div>
-                </div>
-                <div class="one-eight text-center">
-                    <div class="display-tc">
-                        <form action="#">
-                            <input type="text" name="quantity" class="form-control input-number text-center" value="${item.quantity}" min="1" max="100" onblur="updateItem(${item.id})">
-                        </form>
-                    </div>
-                </div>
-                <div class="one-eight text-center">
-                    <div class="display-tc">
-                        <span class="price" id="total">$${(item.quantity * item.price).toFixed(2)}</span>
-                    </div>
-                </div>
-                <div class="one-eight text-center">
-                    <div class="display-tc">
-                        <button style="border:none;cursor: pointer;" onclick="removeItem(${item.id})">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
+            container.innerHTML += productHTML;
+            subTotal += (item.quantity * item.price);  
+            $("#calcBoard").show();      
+            setContent();
+        });
 
-        container.innerHTML += productHTML;
-        subTotal += (item.quantity * item.price);
-    });
-
-    setContent();
+    }
 }
 
 function removeItem(itemId) {
