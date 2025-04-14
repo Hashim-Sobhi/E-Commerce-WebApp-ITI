@@ -31,6 +31,13 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <!-- Flaticons  -->
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <!-- Add these in your <head> section -->
+
+
+    <!-- Sweet alerts Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+    <script src="js/alerts.js"></script>
 
     <!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
@@ -49,27 +56,61 @@
             <div class="container">
                 <div class="card p-4">
                     <h4>Profile Information</h4>
-                    <form action="#" method="post">
+
+                    <form id="profileForm">
                         <div class="form-group">
-                            <label><b>Name:</b></label>
-                            <input type="text" class="form-control" name="name" value="John Doe" required>
+                            <label for="name"><b>Name:</b></label>
+                            <input id="name" type="text" class="form-control" name="name" required disabled>
                         </div>
                         <div class="form-group">
-                            <label ><b>Email:</b></label>
-                            <input type="email" class="form-control" name="email" value="johndoe@example.com" required>
+                            <label for="email"><b>Email:</b></label>
+                            <input id="email" type="email" class="form-control" name="email" required disabled>
                         </div>
                         <div class="form-group">
-                            <label><b>Phone:</b></label>
-                            <input type="text" class="form-control" name="phone" value="+1234567890">
+                            <label for="phone"><b>Phone:</b></label>
+                            <input id="phone" type="text" class="form-control" name="phone" required disabled>
                         </div>
                         <div class="form-group">
-                            <label><b>Address:</b></label>
-                            <textarea class="form-control" name="address" rows="3" style="resize: none;" required>1234 Elm Street, Springfield</textarea>
+                            <label for="birthdate"><b>Birthdate:</b></label>
+                            <input id="birthdate" type="text" class="form-control" placeholder="YYYY-MM-DD" name="birthdate" required disabled>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <div class="form-group">
+                            <label for="job"><b>Job:</b></label>
+                            <input id="job" type="text" class="form-control" name="job" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest"><b>Interests:</b></label>
+                            <input id="interest" type="text" class="form-control" name="interest" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="credit"><b>Credit Limit:</b></label>
+                            <input id="credit" type="text" class="form-control" name="credit" required disabled>
+                        </div>
+
+                        <button type="button" id="editSaveBtn" class="btn btn-warning mt-2" onclick="toggleEditSave()">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </button>
                     </form>
+
+                    <!-- User Addresses Section -->
+                    <hr>
+                    <h4>User Addresses</h4>
+                    <div id="addressesContainer" class="row row-cols-1 row-cols-md-2 g-4 mt-3">
+                        <!-- JS will render address cards here -->
+                    </div>
+                    <button class="btn btn-primary mt-3 w-auto d-block mx-auto" onclick="openAddAddressModal()">
+                        <i class="bi bi-plus-lg"></i> Add Address
+                    </button>
+
+                    <div class="text-end mt-3">
+                        <button type="button" id="confirmChangesBtn" class="btn btn-success" style="display: none;" onclick="confirmChanges()">
+                            <i class="bi bi-check-square"></i> Confirm Changes
+                        </button>
+                    </div>
                 </div>
             </div>
+
+
 
             <!-- Order History -->
             <div class="container">
@@ -84,32 +125,15 @@
                             <th>Status</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>101</td>
-                            <td>2025-03-01</td>
-                            <td>$99.99</td>
-                            <td>Shipped</td>
-                        </tr>
-                        <tr>
-                            <td>102</td>
-                            <td>2025-02-20</td>
-                            <td>$49.50</td>
-                            <td>Delivered</td>
-                        </tr>
-                        <tr>
-                            <td>103</td>
-                            <td>2025-01-15</td>
-                            <td>$150.75</td>
-                            <td>Pending</td>
-                        </tr>
+                        <tbody id="ordersTable">
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <div class="text-center mt-3">
-            <a href="logout.jsp" class="btn btn-danger">Logout</a>
+            <a href="javascript:void(0)" onclick="logout();" class="btn btn-danger">Logout</a>
         </div>
     </div>
 
@@ -119,6 +143,47 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 </div>
+<!-- Address Modal -->
+<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addressModalLabel">Address</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addressForm">
+                    <input type="hidden" id="addressIndex">
+                    <div class="mb-3">
+                        <label for="street" class="form-label">Street</label>
+                        <input type="text" class="form-control" id="street" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="buildingNumber" class="form-label">Building Number</label>
+                        <input type="text" class="form-control" id="buildingNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="state" class="form-label">State</label>
+                        <input type="text" class="form-control" id="state" required>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isDefault">
+                        <label class="form-check-label" for="isDefault">
+                            Set as Default
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" id="saveAddressBtn" class="btn btn-primary" onclick="saveAddress() ">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- jQuery -->
 <script src="js/template/jquery.min.js"></script>
@@ -141,6 +206,8 @@
 <script src="js/template/bootstrap-datepicker.js"></script>
 <!-- Stellar Parallax -->
 <script src="js/template/jquery.stellar.min.js"></script>
+
+
 <!-- Main -->
 <script src="js/template/main.js"></script>
 
@@ -158,11 +225,8 @@ $(document).ready(function () {
 
 
     }
-});
-
-    
+}); 
 </script>
 
 </body>
 </html>
-

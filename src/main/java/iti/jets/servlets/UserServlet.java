@@ -14,27 +14,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
-//    private UserDao userDao;
-//
-//    public void init() {
-//        userDao = new UserDao();
-//    }
-//
-//    // Utility method to hash the password
-//    private String hashPassword(String password) {
-//        try {
-//            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-//            byte[] hashedBytes = digest.digest(password.getBytes());
-//            StringBuilder hexString = new StringBuilder();
-//            for (byte b : hashedBytes) {
-//                hexString.append(String.format("%02x", b));
-//            }
-//            return hexString.toString();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        String action = request.getParameter("action");

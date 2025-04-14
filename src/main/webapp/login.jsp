@@ -34,7 +34,10 @@
 
     <!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
-    
+    <!-- Sweet alerts Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+    <script src="js/alerts.js"></script>
 </head>
 <body>
     <%@include file="header.jsp"%>
@@ -49,11 +52,11 @@
                 <h4>Log in</h4>
                 <form method="post" action="/project/login" onsubmit="handleLoginForm(event)">
                     <div class="form-group">
-                        <label><b>Email Address </b></label>
+                        <label for="email"><b>Email Address </b></label>
                         <input type="text" class="form-control" name="email" id="email" required>
                     </div>
                     <div class="form-group">
-                        <label><b>Password </b></label>
+                        <label for="password"><b>Password </b></label>
                         <input type="password" class="form-control" name="password" id="password" required>
                     </div>
                     <div class="form-group form-check">
@@ -94,9 +97,7 @@
 <!-- Date Picker -->
 <script src="js/template/bootstrap-datepicker.js"></script>
 <!-- Stellar Parallax -->
-<script src="js/template/jquery.stellar.min.js"></script>
-<!-- Main -->
-<script src="js/template/main.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
 <!-- Login -->
 <script src="js/login.js"></script>
 

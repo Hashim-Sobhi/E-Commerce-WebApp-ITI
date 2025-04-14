@@ -37,7 +37,10 @@
 
 	<!--Font AwEsome-->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
+		<!-- Sweet alerts Library -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+		<script src="js/alerts.js"></script>
 	</head>
 	<body onload="getWishlistItem()">
 		
@@ -133,12 +136,12 @@
 	
 	<!-- jQuery -->
 	<script src="js/template/jquery.min.js"></script>
-	<!-- popper -->
-	<script src="js/template/popper.min.js"></script>
-	<!-- bootstrap 4.1 -->
-	<script src="js/template/bootstrap.min.js"></script>
-	<!-- jQuery easing -->
-	<script src="js/template/jquery.easing.1.3.js"></script>
+   <!-- popper -->
+   <script src="js/template/popper.min.js"></script>
+   <!-- bootstrap 4.1 -->
+   <script src="js/template/bootstrap.min.js"></script>
+   <!-- jQuery easing -->
+   <script src="js/template/jquery.easing.1.3.js"></script>
 	<!-- Waypoints -->
 	<script src="js/template/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
@@ -155,7 +158,7 @@
 	<!-- Main -->
 	<script src="js/template/main.js"></script>
 	<!-- wishlist -->
-	<script src="js/wishtlist.js"></script>
+	<script src="js/wishlist.js"></script>
 
 	</body>
 </html>

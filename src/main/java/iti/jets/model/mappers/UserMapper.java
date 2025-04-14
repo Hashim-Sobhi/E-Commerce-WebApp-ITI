@@ -3,8 +3,11 @@ package iti.jets.model.mappers;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+
+import iti.jets.model.dtos.OrderDTO;
 import iti.jets.model.dtos.UserAddressDTO;
 import iti.jets.model.dtos.UserDTO;
+import iti.jets.model.dtos.UserProfileDataDTO;
 import iti.jets.model.entities.User;
 import iti.jets.model.entities.UserAddress;
 
@@ -59,6 +62,29 @@ public class UserMapper {
         // userDto.setAddress(AddressMapper.toDto(userEntity.getAddress()));
 
         return userDto;
+    }
+
+    public static UserProfileDataDTO toUserProfileDataDTO(User user) {
+        UserProfileDataDTO userProfileDataDTO = new UserProfileDataDTO();
+        userProfileDataDTO.setUserId(user.getUserId());
+        userProfileDataDTO.setName(user.getName());
+        userProfileDataDTO.setEmail(user.getEmail());
+        userProfileDataDTO.setPhoneNumber(user.getPhoneNumber());
+        userProfileDataDTO.setJob(user.getJob());
+        userProfileDataDTO.setBirthdate(user.getBirthdate());
+        userProfileDataDTO.setInterests(user.getInterests());
+        userProfileDataDTO.setCreditLimit(user.getCreditLimit());
+        userProfileDataDTO.setAddresses(new ArrayList<>());
+        user.getAddresses().forEach(ua -> {
+            UserAddressDTO userAddressDTO = AddressMapper.toDto(ua);
+            userProfileDataDTO.getAddresses().add(userAddressDTO);
+        });
+        userProfileDataDTO.setOrders(new ArrayList<>());
+        user.getOrders().forEach(o -> {
+            OrderDTO orderDTO = OrderMapper.toOrderDTO(o);
+            userProfileDataDTO.getOrders().add(orderDTO);
+        });
+        return userProfileDataDTO;
     }
     
 }
