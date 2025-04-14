@@ -1,8 +1,10 @@
 package iti.jets.services;
 
 import iti.jets.model.dtos.ProductDetailDTO;
+import iti.jets.model.dtos.ProductManageDTO;
 import iti.jets.model.dtos.ProductSummaryDTO;
 import iti.jets.model.entities.Product;
+import iti.jets.model.entities.ProductInfo;
 import iti.jets.model.mappers.ProductMapper;
 import iti.jets.repositories.ProductRepository;
 import jakarta.persistence.EntityManager;
@@ -11,6 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
+
+    public static List<ProductManageDTO> getAllProductManageDTOs(EntityManager em) {
+        List<Product> products = ProductRepository.getAllProducts(em);
+        List<ProductManageDTO> manageDTOs = new ArrayList<>();
+        for (Product product : products) {
+            manageDTOs.add(ProductMapper.toProductManageDTO(product));
+        }
+        return manageDTOs;
+
+    }
     public static List<ProductSummaryDTO> getFilteredProducts(
             String[] brands, String[] sizes, String[] colors, String orderBy, String category, String page, EntityManager em) {
         List<Product> products = ProductRepository.getFilteredProducts(

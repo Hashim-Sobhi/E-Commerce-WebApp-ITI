@@ -143,4 +143,9 @@ public class ProductRepository {
             return null;
         }
     }
+
+    public static List<Product> getAllProducts(EntityManager em) {
+        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p", Product.class);
+        return query.getResultList();
+    }
 }
