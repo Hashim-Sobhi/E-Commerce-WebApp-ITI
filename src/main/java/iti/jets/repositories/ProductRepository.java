@@ -2,12 +2,15 @@ package iti.jets.repositories;
 
 
 import iti.jets.model.entities.Product;
+import iti.jets.model.entities.ProductImg;
 import iti.jets.model.entities.ProductInfo;
 import iti.jets.model.enums.Gender;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityResult;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
+import org.hibernate.engine.spi.EntityUniqueKey;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -148,5 +151,37 @@ public class ProductRepository {
     public static List<Product> getAllProducts(EntityManager em) {
         TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p", Product.class);
         return query.getResultList();
+    }
+
+    public static void addNewProduct(Product product, EntityManager em) {
+        em.getTransaction().begin();
+
+        // Set bidirectional relationships to ensure consistency
+        if (product.getProductInfos() != null) {
+            for (ProductInfo info : product.getProductInfos()) {
+                info.setProduct(product);
+            }
+        }
+
+        if (product.getProductImgs() != null) {
+            for (ProductImg img : product.getProductImgs()) {
+                img.setProduct(product);
+            }
+        }
+        em.persist(product);
+        em.getTransaction().commit();
+    }
+    public static void deleteProductById(Integer productId, EntityManager em) {
+        em.getTransaction().begin();
+        Product product = em.find(Product.class, productId);
+        if (product != null) {
+            em.remove(product);
+        }
+        em.getTransaction().commit();
+    }
+    public static void updateProduct(Product product, EntityManager em) {
+        em.getTransaction().begin();
+        em.merge(product);
+        em.getTransaction().commit();
     }
 }

@@ -21,8 +21,18 @@ public class ProductService {
             manageDTOs.add(ProductMapper.toProductManageDTO(product));
         }
         return manageDTOs;
-
     }
+
+    public static void addNewProduct(Product product, EntityManager em) {
+        ProductRepository.addNewProduct(product, em);
+    }
+    public static void updateProduct(Product product, EntityManager em) {
+        ProductRepository.updateProduct(product, em);
+    }
+    public static void deleteProduct(Integer id, EntityManager em) {
+        ProductRepository.deleteProductById(id, em);
+    }
+
     public static List<ProductSummaryDTO> getFilteredProducts(
             String[] brands, String[] sizes, String[] colors, String orderBy, String category, String page, EntityManager em) {
         List<Product> products = ProductRepository.getFilteredProducts(
