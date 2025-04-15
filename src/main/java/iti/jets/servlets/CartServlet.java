@@ -24,7 +24,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String userId = request.getParameter("userId");
         String cart = request.getParameter("cart");
         String quantity = request.getParameter("quantity");
         System.out.println(cart);
@@ -33,6 +33,7 @@ public class CartServlet extends HttpServlet {
             List<String> cartItems = new ArrayList<>(Arrays.asList(cart.split(",")));
             List<String> quantities = new ArrayList<>(Arrays.asList(quantity.split(",")));
 
+    
             System.out.println("1------");
             System.out.println(cartItems);
             System.out.println("2------");

@@ -1,6 +1,21 @@
 let userInfo = {}
-window.onload = function() {
 
+$(document).ready(function () {
+    if(localStorage.getItem('loggedInUserId') == null)
+    {
+        console.log("userId = " + localStorage.getItem('loggedInUserId'));
+        window.location.href = '/project/login.jsp';
+    }
+    else
+    {
+        console.log("userId = " + localStorage.getItem('loggedInUserId'));
+
+
+    }
+}); 
+
+
+window.onload = function() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "http://localhost:8080/project/profileServlet?user_id=1", true);
     xhr.setRequestHeader("Accept", "application/json");

@@ -39,7 +39,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
 		<script src="js/alerts.js"></script>
 	</head>
-	<body>
+	<body onload="getItems()">
 		
 	<div class="colorlib-loader"></div>
 
@@ -135,7 +135,7 @@
 			                    	<input type="text" id="towncity" class="form-control" placeholder="Town or City">
 			                  </div>
 			               </div>
-			            
+
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="stateprovince">State/Province</label>
@@ -170,6 +170,9 @@
 										</div>
 									</div>
 								</div>
+								<div class="col-sm-3">
+									<input type="button" id="payNow" value="Pay now" style="width: 200px;align-items: center;justify-content: center;margin-left: 220px;" class="btn btn-primary" onclick="handlePayNowButton()" >
+								</div>
 		               </div>
 		            </form>
 					</div>
@@ -179,16 +182,16 @@
 							<div class="col-md-12">
 								<div class="cart-detail">
 									<h2>Cart Total</h2>
-									<ul>
-										<li>
-											<span>Subtotal</span> <span>$100.00</span>
+									<ul id="checkoutBoard">
+										<!-- <li>
 											<ul>
 												<li><span>1 x Product Name</span> <span>$99.00</span></li>
-												<li><span>1 x Product Name</span> <span>$78.00</span></li>
 											</ul>
-										</li>
-										<li><span>Shipping</span> <span>$0.00</span></li>
-										<li><span>Order Total</span> <span>$180.00</span></li>
+										</li> -->
+										<!-- <li><span>Subtotal</span> <span>$100.00</span></li> -->
+										<!-- <li><span>Shipping</span> <span>$0.00</span></li>
+										<li><span>Discount</span><span>$0.00</span></li>
+										<li><span>Order Total</span> <span>$180.00</span></li> -->
 									</ul>
 								</div>
 						   </div>
@@ -229,11 +232,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<p><a href="#" class="btn btn-primary">Place an order</a></p>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -269,6 +267,9 @@
 	<script src="js/template/jquery.stellar.min.js"></script>
 	<!-- Main -->
 	<script src="js/template/main.js"></script>
+	<!--Checkout-->
+	<script src="js/checkout.js"></script>
+
 
 	</body>
 </html>

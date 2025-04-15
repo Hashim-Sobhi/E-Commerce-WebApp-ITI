@@ -23,7 +23,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShoppingCartDTO {
-    private int itemId;
+    // private int itemId;
+    private int productId;
+    private int productInfoId;
     private int userId;
     private String name;
     private int size;

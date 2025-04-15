@@ -97,7 +97,9 @@
 <!-- Date Picker -->
 <script src="js/template/bootstrap-datepicker.js"></script>
 <!-- Stellar Parallax -->
-<script src="js/jquery.stellar.min.js"></script>
+<script src="js/template/jquery.stellar.min.js"></script>
+<!-- Main -->
+<script src="js/template/main.js"></script>
 <!-- Login -->
 <script src="js/login.js"></script>
 

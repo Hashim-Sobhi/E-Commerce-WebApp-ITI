@@ -5,13 +5,16 @@ import iti.jets.model.entities.Product;
 import iti.jets.model.entities.ProductInfo;
 import iti.jets.model.enums.Gender;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 public class ProductRepository {
     public static List<Product> getFilteredProducts(
@@ -147,5 +150,18 @@ public class ProductRepository {
     public static List<Product> getAllProducts(EntityManager em) {
         TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p", Product.class);
         return query.getResultList();
+    }
+
+    public static ProductInfo getProductInfoById(int productInfoId , EntityManager em)
+    {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        Query query = em.createQuery("select p from ProductInfo p where p.productInfoId= :productInfoId");
+        query.setParameter("productInfoId", Integer.valueOf(productInfoId));
+        
+        transaction.commit();
+        return (ProductInfo)query.getSingleResult();
+
     }
 }
