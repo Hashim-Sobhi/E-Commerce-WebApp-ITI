@@ -139,6 +139,7 @@ public class ProductRepository {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Product> cq = cb.createQuery(Product.class);
         Root<Product> productRoot = cq.from(Product.class);
+        productRoot.fetch("productInfos", JoinType.LEFT);
         cq.where(cb.equal(productRoot.get("product_id"), product_id));
         cq.select(productRoot);
         try{
@@ -156,7 +157,6 @@ public class ProductRepository {
     public static void addNewProduct(Product product, EntityManager em) {
         em.getTransaction().begin();
 
-        // Set bidirectional relationships to ensure consistency
         if (product.getProductInfos() != null) {
             for (ProductInfo info : product.getProductInfos()) {
                 info.setProduct(product);
@@ -184,4 +184,5 @@ public class ProductRepository {
         em.merge(product);
         em.getTransaction().commit();
     }
+
 }

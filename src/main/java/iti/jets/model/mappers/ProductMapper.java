@@ -82,15 +82,19 @@ public class ProductMapper {
                 now
         );
 
-        // Create ProductInfo
-        ProductInfo productInfo = new ProductInfo();
-        productInfo.setProduct(product);
-        productInfo.setColor(dto.getColour());
-        productInfo.setQuantity(dto.getQuantity());
-        productInfo.setSize(dto.getSize().getValue());
-
+        // Create ProductInfo entries from variations list
         List<ProductInfo> productInfos = new ArrayList<>();
-        productInfos.add(productInfo);
+        if (dto.getVariations() != null && !dto.getVariations().isEmpty()) {
+            for (iti.jets.model.dtos.ProductVariationDTO varDTO : dto.getVariations()) {
+                ProductInfo info = new ProductInfo();
+                info.setProduct(product);
+                // Using size value from ShoeSize (assume getValue() returns an integer)
+                info.setSize(varDTO.getSize().getValue());
+                info.setColor(varDTO.getColour());
+                info.setQuantity(varDTO.getQuantity());
+                productInfos.add(info);
+            }
+        }
         product.setProductInfos(productInfos);
 
         // Create ProductImg entries

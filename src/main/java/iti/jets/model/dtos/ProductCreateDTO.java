@@ -18,9 +18,7 @@ public class ProductCreateDTO {
     private Gender gender;
     private BigDecimal price;
     private String brand;
-    private ShoeSize size;
-    private String colour;
-    private Integer quantity;
     private Integer sold;
     private List<Part> images  = new ArrayList<>();
+    private List<ProductVariationDTO> variations = new ArrayList<>();
 }

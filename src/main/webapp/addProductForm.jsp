@@ -101,24 +101,24 @@
                     </div>
 
                             <!-- Product Info -->
-                    <div class="form-group">
-                        <label>Colour:</label>
-                        <input type="text" class="form-control" name="colour" required />
-                    </div>
 
-                    <div class="form-group">
-                        <label>Quantity:</label>
-                        <input type="number" class="form-control" name="quantity" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Size:</label>
-                        <select name="size" class="form-control" required>
-                            <c:forEach var="s" items="${sizes}">
-                                <option value="${s}">${s}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
+                    <!-- Variations Section -->
+                        <h4>Product Variations</h4>
+                        <div id="variationsContainer">
+                            <div class="variationRow">
+                                <label>Size:</label>
+                                <select name="variationSize">
+                                    <c:forEach var="s" items="${sizes}">
+                                        <option value="${s}">${s}</option>
+                                    </c:forEach>
+                                </select>
+                                <label>Colour:</label>
+                                <input type="text" name="variationColour" required />
+                                <label>Quantity:</label>
+                                <input type="number" name="variationQuantity" required />
+                            </div>
+                        </div>
+                        <button type="button" onclick="addVariationRow()">Add Variation</button>
 
                             <!-- Images -->
                     <div class="form-group">
@@ -140,8 +140,28 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Add Product</button>
-                    <a href="adminProduct" class="btn btn-secondary">Cancel</a>
+                    <a href="adminproduct" class="btn btn-secondary">Cancel</a>
                  </form>
+                 <script>
+                 function addVariationRow() {
+                     const container = document.getElementById("variationsContainer");
+                     const variationRow = document.createElement("div");
+                     variationRow.className = "variationRow";
+                     variationRow.innerHTML = `
+                         <label>Size:</label>
+                         <select name="variationSize">
+                             <c:forEach var="s" items="${sizes}">
+                                 <option value="${s}">${s}</option>
+                             </c:forEach>
+                         </select>
+                         <label>Colour:</label>
+                         <input type="text" name="variationColour" required />
+                         <label>Quantity:</label>
+                         <input type="number" name="variationQuantity" required />
+                     `;
+                     container.appendChild(variationRow);
+                 }
+                 </script>
             </div>
             <div style="text-align: center;padding-top:10px;">Already have an account?<a href="login.jsp" style="color: rgba(136,200,188,255);"> Login</a></div>
         </div>

@@ -43,9 +43,9 @@ public class AddProductServlet extends HttpServlet {
         Gender gender = Gender.valueOf(genderParam.toUpperCase());
         BigDecimal price = new BigDecimal(request.getParameter("price"));
         String brand = request.getParameter("brand");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String colour = request.getParameter("colour");
-        ShoeSize size = ShoeSize.valueOf(request.getParameter("size"));
+//        int quantity = Integer.parseInt(request.getParameter("quantity"));
+//        String colour = request.getParameter("colour");
+//        ShoeSize size = ShoeSize.valueOf(request.getParameter("size"));
         String soldParam = request.getParameter("sold");
         int sold = soldParam != null && !soldParam.isEmpty() ? Integer.parseInt(soldParam) : 0;
 
@@ -59,7 +59,11 @@ public class AddProductServlet extends HttpServlet {
         List<String> imageFileNames = new ArrayList<>();
 
 // Directory where uploaded files will be saved
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+//        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+        // Use "images" instead of "uploads"
+        String baseFolder = "images";
+        String uploadPath = getServletContext().getRealPath("") + File.separator + baseFolder;
+
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) uploadDir.mkdirs();
 
@@ -69,7 +73,8 @@ public class AddProductServlet extends HttpServlet {
                 String fileName = extractFileName(part); // You can also generate a unique name here
                 String filePath = uploadPath + File.separator + fileName;
                 part.write(filePath);
-                imageFileNames.add(fileName);
+//                imageFileNames.add(fileName);
+                imageFileNames.add(baseFolder + "/" + fileName);
             }
         }
         System.out.println("Uploaded files:");
@@ -85,10 +90,29 @@ public class AddProductServlet extends HttpServlet {
         dto.setGender(gender);
         dto.setPrice(price);
         dto.setBrand(brand);
-        dto.setQuantity(quantity);
-        dto.setColour(colour);
-        dto.setSize(size);
+//        dto.setQuantity(quantity);
+//        dto.setColour(colour);
+//        dto.setSize(size);
         dto.setSold(sold);
+
+        String[] variationSizes = request.getParameterValues("variationSize");
+        String[] variationColours = request.getParameterValues("variationColour");
+        String[] variationQuantities = request.getParameterValues("variationQuantity");
+
+        List<iti.jets.model.dtos.ProductVariationDTO> variations = new ArrayList<>();
+        if (variationSizes != null && variationColours != null && variationQuantities != null) {
+            int count = variationSizes.length; // Expect all arrays are same length
+            for (int i = 0; i < count; i++) {
+                iti.jets.model.dtos.ProductVariationDTO varDTO = new iti.jets.model.dtos.ProductVariationDTO();
+                // Convert string to ShoeSize:
+                ShoeSize shoeSize = ShoeSize.valueOf(variationSizes[i]);
+                varDTO.setSize(shoeSize);
+                varDTO.setColour(variationColours[i]);
+                varDTO.setQuantity(Integer.parseInt(variationQuantities[i]));
+                variations.add(varDTO);
+            }
+        }
+        dto.setVariations(variations);
 
         // 4. Convert to Product entity
         Product product = ProductMapper.fromProductCreateDTO(dto, imageFileNames);
@@ -97,7 +121,7 @@ public class AddProductServlet extends HttpServlet {
         ProductService.addNewProduct(product, em);
 
         // 6. Redirect to product management page
-        response.sendRedirect("adminProduct");
+        response.sendRedirect("adminproduct");
     }
 
     private String extractFileName(Part part) {

@@ -1,5 +1,6 @@
 package iti.jets.services;
 
+import iti.jets.model.dtos.ProductCreateDTO;
 import iti.jets.model.dtos.ProductDetailDTO;
 import iti.jets.model.dtos.ProductManageDTO;
 import iti.jets.model.dtos.ProductSummaryDTO;
@@ -62,4 +63,9 @@ public class ProductService {
         Product product = ProductRepository.getProductDetail(product_id, em);
         return product!=null?ProductMapper.toProductDetailDTO(product):null;
     }
+    public static Product getProductById(Integer product_id, EntityManager em) {
+        Product product = ProductRepository.getProductDetail(product_id, em);
+        return product;
+    }
+
 }

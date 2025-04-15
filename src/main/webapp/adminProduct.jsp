@@ -67,12 +67,12 @@
                     <td><%= p.getPrice() %></td>
                     <td><%= p.getQuantity() %></td>
                     <td>
-                        <form action="EditProductServlet" method="get" style="display:inline;">
+                        <form action="editproduct" method="get" style="display:inline;">
                             <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
                             <button type="submit" class = "">Edit</button>
                         </form>
 
-                        <form action="DeleteProductServlet" method="post" style="display:inline;"
+                        <form action="deleteproduct" method="post" style="display:inline;"
                               onsubmit="return confirm('Are you sure you want to delete this product?');">
                             <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
                             <button type="submit">Delete</button>
