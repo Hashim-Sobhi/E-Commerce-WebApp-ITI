@@ -7756,11 +7756,11 @@ h1, h2, h3, h4, h5,
       background: transparent;
       border: none;
       outline:none;
-      color: rgba(235, 232, 232);
       /* background-color: ; */
       cursor: pointer;
   }
-  
+  .heart-btn i { color: rgba(235, 232, 232); }
+  .heart-btn.filled i { color: rgba(136, 200, 188, 255); }
 
   .heart-btn:focus {
     outline: none;

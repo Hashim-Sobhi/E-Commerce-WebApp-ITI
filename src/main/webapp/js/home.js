@@ -24,6 +24,9 @@ function renderProducts(products) {
                     <a href="product?product_id=${product.product_id}" class="prod-img">
                         <img src="${product.img}" class="img-fluid" alt="${product.name}">
                     </a>
+                    <button class="heart-btn">
+                        <i class="fa fa-heart" style="font-size: 24px;"></i>
+                    </button>
                     <div class="desc">
                         <h2>${product.name}</h2>
                         <span class="price">$${product.price}</span>

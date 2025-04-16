@@ -1,6 +1,6 @@
 function getWishlistItem() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "cartServlet", true);
+    xhr.open("GET", "shopServlet", true);
     xhr.setRequestHeader("Accept", "application/json");
 
     xhr.onreadystatechange = function () {
@@ -25,7 +25,7 @@ function renderWishlistItems(WishlistItems) {
         <div class="col-md-3 col-lg-3 mb-4 text-center">
             <div class="product-entry border" wishlist-item-id="${wishlistItem.id}">	
                 <a href="#" class="prod-img">
-                    <img src=${wishlistItem.image} class="img-fluid" alt=${wishlistItem.name}>
+                    <img src=${wishlistItem.img} class="img-fluid" alt=${wishlistItem.name}>
                 </a>
                 <button class="heart-btn" onclick="removeItem(${wishlistItem.id})">
                     <i class="fa fa-times" style="font-size: 24px;"></i>

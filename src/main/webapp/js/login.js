@@ -55,7 +55,9 @@ function handleLoginForm(event) {
                     });
                     localStorage.setItem('cart', JSON.stringify(cart));
                     updateCartCount();
-                }else {
+                }
+                else 
+                {
                     let localCartStr = localStorage.getItem('cart');
                     if (localCartStr && JSON.parse(localCartStr).length > 0) {
                         let rawLocalCart = JSON.parse(localCartStr);
@@ -85,6 +87,37 @@ function handleLoginForm(event) {
                         });
                     }
                 }
+
+                // if(data.wishlist.length > 0)
+                // {
+                //     localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                // }
+                // else
+                // {
+
+                //     let localWishListStr = localStorage.getItem('wishlist');
+                //     if (localWishListStr && JSON.parse(localWishListStr).length > 0) {
+                //         let LocalWishList = JSON.parse(localWishListStr);
+
+                //         // Send transformed wishlist to backend
+                //         $.ajax({
+                //             url: '/project/wishListServlet',
+                //             type: 'POST',
+                //             data: {
+                //                 items:JSON.stringify(LocalWishList)
+                //             },
+                //             success: function(res) {
+                //                 console.log("Wishlist updated on server:", res);
+                //                 updateCartCount();
+                //             },
+                //             error: function(err) {
+                //                 console.error("Failed to sync Wishlist:", err);
+                //             },
+                //             async: false
+                //         });
+                //     }
+
+                // }
                 window.location.href="/project";
             }
             else {
@@ -98,8 +131,6 @@ function handleLoginForm(event) {
             console.log("Error in ajax");
         }
     });
-
-
 
 }
 
