@@ -20,7 +20,7 @@
     <div class="card p-4">
         <h4>Edit Product</h4>
         <!-- Form posts to EditProductServlet -->
-        <form action="editproduct" method="post">
+        <form action="editproduct" method="post" enctype="multipart/form-data">
             <!-- Hidden field to keep product id -->
             <input type="hidden" name="id" value="${product.product_id}" />
 
@@ -82,6 +82,28 @@
             </div>
 
             <!-- You may include image update fields if needed -->
+            <h3>Product Images</h3>
+            <div style="display: flex; flex-wrap: wrap;">
+                <c:forEach var="img" items="${product.productImgs}">
+                    <div style="margin: 10px; text-align: center;">
+                        <img src="${pageContext.request.contextPath}/${img.img}" width = "150" height = "150" alt="Product Image" />
+                        <br/>
+                        <label>
+                            <input type="checkbox" name="deleteImageIds" value="${img.imageId}" />
+                            Delete
+                        </label>
+                        <c:if test="${img.isDefault}">
+                            <div style="color: green; font-weight: bold;">Default</div>
+                        </c:if>
+                    </div>
+                </c:forEach>
+            </div>
+            <!-- New Images Upload -->
+            <div class="form-group">
+                <label>Upload New Images:</label>
+                <input type="file" name="newImages" multiple class="form-control" />
+                <small class="form-text text-muted">Select one or more new images to add.</small>
+            </div>
 
             <button type="submit" class="btn btn-primary">Update Product</button>
             <a href="adminproduct" class="btn btn-secondary">Cancel</a>

@@ -1,6 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="iti.jets.model.dtos.UserManageDTO" %>
+<%@ page import="iti.jets.model.entities.Order" %>
 <%@ page import="java.util.List" %>
 <html>
 <head>
@@ -73,6 +74,47 @@
                 %>
                 </tbody>
             </table>
+
+            <!--ORDER TABLE -->
+
+            <h2 class="text-center">Orders Review</h2>
+
+                <table class="table table-bordered">
+                    <thead class="thead-dark"></thead>
+                        <tr>
+                            <th>Order_ID</th> <th>User_ID</th> <th>Email</th> <th>Phone Number</th> <th>Total Amount</th> <th>Order Status</th> <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var = "order" items = "${orders}">
+                            <tr>
+                                <td>${order.orderId}</td>
+                                <td>${order.user.user_id}</td>
+                                <td>${order.user.email}</td>
+                                <td>${order.user.phoneNumber}</td>
+                                <td>${order.totalAmount}</td>
+                                <td>
+                                <!-- Form for updating order status -->
+                                    <form action="UpdateOrderStatusServlet" method="post" style="margin:0; padding:0;">
+                                    <!-- Hidden field to pass order id -->
+                                        <input type="hidden" name="orderId" value="${order.orderId}" />
+                                        <select name="orderStatus" class="form-control" style="width: auto; display: inline-block;">
+                                            <c:forEach var="status" items="${orderStatuses}">
+                                                <option value="${status}"
+                                                    <c:if test="${status == order.orderStatus}">selected</c:if>>
+                                                    ${status}
+                                                </option>
+                                            </c:forEach>
+                                        </select>
+                                </td>
+                                <td>
+                                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
         </div>
     </div>
 

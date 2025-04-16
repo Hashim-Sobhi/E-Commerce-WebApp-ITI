@@ -2,6 +2,8 @@ package iti.jets.servlets;
 
 import iti.jets.Managers.DatabaseManager;
 import iti.jets.model.dtos.UserManageDTO;
+import iti.jets.model.entities.Order;
+import iti.jets.services.OrderService;
 import iti.jets.services.UserService;
 import jakarta.persistence.EntityManager;
 import jakarta.servlet.ServletException;
@@ -23,6 +25,8 @@ public class UserManagementServlet extends HttpServlet {
                 System.out.println("No Users found.");
             }
 
+            List<Order> orderList = OrderService.getAllOrders(em);
+            req.setAttribute("orders", orderList);
             req.setAttribute("users", userList);
             req.getRequestDispatcher("adminUser.jsp").forward(req, resp);
         } catch (IOException e) {

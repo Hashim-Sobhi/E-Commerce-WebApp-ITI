@@ -67,5 +67,9 @@ public class ProductService {
         Product product = ProductRepository.getProductDetail(product_id, em);
         return product;
     }
+    public static void deleteProductImage(Integer imgId, EntityManager em) {
+        ProductRepository.deleteProductImgById(imgId, em);
+    }
+
 
 }

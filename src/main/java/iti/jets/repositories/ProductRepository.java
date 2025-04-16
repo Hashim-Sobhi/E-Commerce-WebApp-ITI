@@ -184,5 +184,16 @@ public class ProductRepository {
         em.merge(product);
         em.getTransaction().commit();
     }
+    public static void deleteProductImgById(Integer imgId, EntityManager em) {
+        em.getTransaction().begin();
+
+        ProductImg img = em.find(ProductImg.class, imgId);
+        if (img != null) {
+            em.remove(img);
+        }
+
+        em.getTransaction().commit();
+    }
+
 
 }
