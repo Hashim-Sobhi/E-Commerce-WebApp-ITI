@@ -51,7 +51,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<p class="bread"><span><a href="index.jsp">Home</a></span> / <span>Purchase Complete</span></p>
+						<p class="bread"><span><a href="home">Home</a></span> / <span>Purchase Complete</span></p>
 					</div>
 				</div>
 			</div>
@@ -83,8 +83,8 @@
 						<p class="icon-addcart"><span><i class="icon-check"></i></span></p>
 						<h2 class="mb-4">Thank you for purchasing, Your order is complete</h2>
 						<p>
-							<a href="index.jsp" class="btn btn-primary btn-outline-primary">Home</a>
-							<a href="shop.jsp"class="btn btn-primary btn-outline-primary"><i class="icon-shopping-cart"></i> Continue Shopping</a>
+							<a href="home" class="btn btn-primary btn-outline-primary">Home</a>
+							<a href="shop" class="btn btn-primary btn-outline-primary"><i class="icon-shopping-cart"></i> Continue Shopping</a>
 						</p>
 					</div>
 				</div>

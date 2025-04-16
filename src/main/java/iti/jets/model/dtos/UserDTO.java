@@ -27,4 +27,5 @@ public class UserDTO {
     private String interests;
     // private Timestamp createdAt;
     private List<UserAddressDTO> addresses = new ArrayList<UserAddressDTO>();
+    private List<ShoppingCartSummaryDTO> cartItems = new ArrayList<>();
 }

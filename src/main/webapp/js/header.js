@@ -43,7 +43,6 @@ function fetchSuggestions(searchQuery) {
             }
         },
         error: function (xhr, status, error) {
-            console.error("Error fetching suggestions:", error);
         }
     });
 }
@@ -51,7 +50,6 @@ function fetchSuggestions(searchQuery) {
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const cartCount = cart.length;
-
     document.querySelectorAll("#cartCount").forEach(e=>{
         e.textContent = `[${cartCount}]`;
     });

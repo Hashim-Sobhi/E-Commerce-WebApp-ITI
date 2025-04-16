@@ -4,8 +4,6 @@ function handleLoginForm(event) {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let checkBox = document.getElementById("rememberme");
-    let cartItems = [];
-    let quantities = [];
 
     // if it exists
     let errorMessage = document.getElementById("error-message");
@@ -33,30 +31,61 @@ function handleLoginForm(event) {
     console.log("Email:", email);
     console.log("Password:", password);
 
-    let cartLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
-    console.log("cartLocalStorage" + cartLocalStorage);
-    // let cart = JSON.stringify(cartLocalStorage);
-    if(cartLocalStorage.length > 0)
-    {
-        cartLocalStorage.forEach(item => cartItems.push(item.product_info_id));
-        cartLocalStorage.forEach(q => quantities.push(q.quantity));
-    }
-
     $.ajax({
-        url: '/project/login',
+        url: '/project/loginServlet',
         type: 'POST',
         async:false,
         data: {
             email: email,
             password: password,
-            cart: cartItems.join(","),
-            quantity:quantities.join(",")
         },
         success: function(data) {
             if (data.userId) {
                 localStorage.setItem('loggedInUserId', data.userId);
 
-                window.location.href = "/project/index.jsp";
+                if(data.cartItems.length > 0) {
+                    let cart = [];
+                    data.cartItems.forEach(item => {
+                        let item1 =  {
+                            product_id: item.product_id,
+                            product_info_id: item.productInfoId,
+                            quantity: item.quantity,
+                        };
+                        cart.push(item1);
+                    });
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                }else {
+                    let localCartStr = localStorage.getItem('cart');
+                    if (localCartStr && JSON.parse(localCartStr).length > 0) {
+                        let rawLocalCart = JSON.parse(localCartStr);
+
+                        // transform names to match DTO format
+                        let transformedCart = rawLocalCart.map(item => ({
+                            product_id: item.product_id,
+                            productInfoId: item.product_info_id,
+                            quantity: item.quantity
+                        }));
+
+                        // Send transformed cart to backend
+                        $.ajax({
+                            url: '/project/cartServlet',
+                            type: 'POST',
+                            data: {
+                                items:JSON.stringify(transformedCart)
+                            },
+                            success: function(res) {
+                                console.log("Cart updated on server:", res);
+                                updateCartCount();
+                            },
+                            error: function(err) {
+                                console.error("Failed to sync cart:", err);
+                            },
+                            async: false
+                        });
+                    }
+                }
+                window.location.href="/project";
             }
             else {
                 document.getElementById("email").value = "";
@@ -64,7 +93,6 @@ function handleLoginForm(event) {
                 $("#errorMessage").text(data.errorMessage);
                 $("#errorDiv").show();
             }
-            
         },
         error: function() {
             console.log("Error in ajax");
@@ -73,17 +101,7 @@ function handleLoginForm(event) {
 
 
 
-    // $.post("/project/login", { email: $("#email").val(), password: $("#password").val() });
 }
-
-// function ajaxCallBack(responseTxt , statusTxt , xhr)
-// {
-//     if(statusTxt == "success")
-//         console.log("loaded successfully");
-
-//     if(statusTxt == "error")
-//     console.log("Error");
-// }
 
 function validateEmail(email) {
     let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

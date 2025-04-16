@@ -17,7 +17,7 @@ import java.io.IOException;
 
 
 
-@WebServlet("/productdetail")
+@WebServlet("/productDetailServlet")
 public class ProductDetailServlet extends HttpServlet {
 
     @Override

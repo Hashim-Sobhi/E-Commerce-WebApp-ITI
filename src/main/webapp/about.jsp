@@ -50,7 +50,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<p class="bread"><span><a href="index.jsp">Home</a></span> / <span>About</span></p>
+						<p class="bread"><span><a href="home">Home</a></span> / <span>About</span></p>
 					</div>
 				</div>
 			</div>
@@ -62,17 +62,19 @@
 				<div class="row row-pb-lg">
 					<div class="col-sm-6 mb-3">
 						<div class="video colorlib-video" style="background-image: url(images/about.jpg);">
-							<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-play3"></i></a>
+							<a href="https://www.youtube.com/watch?v=3FxkD9UMUmM" class="popup-vimeo"><i class="icon-play3"></i></a>
 							<div class="overlay"></div>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="about-wrap">
-							<h2>Footwear the leading eCommerce Store around the Globe</h2>
-							<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
-							<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+							<h2>About Shoe Show</h2>
+							<p>At <strong>Shoe Show</strong>, we believe every step tells a story. That's why we bring you a curated collection of high-quality, stylish, and comfortable footwear for every occasion &mdash; from everyday wear to special moments.</p>
+							<p>Founded with a passion for shoes and a commitment to excellence, Shoe Show has grown into a trusted destination for customers around the world. Whether you're seeking the latest trends or timeless classics, we&rsquo;re here to help you put your best foot forward.</p>
+							<p>Join thousands of happy customers and experience the perfect blend of fashion, function, and unbeatable service. Your journey starts with the right pair &mdash; find yours at Shoe Show.</p>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>

@@ -21,6 +21,16 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>ProfileServletJSP</servlet-name>
+    <jsp-file>/profile.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ProfileServletJSP</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>ProductDetailJSP</servlet-name>
     <jsp-file>/product-detail.jsp</jsp-file>
   </servlet>
@@ -40,91 +50,87 @@
     <url-pattern>/shop</url-pattern>
   </servlet-mapping>
 
-
   <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>iti.jets.servlets.LoginServlet</servlet-class>
+    <servlet-name>LoginJSP</servlet-name>
+    <jsp-file>/login.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
+    <servlet-name>LoginJSP</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
 
- <servlet>
-    <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>iti.jets.servlets.RegisterServlet</servlet-class>
+  <servlet>
+    <servlet-name>RegisterJSP</servlet-name>
+    <jsp-file>/register.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-name>RegisterJSP</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
 
-   <servlet>
-    <servlet-name>CartServlet</servlet-name>
-    <servlet-class>iti.jets.servlets.CartServlet</servlet-class>
+  <servlet>
+    <servlet-name>CartJSP</servlet-name>
+    <jsp-file>/cart.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>CartServlet</servlet-name>
+    <servlet-name>CartJSP</servlet-name>
     <url-pattern>/cart</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>ValidateEmailServlet</servlet-name>
-    <servlet-class>iti.jets.servlets.ValidateEmailServlet</servlet-class>
+    <servlet-name>OrderCompleteJSP</servlet-name>
+    <jsp-file>/order-complete.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>ValidateEmailServlet</servlet-name>
-    <url-pattern>/validateEmail</url-pattern>
+    <servlet-name>OrderCompleteJSP</servlet-name>
+    <url-pattern>/order-complete</url-pattern>
   </servlet-mapping>
 
-<servlet>
-    <servlet-name>AddToCartServlet</servlet-name>
-    <servlet-class>iti.jets.servlets.AddToCartServlet</servlet-class>
+  <servlet>
+    <servlet-name>ContactJSP</servlet-name>
+    <jsp-file>/contact.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>AddToCartServlet</servlet-name>
-    <url-pattern>/addToCart</url-pattern>
+    <servlet-name>ContactJSP</servlet-name>
+    <url-pattern>/contact</url-pattern>
   </servlet-mapping>
 
 
   <servlet>
-    <servlet-name>UpdateQuantityServlet</servlet-name>
-    <servlet-class>iti.jets.servlets.UpdateQuantityServlet</servlet-class>
+    <servlet-name>CheckOutJSP</servlet-name>
+    <jsp-file>/checkout.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>UpdateQuantityServlet</servlet-name>
-    <url-pattern>/updateQuantity</url-pattern>
+    <servlet-name>CheckOutJSP</servlet-name>
+    <url-pattern>/checkout</url-pattern>
   </servlet-mapping>
 
 
   <servlet>
-    <servlet-name>RemoveItemServlet</servlet-name>
-    <servlet-class>iti.jets.servlets.RemoveItemServlet</servlet-class>
+    <servlet-name>AddToWishlistJSP</servlet-name>
+    <jsp-file>/add-to-wishlist.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>RemoveItemServlet</servlet-name>
-    <url-pattern>/removeItem</url-pattern>
+    <servlet-name>AddToWishlistJSP</servlet-name>
+    <url-pattern>/add-to-wishlist</url-pattern>
   </servlet-mapping>
-
 
   <servlet>
-    <servlet-name>PlaceOrderServlet</servlet-name>
-    <servlet-class>iti.jets.servlets.PlaceOrderServlet</servlet-class>
+    <servlet-name>AboutJSP</servlet-name>
+    <jsp-file>/about.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>PlaceOrderServlet</servlet-name>
-    <url-pattern>/placeOrder</url-pattern>
+    <servlet-name>AboutJSP</servlet-name>
+    <url-pattern>/about</url-pattern>
   </servlet-mapping>
-
-
 
   <listener>
     <listener-class>iti.jets.listeners.RequestListener</listener-class>

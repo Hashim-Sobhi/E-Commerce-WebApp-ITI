@@ -49,7 +49,7 @@
             <div class = "card p-4">
                 <h4 style="margin-bottom: 0;">Register</h4>
                 <p style="font-size: 10px;margin-top: 0";>Please fill in the information below</p>
-                <form action="register" method="post" onsubmit="validateRegister(event)">
+                <form action="registerServlet" method="post" onsubmit="validateRegister(event)">
 
                     <div class = "form-group">
                         <label><b>First Name *</b></label>
@@ -150,7 +150,7 @@
                     <button style="width:100px" class = "btn btn-primary">Register</button>
                 </form>
             </div>
-            <div style="text-align: center;padding-top:10px;">Already have an account?<a href="login.jsp" style="color: rgba(136,200,188,255);"> Login</a></div>                
+            <div style="text-align: center;padding-top:10px;">Already have an account?<a href="login" style="color: rgba(136,200,188,255);"> Login</a></div>
         </div>
     </div>
     <%@include file="footer.jsp"%>

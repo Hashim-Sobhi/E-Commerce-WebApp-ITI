@@ -3,7 +3,7 @@ let discount = 0 ;
 // let delivery = 40.00 ;
 let cartItems = [];
 let quantities = [];
-
+let userInfo = null;
 function getItems() 
 {
 
@@ -13,28 +13,49 @@ function getItems()
         cartLocalStorage.forEach(item => cartItems.push(item.product_info_id));
         cartLocalStorage.forEach(q => quantities.push(q.quantity));
     }
-    console.log(cartItems);
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", `cart?cart=${cartItems}&quantity=${quantities}`, true);
+    xhr.open("GET", `cartServlet?cart=${cartItems}&quantity=${quantities}`, true);
 
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 let items = JSON.parse(xhr.responseText); 
-                console.log(items);
-                renderItems(items); 
+                renderItems(items);
             } 
             else {
                 renderItems([]);
             }
         }
     };
+    let xhr1 = new XMLHttpRequest();
+    let user_id = localStorage.getItem("loggedInUserId");
+    xhr1.open("GET", `http://localhost:8080/project/profileServlet?user_id=${user_id}`, true);
+    xhr1.setRequestHeader("Accept", "application/json");
+    xhr1.onreadystatechange = function() {
+        if (xhr1.readyState === 4 && xhr1.status === 200) {
+            userInfo = JSON.parse(xhr1.responseText);
+            renderUserInfoData();
+        }
+    }
+    xhr1.send();
 
     xhr.send();
 
 }
+function renderUserInfoData() {
+    document.getElementById("userName").innerHTML = userInfo.name;
+    document.getElementById("userPhone").innerHTML = userInfo.phoneNumber;
 
+    let defAddress = userInfo.addresses.find(address => address.isDefault);
+    document.getElementById("state").innerHTML = defAddress.state;
+    document.getElementById("street").innerHTML = defAddress.street;
+    document.getElementById("building").innerHTML = defAddress.buildingNumber;
+
+}
+function handleChangeAddress(){
+    window.location.href = 'profile';
+}
 
 function renderItems(items) 
 {
@@ -68,7 +89,7 @@ function handlePayNowButton()
     if(logged != null)
     {
         $.ajax({
-            url: '/project/placeOrder',
+            url: '/project/placeOrderServlet',
             type: 'POST',
             async: false,
             data: {
@@ -77,17 +98,13 @@ function handlePayNowButton()
             },
             success: function() {
                 localStorage.removeItem('cart');
-                window.location.href = '/project/order-complete.jsp';
+                window.location.href = '/project/order-complete';
             },
             error: function() {
                 showWarningSweetAlert("Your purchases exceed your credit limit. Please review your payment options.")
             }
         });
     }
-    // if(logged != null)
-    //     window.location.href = '/project/checkout.jsp';
-    // else
-    //     window.location.href = '/project/login.jsp';
 }
 
 

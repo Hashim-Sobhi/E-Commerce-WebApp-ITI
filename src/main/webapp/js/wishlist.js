@@ -1,12 +1,11 @@
 function getWishlistItem() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "cart", true);
+    xhr.open("GET", "cartServlet", true);
     xhr.setRequestHeader("Accept", "application/json");
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             let WishlistItems = JSON.parse(xhr.responseText);
-            console.log(WishlistItems);
             renderWishlistItems(WishlistItems);
 
         }

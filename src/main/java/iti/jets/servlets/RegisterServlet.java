@@ -16,17 +16,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet("/registerServlet")
 public class RegisterServlet extends HttpServlet {
-//    private UserDao userDao;
-//
-//    public void init() {
-//        userDao = new UserDao();
-//    }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    //    System.out.println("I am in register servlet");
        String fname = request.getParameter("fname");
        String lname = request.getParameter("lname");
        int buildingNumber = Integer.parseInt(request.getParameter("building_number"));
@@ -57,19 +51,13 @@ public class RegisterServlet extends HttpServlet {
         UserDTO userdto = new UserDTO();
         userdto.setName(fname + " " +lname);
         userdto.setEmail(email);
-        // userdto.setPassword(password);
         userdto.setJob(job);
         userdto.setInterests(interest);
         userdto.setBirthDate(birthdate);
         userdto.setPhoneNumber(phone);
         userdto.setCreditLimit(creditLimit);
-        // userdto.setAddress(userAddressDTO);
         userdto.getAddresses().add(userAddressDTO);
 
-        // User user = new User();
-        // set
-        // user.getAddress().add(userAddressDTO);
-        
 
         int userId = UserService.register(userdto  , password, (EntityManager) request.getAttribute("entityManager"));        
         System.out.println("Register Successfully" + userId);

@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import iti.jets.services.UserService;
 
+@WebServlet("/validateEmailServlet")
 public class ValidateEmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

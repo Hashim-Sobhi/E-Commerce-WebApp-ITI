@@ -51,7 +51,7 @@
 
         <div class="card p-4">
             <h4>Log in</h4>
-            <form method="post" action="/project/login" onsubmit="handleLoginForm(event)">
+            <form method="post" action="/project/loginServlet" onsubmit="handleLoginForm(event)">
                 <div class="form-group">
                     <label for="email"><b>Email Address </b></label>
                     <input type="text" class="form-control" name="email" id="email" required>
@@ -67,7 +67,7 @@
                 <button class="btn btn-primary" id="login">Login</button>
             </form>
         </div>
-        <div style="text-align: center;padding-top:10px;">Don't have an account ?<a href="register.jsp" style="color: rgba(136,200,188,255);"> Register</a></div>
+        <div style="text-align: center;padding-top:10px;">Don't have an account ?<a href="register" style="color: rgba(136,200,188,255);"> Register</a></div>
     </div>
 </div>
 

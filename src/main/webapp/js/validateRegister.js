@@ -56,7 +56,7 @@ function validateRegister(e) {
     {
         var found = false;
         $.ajax({
-            url: '/project/validateEmail',
+            url: '/project/validateEmailServlet',
             type: 'POST',
             async:false,
             data: { email: email.value },
@@ -142,7 +142,7 @@ function validateRegister(e) {
     };
 
     $.ajax({
-        url: "/project/register", 
+        url: "/project/registerServlet",
         type: "POST",
         data: data, 
         success: function(response) {
@@ -150,7 +150,7 @@ function validateRegister(e) {
             // alert("Registration successful!");
             
             // Redirect to login.jsp
-            window.location.href = "login.jsp"; 
+            window.location.href = "login";
         },
         error: function(error) {
             // Handle error

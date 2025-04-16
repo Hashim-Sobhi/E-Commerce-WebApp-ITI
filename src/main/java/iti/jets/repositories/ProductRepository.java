@@ -72,7 +72,7 @@ public class ProductRepository {
         }
 
         // Pagination
-        int pageSize = 3;
+        int pageSize = 9;
         int pageNumber = 1;
         try {
             pageNumber = Integer.parseInt(page);

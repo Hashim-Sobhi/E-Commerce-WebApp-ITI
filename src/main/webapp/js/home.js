@@ -1,12 +1,11 @@
 function bestSeller() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/project/bestseller", true);
+    xhr.open("GET", "http://localhost:8080/project/bestSellerServlet", true);
     xhr.setRequestHeader("Accept", "application/json");
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             let products = JSON.parse(xhr.responseText);
-            console.log(products);
             renderProducts(products);
         }
     };
@@ -36,8 +35,3 @@ function renderProducts(products) {
         container.innerHTML += productHTML;
     });
 }
-
-// if(loggedIn)
-// {
-//     localStorage.setItem("user-Id" , loggedIn);
-// }

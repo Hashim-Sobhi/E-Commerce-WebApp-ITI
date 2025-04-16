@@ -1,5 +1,5 @@
 let currentPage = 1;
-let productsPerPage = 3;
+let productsPerPage = 9;
 function shop_init() {
     // Handle reset button
     document.getElementById("resetFilterBtn").addEventListener("click", function () {
@@ -107,7 +107,7 @@ function updateFilters() {
 
     // Send XHR request to get total products
     let xhr1 = new XMLHttpRequest();
-    xhr1.open("POST", "http://localhost:8080/project/filter?" + params.toString(), true);
+    xhr1.open("POST", "http://localhost:8080/project/shopServlet?" + params.toString(), true);
     xhr1.setRequestHeader("Accept", "text/plain");
     xhr1.onreadystatechange = function () {
         if (xhr1.readyState === 4 && xhr1.status === 200) {
@@ -120,7 +120,7 @@ function updateFilters() {
 
     // Send XHR request to get filtered products
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/project/filter?" + params.toString(), true);
+    xhr.open("GET", "http://localhost:8080/project/shopServlet?" + params.toString(), true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onreadystatechange = function () {

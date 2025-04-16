@@ -53,7 +53,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<p class="bread"><span><a href="index.jsp">Home</a></span> / <span>Product Details</span></p>
+						<p class="bread"><span><a href="home">Home</a></span> / <span>Product Details</span></p>
 					</div>
 				</div>
 			</div>

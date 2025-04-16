@@ -9,12 +9,10 @@ import java.util.List;
 
 import iti.jets.model.entities.Order;
 import iti.jets.model.entities.OrderItem;
-import iti.jets.model.entities.ProductImg;
 import iti.jets.model.entities.ProductInfo;
 import iti.jets.model.entities.ShoppingCart;
 import iti.jets.model.entities.User;
 import iti.jets.model.entities.UserAddress;
-import jakarta.jws.soap.SOAPBinding.Use;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
@@ -23,7 +21,6 @@ import jakarta.persistence.Query;
 public class CartRepository {
     
     public static Object[] getProductInfoAndProductByInfoId(Integer productInfoId, EntityManager em) {
-        System.out.println("I am in cart Repository");
 
         
         EntityTransaction transaction = em.getTransaction();
@@ -48,7 +45,6 @@ public class CartRepository {
 
     public static void addToCart(String userId , String productId , String productInfoId , String quantity , EntityManager em)
     {
-        System.out.println("I am in the addTocart repo");
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         User user = (User)em.find(User.class, userId);
@@ -69,15 +65,12 @@ public class CartRepository {
         }
         em.persist(shoppingCart);
         transaction.commit();
-        System.out.println("item ID" + shoppingCart.getItemId());
     }
     
     public static void updateQuantity(String userId, String productInfoId, String quantity, EntityManager em) {
         EntityTransaction transaction = em.getTransaction();
         try {
             transaction.begin();
-            System.out.println("userId in update quantity repo:" + userId);
-            System.out.println("productInfoId in update quantity repo:" + productInfoId);
             Query query = em.createQuery(
                 "select sh from ShoppingCart sh where sh.user.userId = :userId and sh.productInfo.productInfoId = :productInfoId"
             );
@@ -89,7 +82,6 @@ public class CartRepository {
             if (shoppingCart != null) {
                 shoppingCart.setQuantity(Integer.parseInt(quantity));
                 em.merge(shoppingCart);
-                System.out.println("updated successfully");
             }
     
             transaction.commit();
@@ -102,7 +94,6 @@ public class CartRepository {
     public static void removeItem(String userId , String productId , String productInfoId , EntityManager em)
     {   
 
-        System.out.println("I am in the remove Cart repo");
         EntityTransaction transaction = em.getTransaction();
 
         try
@@ -117,7 +108,6 @@ public class CartRepository {
 
 
             int deletedCount = query.executeUpdate();
-            System.out.println("num of items: " + deletedCount);
 
             transaction.commit();
         } 
@@ -138,7 +128,6 @@ public class CartRepository {
         try {
     
             User user = UserRepository.findUserById(userId, em);
-            System.out.println("get User");
             if(user.getCreditLimit().intValue() < Integer.parseInt(totalPayment))
             {
                 
@@ -173,27 +162,20 @@ public class CartRepository {
                 user.setCreditLimit(BigDecimal.valueOf(user.getCreditLimit().intValue() - Integer.parseInt(totalPayment)));
                 em.persist(order);
                 em.merge(user);
-                System.out.println("set Order");
 
                 transaction.commit();                 
                  try 
                 {
-                    System.out.println("1---------");
                     transaction.begin();
-                    System.out.println("2---------");
                     Query query = em.createQuery("select sh from ShoppingCart sh where sh.user.userId = :userId");
                     query.setParameter("userId", userId);
                     List<ShoppingCart> shoppingCartList = query.getResultList();
-                    System.out.println("3---------");
                     transaction.commit();
-                    System.out.println("4---------");
 
 
-                    System.out.println("5---------");
 
                     for (ShoppingCart cart : shoppingCartList) 
                     {
-                        System.out.println("6---------");
                         ProductInfo productInfo= ProductRepository.getProductInfoById(cart.getProductInfo().getProductInfoId(), em);
                         productInfo.setQuantity(productInfo.getQuantity() - cart.getQuantity());
 
@@ -207,9 +189,7 @@ public class CartRepository {
                         transaction.commit();
 
                     }
-                    System.out.println("7---------");
 
-                    System.out.println("set Order Item");
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -218,8 +198,7 @@ public class CartRepository {
             }
             
             removeAllItems(userId, em);
-            System.out.println("remove Item");
-        } 
+        }
         catch (Exception e) 
         {
             if (em.getTransaction().isActive()) 
@@ -239,7 +218,6 @@ public class CartRepository {
         query.setParameter("userId", userId);
         
         int rowsDeleted = query.executeUpdate();
-        System.out.println("deleted items" + rowsDeleted);
         transaction.commit();
     }
 

@@ -12,17 +12,15 @@ function getItems() {
         cartLocalStorage.forEach(item => cartItems.push(item.product_info_id));
         cartLocalStorage.forEach(q => quantities.push(q.quantity));
     }
-    console.log(cartItems);
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", `cart?cart=${cartItems}&quantity=${quantities}`, true);
+    xhr.open("GET", `cartServlet?cart=${cartItems}&quantity=${quantities}`, true);
 
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 let items = JSON.parse(xhr.responseText); 
-                console.log(items);
-                renderItems(items); 
+                renderItems(items);
             } 
             else {
                 renderItems([]);
@@ -101,7 +99,6 @@ function removeItem(productId , productInfoId) {
         itemElement.remove();
         setContent();
 
-        updateCartCount();
     }
 
     let cartLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
@@ -109,13 +106,12 @@ function removeItem(productId , productInfoId) {
         !(item.product_id === productId && item.product_info_id === productInfoId)
     );
     localStorage.setItem("cart", JSON.stringify(cartLocalStorage));    
-    console.log("Number cart in local storage:", cartLocalStorage);
-    
+
     
     if(logged != null)
     {
         $.ajax({
-            url: '/project/removeItem',
+            url: '/project/removeItemServlet',
             type: 'POST',
             async: false,
             data: {
@@ -123,8 +119,10 @@ function removeItem(productId , productInfoId) {
                 product_id: productId,
                 product_info_id: productInfoId
             },
+            success: function (result) {
+                updateCartCount();
+            },
             error: function() {
-                console.log("Error in ajax");
             }
         });
     }
@@ -152,14 +150,12 @@ function updateItem(itemId)
 
     let itemPrice = itemElement.querySelector('.price[id="price"]').textContent.replace("$" , "");
     itemPrice = parseInt(itemPrice)
-    console.log("itemPrice " + itemPrice);
 
 
     let newTotal = (newQuantity * itemPrice).toFixed(2);
     subTotal += (newQuantity * itemPrice);
 
     itemTotal.textContent = `$${newTotal}`;
-    console.log("itemTotal " + itemTotal.textContent);
 
     setContent();
     // let xhr = new XMLHttpRequest();
@@ -215,24 +211,15 @@ function applyCoupon()
 function handleProceedButton()
 {
     let logged = localStorage.getItem("loggedInUserId");
-    // if(logged != null)
-    // {
-    //     $.ajax({
-    //         url: '/project/placeOrder',
-    //         type: 'POST',
-    //         async: false,
-    //         data: {
-    //             userId: logged
-    //         },
-    //         error: function() {
-    //             console.log("Error in ajax");
-    //         }
-    //     });
-    // }
+
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if(cart == null || cart.length === 0){
+        return;
+    }
     if(logged != null)
-        window.location.href = '/project/checkout.jsp';
+        window.location.href = '/project/checkout';
     else
-        window.location.href = '/project/login.jsp';
+        window.location.href = '/project/login';
 
 }
 

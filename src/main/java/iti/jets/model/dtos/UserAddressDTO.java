@@ -1,6 +1,5 @@
 package iti.jets.model.dtos;
 
-import jakarta.json.bind.annotation.JsonbProperty;
 import lombok.*;
 
 @Data

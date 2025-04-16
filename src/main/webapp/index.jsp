@@ -46,26 +46,6 @@
 	<div id="page">
 
 		<%@include file="header.jsp"%>
-		<%@ page import="jakarta.servlet.http.HttpSession,iti.jets.model.dtos.UserDTO"%>
-		<% 
-			HttpSession LoggInsession = request.getSession(false);
-			if(LoggInsession == null)
-			{
-				System.out.println("sesion null");
-			} 
-			else
-			{
-				Integer loggedIn = (Integer)LoggInsession.getAttribute("loggedIn");
-				if(loggedIn != null)
-				{
-					System.out.println("User Id = "+loggedIn);
-				}
-				else
-				{
-					System.out.println("null");
-				}
-			}
-		 %>
 
 		<aside id="colorlib-hero">
 			<div class="flexslider">
@@ -169,7 +149,7 @@
 						<div class="featured">
 							<div class="featured-img featured-img-2" style="background-image: url(images/item-17.jpg);">
 								<h2>Casual</h2>
-								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>	
+								<p><a href="shop" class="btn btn-primary btn-lg">Shop now</a></p>
 							</div>
 						</div>
 					</div>
@@ -178,7 +158,7 @@
 						<div class="featured">
 							<div class="featured-img featured-img-2" style="background-image: url(images/item-18.jpg);">
 								<h2>Classic</h2>
-								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>	
+								<p><a href="shop" class="btn btn-primary btn-lg">Shop now</a></p>
 							</div>
 						</div>
 					</div>
@@ -187,7 +167,7 @@
 						<div class="featured">
 							<div class="featured-img featured-img-2" style="background-image: url(images/item-19.jpg);">
 								<h2>Sneakers</h2>
-								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>	
+								<p><a href="shop" class="btn btn-primary btn-lg">Shop now</a></p>
 							</div>
 						</div>
 					</div>

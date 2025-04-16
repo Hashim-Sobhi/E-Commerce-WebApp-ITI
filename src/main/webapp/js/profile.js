@@ -2,11 +2,9 @@ let userInfo = {}
 window.onload = function() {
     if(localStorage.getItem('loggedInUserId') == null)
     {
-        console.log("userId = " + localStorage.getItem('loggedInUserId'));
-        window.location.href = '/project/login.jsp';
+        window.location.href = '/project/login';
     }
     let user_id = localStorage.getItem('loggedInUserId');
-    console.log("userId = " + user_id);
 
     let xhr = new XMLHttpRequest();
     xhr.open("GET", `http://localhost:8080/project/profileServlet?user_id=${user_id}`, true);
@@ -14,7 +12,6 @@ window.onload = function() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             userInfo = JSON.parse(xhr.responseText);
-            console.log(userInfo);
             renderUserInfo();
         }
     }
@@ -32,6 +29,7 @@ function renderUserInfo() {
     let month = String(bd.getMonth() + 1).padStart(2, '0');
     let day = String(bd.getDate()).padStart(2, '0');
     document.getElementById("birthdate").value = `${year}-${month}-${day}`;
+    userInfo.birthdate = document.getElementById("birthdate").value.trim();
 
     const addressesContainer = document.getElementById("addressesContainer");
     addressesContainer.innerHTML = '';
@@ -173,7 +171,6 @@ function updateProfile() {
     userInfo.interests = interest;
     userInfo.birthdate = birthdate;
 
-    console.log(userInfo);
     showInfoSweetAlert("Don't forget to Confirm Changes");
     return true;
 }
@@ -250,7 +247,6 @@ function saveAddress(event) {
 
 
 
-    console.log(userInfo);
     renderUserInfo();
     addressModified = true;
     checkConfirmChangesButton();
@@ -281,7 +277,6 @@ function confirmChanges() {
         },
         error: function(data){
             showErrorSweetAlert(data.message);
-            console.log(data.responseText);
         }
     });
 }
@@ -299,11 +294,10 @@ async function logout() {
                 localStorage.removeItem("cart");
 
                 // Redirect to the login page
-                window.location.href = "/project/login.jsp";
+                window.location.href = "/project/login";
             },
             error: function (xhr, status, error) {
                 showErrorSweetAlert("Logout failed!");
-                console.error("Logout failed: ", status, error);
             }
         });
     }
