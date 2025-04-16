@@ -205,7 +205,7 @@ function changePage(page) {
 
 function toggleWishlist(product_id) {
         let logged = localStorage.getItem("loggedInUserId");
-        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        let wishListLocalStorage = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 
         const heartIcon = document.querySelector(`.heart-btn[product_id="${product_id}"] i`);
@@ -218,45 +218,45 @@ function toggleWishlist(product_id) {
         {
             heartIcon.style.color = 'rgb(235, 232, 232)'; // default color
 
-            let wishListLocalStorage = JSON.parse(localStorage.getItem("wishlist")) || [];
             wishListLocalStorage = wishListLocalStorage.filter(item => 
-            !(item.product_id === product_id));
+            !(item.productId === product_id));
 
-            localStorage.setItem("cart", JSON.stringify(wishListLocalStorage));    
+            localStorage.setItem("wishlist", JSON.stringify(wishListLocalStorage));    
         
-        if(logged != null)
-        {
-            $.ajax({
-                url: '/project/removeWishListServlet',
-                type: 'POST',
-                async: false,
-                data: {
-                    product_id: product_id
-                },
-                error: function() {
-                    console.log("Error in ajax");
-                }
-            });
+            if(logged != null)
+            {
+                $.ajax({
+                    url: '/project/removeWishlistServlet',
+                    type: 'POST',
+                    async: false,
+                    data: {
+                        productId: product_id
+                    },
+                    error: function() {
+                        console.log("Error in ajax");
+                    }
+                });
+            } 
         } 
-    } 
-    else 
-    { 
-        heartIcon.style.color = 'rgb(136, 200, 188)'; //filled color 
-        if(logged != null)
-        {
-            $.ajax({
-                url: '/project/addToWishkistServlet',
-                type: 'POST',
-                async: false,
-                data: {
-                    product_id:product_id 
-                },
-                error: function() {
-                    console.log("Error in ajax");
-                }
-            });
+        else 
+        { 
+            heartIcon.style.color = 'rgb(136, 200, 188)'; //filled color 
+            if(logged != null)
+            {
+                $.ajax({
+                    url: '/project/wishlistServlet',
+                    type: 'POST',
+                    async: false,
+                    data: {
+                        items:JSON.stringify([{productId:product_id}])
+                    },
+                    error: function() {
+                        console.log("Error in ajax");
+                    }
+                });
+            }
+            wishListLocalStorage.push({productId:product_id});
+            localStorage.setItem("wishlist", JSON.stringify(wishListLocalStorage));    
         }
-        wishlist.push(product_id);
-    }
 }
 

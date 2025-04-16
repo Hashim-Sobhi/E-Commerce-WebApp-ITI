@@ -43,7 +43,8 @@ function handleLoginForm(event) {
             if (data.userId) {
                 localStorage.setItem('loggedInUserId', data.userId);
 
-                if(data.cartItems.length > 0) {
+                if(data.cartItems.length > 0) 
+                {
                     let cart = [];
                     data.cartItems.forEach(item => {
                         let item1 =  {
@@ -88,36 +89,40 @@ function handleLoginForm(event) {
                     }
                 }
 
-                // if(data.wishlist.length > 0)
-                // {
-                //     localStorage.setItem('wishlist', JSON.stringify(wishlist));
-                // }
-                // else
-                // {
+                if(data.wishlist.length > 0)
+                {
+                    let wishlist = [];
+                    data.wishlist.forEach(item => {
+                        let item1 =  {
+                            productId: item.productId,
+                        };
+                        wishlist.push(item1);
+                    });
+                    
+                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                }
+                else
+                {
 
-                //     let localWishListStr = localStorage.getItem('wishlist');
-                //     if (localWishListStr && JSON.parse(localWishListStr).length > 0) {
-                //         let LocalWishList = JSON.parse(localWishListStr);
+                    let localWishListStr = localStorage.getItem('wishlist');
+                    if (localWishListStr && JSON.parse(localWishListStr).length > 0) {
+                        console.log("localWishlist" + localWishListStr.length);
+                        let LocalWishList = JSON.parse(localWishListStr);
 
-                //         // Send transformed wishlist to backend
-                //         $.ajax({
-                //             url: '/project/wishListServlet',
-                //             type: 'POST',
-                //             data: {
-                //                 items:JSON.stringify(LocalWishList)
-                //             },
-                //             success: function(res) {
-                //                 console.log("Wishlist updated on server:", res);
-                //                 updateCartCount();
-                //             },
-                //             error: function(err) {
-                //                 console.error("Failed to sync Wishlist:", err);
-                //             },
-                //             async: false
-                //         });
-                //     }
+                        $.ajax({
+                            url: '/project/wishlistServlet',
+                            type: 'POST',
+                            data: {
+                                items:JSON.stringify(LocalWishList)
+                            },
+                            error: function(err) {
+                                console.error("Failed to sync Wishlist:", err);
+                            },
+                            async: false
+                        });
+                    }
 
-                // }
+                }
                 window.location.href="/project";
             }
             else {

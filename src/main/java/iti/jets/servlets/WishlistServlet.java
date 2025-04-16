@@ -22,6 +22,7 @@ public class WishlistServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String itemsJson = req.getParameter("items");
+
         Integer user_id = (Integer) req.getSession().getAttribute("user_id");
         EntityManager em = (EntityManager)req.getAttribute("entityManager");
 
@@ -41,7 +42,7 @@ public class WishlistServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String itemsJson = req.getParameter("items");
+        String itemsJson = (String)req.getParameter("items");
         EntityManager em = (EntityManager)req.getAttribute("entityManager");
 
         if(itemsJson == null || itemsJson.isEmpty()){
