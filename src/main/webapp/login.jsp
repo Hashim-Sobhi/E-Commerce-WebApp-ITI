@@ -7,6 +7,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">
@@ -40,37 +41,37 @@
     <script src="js/alerts.js"></script>
 </head>
 <body>
-    <%@include file="header.jsp"%>
-    <div id="page" class="d-flex justify-content-center align-items-center" style="padding-top: 70px;" >
-        <!-- Main Content -->
-        <div style= "width: 450px;">
-            <div id="errorDiv" style="background-color: #f8d7da; color: #721c24; text-align: center; border-radius: 5px; max-width: 450px; padding-top: 2px; display: none;">
-                <p id="errorMessage"></p>
-            </div>            
-
-            <div class="card p-4">
-                <h4>Log in</h4>
-                <form method="post" action="/project/login" onsubmit="handleLoginForm(event)">
-                    <div class="form-group">
-                        <label for="email"><b>Email Address </b></label>
-                        <input type="text" class="form-control" name="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password"><b>Password </b></label>
-                        <input type="password" class="form-control" name="password" id="password" required>
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                        <label class="form-check-label">Remember Me</label>
-                    </div>
-                    <button class="btn btn-primary" id="login">Login</button>
-                </form>                
-            </div>
-            <div style="text-align: center;padding-top:10px;">Don't have an account ?<a href="register.jsp" style="color: rgba(136,200,188,255);"> Register</a></div>                
+<%@include file="header.jsp"%>
+<div id="page" class="d-flex justify-content-center align-items-center" style="padding-top: 70px;" >
+    <!-- Main Content -->
+    <div style= "width: 450px;">
+        <div id="errorDiv" style="background-color: #f8d7da; color: #721c24; text-align: center; border-radius: 5px; max-width: 450px; padding-top: 2px; display: none;">
+            <p id="errorMessage"></p>
         </div>
-    </div>
 
-    <%@include file="footer.jsp"%>
+        <div class="card p-4">
+            <h4>Log in</h4>
+            <form method="post" action="/project/login" onsubmit="handleLoginForm(event)">
+                <div class="form-group">
+                    <label for="email"><b>Email Address </b></label>
+                    <input type="text" class="form-control" name="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"><b>Password </b></label>
+                    <input type="password" class="form-control" name="password" id="password" required>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label">Remember Me</label>
+                </div>
+                <button class="btn btn-primary" id="login">Login</button>
+            </form>
+        </div>
+        <div style="text-align: center;padding-top:10px;">Don't have an account ?<a href="register.jsp" style="color: rgba(136,200,188,255);"> Register</a></div>
+    </div>
+</div>
+
+<%@include file="footer.jsp"%>
 </div>
 
 <div class="gototop js-top">
@@ -97,7 +98,9 @@
 <!-- Date Picker -->
 <script src="js/template/bootstrap-datepicker.js"></script>
 <!-- Stellar Parallax -->
-<script src="js/jquery.stellar.min.js"></script>
+<script src="js/template/jquery.stellar.min.js"></script>
+<!-- Main -->
+<script src="js/template/main.js"></script>
 <!-- Login -->
 <script src="js/login.js"></script>
 

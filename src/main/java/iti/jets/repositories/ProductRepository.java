@@ -1,6 +1,7 @@
 package iti.jets.repositories;
 
 
+import iti.jets.model.dtos.ProductSummaryDTO;
 import iti.jets.model.entities.Product;
 import iti.jets.model.entities.ProductInfo;
 import iti.jets.model.enums.Gender;
@@ -147,5 +148,12 @@ public class ProductRepository {
     public static List<Product> getAllProducts(EntityManager em) {
         TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p", Product.class);
         return query.getResultList();
+    }
+
+    public static List<Product> getSearchProducts(String query, EntityManager em) {
+        String jpql = "SELECT p FROM Product p WHERE p.name LIKE :query";
+        return em.createQuery(jpql, Product.class)
+                .setParameter("query", "%" + query + "%")
+                .getResultList();
     }
 }

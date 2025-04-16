@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/ionicons.min.css">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="css/magnific-popup.css">

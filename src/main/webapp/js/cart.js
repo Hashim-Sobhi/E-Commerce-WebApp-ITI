@@ -96,6 +96,8 @@ function removeItem(itemId) {
         subTotal -= itemPrice;
         itemElement.remove();
         setContent();
+
+        updateCartCount();
     }
 
     // let xhr = new XMLHttpRequest();

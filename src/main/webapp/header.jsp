@@ -3,14 +3,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-7 col-md-9">
-                    <div id="colorlib-logo"><a href="index">Footwear</a></div>
+                    <div id="colorlib-logo"><a href="index">ShoeShow</a></div>
                 </div>
                 <div class="col-sm-5 col-md-3">
                     <form action="#" class="search-wrap">
                         <div class="form-group">
-                            <input type="search" class="form-control search" placeholder="Search">
-                            <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
+                            <input id="searchInput" type="search" class="form-control search" placeholder="Search">
+                            <button class="btn btn-primary submit-search text-center" type="submit">
+                                <i class="icon-search"></i>
+                            </button>
                         </div>
+                        <ul id="suggestionsList"></ul>  <!-- Suggestions list -->
                     </form>
                 </div>
             </div>
@@ -48,7 +51,10 @@
                         <li class="<%= "4".equals(id) ? "active" : "" %>"><a href="contact.jsp">Contact</a></li>
 
                         <li class="<%= "5".equals(id) ? "active cart" : "cart" %>">
-                            <a href="cart.jsp"><i class="icon-shopping-cart"></i></a>
+                            <a href="cart.jsp">
+                                <i class="icon-shopping-cart"></i>
+                                <span class="cart-count" id="cartCount">[0]</span>
+                            </a>
                         </li>
                         <li class="<%= "7".equals(id) ? "active cart" : "cart" %>">
                             <a href="add-to-wishlist.jsp?id=8"><i class="icon-heart2"></i></a>
@@ -56,8 +62,6 @@
                         <li class="<%= "6".equals(id) ? "active profile" : "profile" %>">
                             <a href="profile.jsp"><i class="icon-user"></i></a>
                         </li>
-
-
 
                     </ul>
                 </div>
@@ -87,3 +91,4 @@
         </div>
     </div>
 </nav>
+<script src="js/header.js"></script>

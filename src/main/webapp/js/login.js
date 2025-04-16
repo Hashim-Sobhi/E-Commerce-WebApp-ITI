@@ -12,7 +12,7 @@ function handleLoginForm(event) {
         errorMessage.remove();
     }
 
-    if(email == "")
+    if(email === "")
     {
         showError("email" , "Please Enter your Email");
         return;
@@ -23,7 +23,7 @@ function handleLoginForm(event) {
         return;
     }
 
-    if(password == "")
+    if(password === "")
     {
         showError("password" , "Please Enter your Password");
         return;
@@ -44,6 +44,7 @@ function handleLoginForm(event) {
         success: function(data) {
             if (data.userId) {
                 localStorage.setItem('loggedInUserId', data.userId);
+
                 window.location.href = "/project/index.jsp";
             }
             else {

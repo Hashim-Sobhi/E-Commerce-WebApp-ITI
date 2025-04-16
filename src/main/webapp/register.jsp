@@ -8,6 +8,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">

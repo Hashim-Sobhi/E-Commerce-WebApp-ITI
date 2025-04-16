@@ -31,6 +31,7 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<!-- Flaticons  -->
 	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">

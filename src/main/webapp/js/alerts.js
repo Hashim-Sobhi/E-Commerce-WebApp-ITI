@@ -35,8 +35,9 @@ function showInfoSweetAlert(message) {
     });
 }
 
-function showQuestionSweetAlert(message) {
-    Swal.fire({
+
+async function showQuestionSweetAlert(message) {
+    const result = await Swal.fire({
         title: 'Are you sure?',
         text: message,
         icon: 'question',
@@ -44,6 +45,8 @@ function showQuestionSweetAlert(message) {
         confirmButtonText: 'Yes',
         cancelButtonText: 'No'
     });
+
+    return result.isConfirmed; // true if Yes, false otherwise
 }
 
 function showLightSweetAlert(message) {

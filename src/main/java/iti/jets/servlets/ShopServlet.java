@@ -26,13 +26,6 @@ public class ShopServlet extends HttpServlet {
         String orderBy = request.getParameter("orderBy");
         String category = request.getParameter("category");
         String page = request.getParameter("page");
-        System.out.println("Brand: " + Arrays.toString(brands));
-        System.out.println("Size: " + Arrays.toString(sizes));
-        System.out.println("Color: " + Arrays.toString(colors));
-        System.out.println("OrderBy: " + orderBy);
-        System.out.println("Category: " + category);
-        System.out.println("Page: " + page);
-
 
         List<ProductSummaryDTO> productSummaries = ProductService.getFilteredProducts(
                 brands, sizes, colors, orderBy, category, page, (EntityManager) request.getAttribute("entityManager"));

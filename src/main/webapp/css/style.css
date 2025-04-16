@@ -8934,3 +8934,26 @@ input[type="text"] {
   background: #ddd;
   opacity: 0.5;
 }
+
+#suggestionsList {
+  list-style-type: none;   /* Remove bullet points */
+  padding: 0;              /* Remove padding */
+  margin: 0;               /* Remove margin */
+  max-height: 200px;       /* Optional: Limit height if you have a lot of items */
+  overflow-y: auto;        /* Allow scrolling if items exceed max height */
+  position: absolute;      /* Position dropdown absolutely */
+  width: 100%;             /* Make sure it matches the width of the search input */
+  background-color: white; /* Background color */
+  border: 1px solid #ccc; /* Border around the suggestions */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+  z-index: 999;            /* Make sure it's displayed above other elements */
+}
+
+#suggestionsList li {
+  padding: 8px 12px;  /* Space between each list item */
+  cursor: pointer;    /* Change cursor to pointer on hover */
+}
+
+#suggestionsList li:hover {
+  background-color: #f0f0f0;  /* Change background on hover */
+}

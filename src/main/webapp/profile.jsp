@@ -7,6 +7,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">
@@ -49,26 +50,26 @@
 
 <div id="page">
     <%@include file="header.jsp"%>
-    <%@ page import="jakarta.servlet.http.HttpSession" %>
-    <% 
-        HttpSession LoggInsession = request.getSession(false);
-        if(LoggInsession == null)
-        {
-            System.out.println("session null");
-        } 
-        else
-        {
-            Integer loggedIn = (Integer)LoggInsession.getAttribute("loggedIn");
-            if(loggedIn != null)
-            {
-                System.out.println("User Id = " + loggedIn);
-            }
-            else
-            {
-                response.sendRedirect("/project/login.jsp");              
-            }
-        }
-    %>
+<%--    <%@ page import="jakarta.servlet.http.HttpSession" %>--%>
+<%--    <% --%>
+<%--        HttpSession LoggInsession = request.getSession(false);--%>
+<%--        if(LoggInsession == null)--%>
+<%--        {--%>
+<%--            System.out.println("session null");--%>
+<%--        } --%>
+<%--        else--%>
+<%--        {--%>
+<%--            Integer loggedIn = (Integer)LoggInsession.getAttribute("loggedIn");--%>
+<%--            if(loggedIn != null)--%>
+<%--            {--%>
+<%--                System.out.println("User Id = " + loggedIn);--%>
+<%--            }--%>
+<%--            else--%>
+<%--            {--%>
+<%--                response.sendRedirect("/project/login.jsp");              --%>
+<%--            }--%>
+<%--        }--%>
+<%--    %>--%>
 
 
     <div class="main-container">
@@ -82,18 +83,22 @@
                         <div class="form-group">
                             <label for="name"><b>Name:</b></label>
                             <input id="name" type="text" class="form-control" name="name" required disabled>
+                            <div class="text-danger error-message" id="nameError"></div>
                         </div>
                         <div class="form-group">
                             <label for="email"><b>Email:</b></label>
                             <input id="email" type="email" class="form-control" name="email" required disabled>
+                            <div class="text-danger error-message" id="emailError"></div>
                         </div>
                         <div class="form-group">
                             <label for="phone"><b>Phone:</b></label>
                             <input id="phone" type="text" class="form-control" name="phone" required disabled>
+                            <div class="text-danger error-message" id="phoneError"></div>
                         </div>
                         <div class="form-group">
                             <label for="birthdate"><b>Birthdate:</b></label>
                             <input id="birthdate" type="text" class="form-control" placeholder="YYYY-MM-DD" name="birthdate" required disabled>
+                            <div class="text-danger error-message" id="birthdateError"></div>
                         </div>
                         <div class="form-group">
                             <label for="job"><b>Job:</b></label>
@@ -106,6 +111,7 @@
                         <div class="form-group">
                             <label for="credit"><b>Credit Limit:</b></label>
                             <input id="credit" type="text" class="form-control" name="credit" required disabled>
+                            <div class="text-danger error-message" id="creditError"></div>
                         </div>
 
                         <button type="button" id="editSaveBtn" class="btn btn-warning mt-2" onclick="toggleEditSave()">
@@ -199,7 +205,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" id="saveAddressBtn" class="btn btn-primary" onclick="saveAddress() ">Save</button>
+                <button type="button" id="saveAddressBtn" class="btn btn-primary" onclick="saveAddress()">Save</button>
             </div>
         </div>
     </div>
@@ -232,22 +238,10 @@
 <!-- Main -->
 <script src="js/template/main.js"></script>
 
-<!--Profile-->
-<script>
-$(document).ready(function () {
-    if(localStorage.getItem('loggedInUserId') == null)
-    {
-        console.log("userId = " + localStorage.getItem('loggedInUserId'));
-        window.location.href = '/project/login.jsp';
-    }
-    else
-    {
-        console.log("userId = " + localStorage.getItem('loggedInUserId'));
 
+<!-- profile -->
+<script src="js/profile.js"></script>
 
-    }
-}); 
-</script>
 
 </body>
 </html>

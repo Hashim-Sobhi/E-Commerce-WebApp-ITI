@@ -12,4 +12,18 @@ public class ProfileRepository {
             return null;
         }
     }
+
+    public static Boolean updateUserData(User existingUser, EntityManager em) {
+        try{
+            em.getTransaction().begin();
+            em.merge(existingUser);
+            em.getTransaction().commit();
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            return false;
+        }
+    }
 }

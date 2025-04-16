@@ -1,8 +1,15 @@
 let userInfo = {}
 window.onload = function() {
+    if(localStorage.getItem('loggedInUserId') == null)
+    {
+        console.log("userId = " + localStorage.getItem('loggedInUserId'));
+        window.location.href = '/project/login.jsp';
+    }
+    let user_id = localStorage.getItem('loggedInUserId');
+    console.log("userId = " + user_id);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/project/profileServlet?user_id=1", true);
+    xhr.open("GET", `http://localhost:8080/project/profileServlet?user_id=${user_id}`, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -33,12 +40,12 @@ function renderUserInfo() {
         const card = document.createElement("div");
         card.className = "col";
         card.innerHTML = `
-            <div class="card h-100 shadow-sm ${address.default ? 'border-success' : ''}">
+            <div class="card h-100 shadow-sm ${address.isDefault ? 'border-success' : ''}">
                 <div class="card-body">
                     <h5 class="card-title">${address.street}</h5>
                     <p class="card-text"><b>Building:</b> ${address.buildingNumber}</p>
                     <p class="card-text"><b>State:</b> ${address.state}</p>
-                    <p class="card-text"><b>Default:</b> ${address.default ? 'Yes' : 'No'}</p>
+                    <p class="card-text"><b>Default:</b> ${address.isDefault ? 'Yes' : 'No'}</p>
                     <button class="btn btn-sm btn-warning" onclick="openEditAddressModal(${index})">
                         <i class="bi bi-pencil"></i> Edit
                     </button>
@@ -145,16 +152,9 @@ function updateProfile() {
     }
 
     let job = document.getElementById("job").value.trim();
-    if (job === "") {
-        document.getElementById("jobError").textContent = "Job field is required";
-        isValid = false;
-    }
 
     let interest = document.getElementById("interest").value.trim();
-    if (interest === "") {
-        document.getElementById("interestError").textContent = "Please fill in your interests";
-        isValid = false;
-    }
+
 
     let credit = document.getElementById("credit").value.trim();
     if (credit === "" || isNaN(credit) || Number(credit) < 0) {
@@ -192,17 +192,16 @@ function openEditAddressModal(index) {
     document.getElementById("street").value = address.street;
     document.getElementById("buildingNumber").value = address.buildingNumber;
     document.getElementById("state").value = address.state;
-    document.getElementById("isDefault").checked = address.default;
+    document.getElementById("isDefault").checked = address.isDefault;
     document.getElementById("addressIndex").value = index;
     // If the address is set as default, disable the checkbox
-    document.getElementById("isDefault").disabled = !!address.default;
+    document.getElementById("isDefault").disabled = !!address.isDefault;
 
     const modal = new bootstrap.Modal(document.getElementById("addressModal"));
     modal.show();
 }
 
 function saveAddress(event) {
-    event.preventDefault();
     const street = document.getElementById("street").value.trim();
     if (street === "") {
         showErrorSweetAlert("Please enter a valid street");
@@ -226,16 +225,16 @@ function saveAddress(event) {
 
     // Only one default address allowed — reset all to false first
     if (isDefault) {
-        userInfo.addresses.forEach(addr => addr.default = false);
+        userInfo.addresses.forEach(addr => addr.isDefault = false);
 
     }
 
     const addressObj = {
-        addressId: userInfo.addresses[index] ? userInfo.addresses[index].addressId : undefined, // Keep the same addressId if editing
+        addressId: userInfo.addresses[index] ? userInfo.addresses[index].addressId : -1, // Keep the same addressId if editing
         street,
         buildingNumber,
         state,
-        default: isDefault
+        isDefault: isDefault
     };
 
     // If it's an existing address, update it; else, add a new address
@@ -269,9 +268,43 @@ function checkConfirmChangesButton() {
 
 function confirmChanges() {
     // Add your confirmation changes logic here (e.g., save to the server or display a success message)
-    showSuccessSweetAlert("Changes have been confirmed!");
-    profileModified = false;
-    addressModified = false;
-    checkConfirmChangesButton();
+    $.ajax({
+        url:"http://localhost:8080/project/profileServlet",
+        method:"POST",
+        contentType: "application/json",
+        data: JSON.stringify(userInfo),
+        success: function(data){
+            showSuccessSweetAlert("Changes have been confirmed!");
+            profileModified = false;
+            addressModified = false;
+            checkConfirmChangesButton();
+        },
+        error: function(data){
+            showErrorSweetAlert(data.message);
+            console.log(data.responseText);
+        }
+    });
 }
+async function logout() {
+    let state = await showQuestionSweetAlert("Are you sure you want to logout?");
+    if (state) {
+        let userID = localStorage.getItem("loggedInUserId");
 
+        $.ajax({
+            url: "http://localhost:8080/project/logoutServlet?user_id=" + userID,  // Send userID as a query parameter
+            method: "GET",
+            success: function (data) {
+                // Remove user ID from local storage after successful logout
+                localStorage.removeItem("loggedInUserId");
+                localStorage.removeItem("cart");
+
+                // Redirect to the login page
+                window.location.href = "/project/login.jsp";
+            },
+            error: function (xhr, status, error) {
+                showErrorSweetAlert("Logout failed!");
+                console.error("Logout failed: ", status, error);
+            }
+        });
+    }
+}

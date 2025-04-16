@@ -105,8 +105,6 @@
 
 
 
-UpdateQuantityServlet
-
   <listener>
     <listener-class>iti.jets.listeners.RequestListener</listener-class>
   </listener>

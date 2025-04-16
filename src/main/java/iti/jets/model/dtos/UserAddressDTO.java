@@ -1,14 +1,9 @@
 package iti.jets.model.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.json.bind.annotation.JsonbProperty;
+import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class UserAddressDTO {
     private int addressId;
     private int buildingNumber;

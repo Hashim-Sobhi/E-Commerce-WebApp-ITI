@@ -52,4 +52,14 @@ public class ProductService {
         Product product = ProductRepository.getProductDetail(product_id, em);
         return product!=null?ProductMapper.toProductDetailDTO(product):null;
     }
+
+    public static List<ProductSummaryDTO> getSearchProducts(String query, EntityManager em) {
+            List<Product> products = ProductRepository.getSearchProducts(query, em);
+            List<ProductSummaryDTO> productSummaries = new ArrayList<>();
+            for (Product product : products) {
+                ProductSummaryDTO summaryDTO = ProductMapper.toProductSummaryDTO(product);
+                productSummaries.add(summaryDTO);
+            }
+            return productSummaries;
+    }
 }

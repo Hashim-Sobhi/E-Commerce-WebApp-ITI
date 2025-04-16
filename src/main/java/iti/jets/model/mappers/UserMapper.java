@@ -71,7 +71,9 @@ public class UserMapper {
         userProfileDataDTO.setEmail(user.getEmail());
         userProfileDataDTO.setPhoneNumber(user.getPhoneNumber());
         userProfileDataDTO.setJob(user.getJob());
+
         userProfileDataDTO.setBirthdate(user.getBirthdate());
+
         userProfileDataDTO.setInterests(user.getInterests());
         userProfileDataDTO.setCreditLimit(user.getCreditLimit());
         userProfileDataDTO.setAddresses(new ArrayList<>());
@@ -86,5 +88,28 @@ public class UserMapper {
         });
         return userProfileDataDTO;
     }
-    
+//    public static User toDetailEntity(UserProfileDataDTO userDto) {
+//        if(userDto == null){
+//            return null;
+//        }
+//        User user = new User();
+//        user.setName(userDto.getName());
+//        user.setEmail(userDto.getEmail());
+//        user.setPhoneNumber(userDto.getPhoneNumber());
+//        user.setJob(userDto.getJob());
+//        user.setBirthdate(userDto.getBirthdate());
+//        user.setInterests(userDto.getInterests());
+//        user.setCreditLimit(userDto.getCreditLimit());
+//        user.setAddresses(new ArrayList<UserAddress>());
+//        userDto.getAddresses().forEach(ua -> {
+//            UserAddress userAddress = new UserAddress();
+//            userAddress.setAddressId(ua.getAddressId());
+//            userAddress.setBuildingNumber(ua.getBuildingNumber());
+//            userAddress.setStreet(ua.getStreet());
+//            userAddress.setState(ua.getState());
+//            userAddress.setUser(user);
+//            user.getAddresses().add(userAddress);
+//        });
+//        return user;
+//    }
 }
