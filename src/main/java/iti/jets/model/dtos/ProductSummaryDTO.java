@@ -10,5 +10,4 @@ public class ProductSummaryDTO {
     private String name;
     private BigDecimal price;
     private String img;
-
 }
