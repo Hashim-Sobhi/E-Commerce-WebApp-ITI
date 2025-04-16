@@ -27,7 +27,7 @@ function renderWishlistItems(WishlistItems) {
                 <a href="#" class="prod-img">
                     <img src=${wishlistItem.image} class="img-fluid" alt=${wishlistItem.name}>
                 </a>
-                <button class="heart-btn" onclick="removeItem(${wishlistItem.id})">
+                <button class="heart-btn" onclick="toggleState(event, wishlistItem.id)">
                     <i class="fa fa-times" style="font-size: 24px;"></i>
                 </button>
                 <div class="desc">
@@ -38,6 +38,9 @@ function renderWishlistItems(WishlistItems) {
         </div>`;
         container.innerHTML += productHTML;
     });
+
+}
+function toggleState(event, id) {
 
 }
 

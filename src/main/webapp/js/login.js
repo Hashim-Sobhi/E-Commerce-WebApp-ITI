@@ -69,7 +69,7 @@ function handleLoginForm(event) {
 
                         // Send transformed cart to backend
                         $.ajax({
-                            url: '/project/cartServlet',
+                            url: `/project/cartServlet?`,
                             type: 'POST',
                             data: {
                                 items:JSON.stringify(transformedCart)

@@ -2,6 +2,7 @@ package iti.jets.services;
 
 import iti.jets.model.dtos.ShoppingCartSummaryDTO;
 import iti.jets.model.dtos.UserDTO;
+import iti.jets.model.dtos.WishlistDTO;
 import iti.jets.model.entities.User;
 import iti.jets.model.mappers.UserMapper;
 import iti.jets.repositories.UserRepository;
@@ -35,6 +36,12 @@ public class UserService {
             summaryDTO.setProduct_id(cartItem.getProductInfo().getProduct().getProduct_id());
             summaryDTO.setProductInfoId(cartItem.getProductInfo().getProductInfoId());
             userdto.getCartItems().add(summaryDTO);
+        });
+
+        userEntity.getWishlist().forEach(item -> {
+           WishlistDTO wishlistDTO = new WishlistDTO();
+           wishlistDTO.setProductId(item.getProduct().getProduct_id());
+           userdto.getWishlist().add(wishlistDTO);
         });
 
         return userdto;

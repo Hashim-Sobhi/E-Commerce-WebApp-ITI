@@ -28,4 +28,5 @@ public class UserDTO {
     // private Timestamp createdAt;
     private List<UserAddressDTO> addresses = new ArrayList<UserAddressDTO>();
     private List<ShoppingCartSummaryDTO> cartItems = new ArrayList<>();
+    private List<WishlistDTO> wishlist = new ArrayList<>();
 }

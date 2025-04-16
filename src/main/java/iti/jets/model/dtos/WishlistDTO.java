@@ -1,6 +1,8 @@
 package iti.jets.model.dtos;
 
-public class WishlistDTO {
+import lombok.Data;
 
-    
+@Data
+public class WishlistDTO {
+    Integer productId;
 }
