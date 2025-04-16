@@ -138,14 +138,12 @@
 			</div>
 
 			<div style="position: absolute;">
-				<div id="myToast" class="toast d-none" style="  position: fixed;bottom: 25px; right: 25px; z-index: 1050;width:250px; height:60px; background-color: rgba(136,200,188,255);color: white;text-align: center;justify-content: center;margin-top: 2px;" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1500">
-					<!-- <div class="toast-header">
-						<img src="..." class="rounded mr-2" alt="...">
-						<strong class="mr-auto">Success</strong>
+				<div id="myToast" class="toast d-none" style="  position: fixed;bottom: 15px; right: 25px; z-index: 1050;width:250px; height:60px; background-color: rgba(136,200,188,255);color: white;text-align: center;justify-content: center;" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1500">
+					<div class="toast-header">
 						<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
 						  <span aria-hidden="true">&times;</span>
 						</button>
-					  </div> -->
+					  </div>
 					<div class="toast-body">
 					<span id="toastMessage"></span>
 					</div>

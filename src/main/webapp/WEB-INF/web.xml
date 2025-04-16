@@ -92,7 +92,6 @@
   </servlet-mapping>
 
 
-
   <servlet>
     <servlet-name>UpdateQuantityServlet</servlet-name>
     <servlet-class>iti.jets.servlets.UpdateQuantityServlet</servlet-class>
@@ -101,6 +100,28 @@
   <servlet-mapping>
     <servlet-name>UpdateQuantityServlet</servlet-name>
     <url-pattern>/updateQuantity</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>RemoveItemServlet</servlet-name>
+    <servlet-class>iti.jets.servlets.RemoveItemServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RemoveItemServlet</servlet-name>
+    <url-pattern>/removeItem</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>PlaceOrderServlet</servlet-name>
+    <servlet-class>iti.jets.servlets.PlaceOrderServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PlaceOrderServlet</servlet-name>
+    <url-pattern>/placeOrder</url-pattern>
   </servlet-mapping>
 
 

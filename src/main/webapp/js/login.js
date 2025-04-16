@@ -4,7 +4,8 @@ function handleLoginForm(event) {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let checkBox = document.getElementById("rememberme");
-
+    let cartItems = [];
+    let quantities = [];
 
     // if it exists
     let errorMessage = document.getElementById("error-message");
@@ -32,6 +33,14 @@ function handleLoginForm(event) {
     console.log("Email:", email);
     console.log("Password:", password);
 
+    let cartLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log("cartLocalStorage" + cartLocalStorage);
+    // let cart = JSON.stringify(cartLocalStorage);
+    if(cartLocalStorage.length > 0)
+    {
+        cartLocalStorage.forEach(item => cartItems.push(item.product_info_id));
+        cartLocalStorage.forEach(q => quantities.push(q.quantity));
+    }
 
     $.ajax({
         url: '/project/login',
@@ -39,7 +48,9 @@ function handleLoginForm(event) {
         async:false,
         data: {
             email: email,
-            password: password
+            password: password,
+            cart: cartItems.join(","),
+            quantity:quantities.join(",")
         },
         success: function(data) {
             if (data.userId) {

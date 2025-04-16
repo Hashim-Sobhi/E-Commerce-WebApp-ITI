@@ -106,7 +106,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row row-pb-lg" style="display: none;" id="calcBoard">
+				<div class="row row-pb-lg" id="calcBoard" style="display: none;">
 					<div class="col-md-12">
 						<div class="total-wrap">
 							<div class="row">
@@ -131,6 +131,10 @@
 										</div>
 										<div class="grand-total">
 											<p><span><strong>Total:</strong></span> <span id="totalCart"></span></p>
+										</br>
+											<div class="col-sm-3">
+												<input type="button" value="Proceed to checkout" style="width: 200px;align-items: center;justify-content: center;margin-left: 50px;" class="btn btn-primary" onclick="handleProceedButton()">
+											</div>
 										</div>
 									</div>
 								</div>

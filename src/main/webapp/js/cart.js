@@ -16,6 +16,7 @@ function getItems() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", `cart?cart=${cartItems}&quantity=${quantities}`, true);
 
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -46,7 +47,7 @@ function renderItems(items) {
         $("#itemBoard").show();
         items.forEach(item => {
             let productHTML = `
-                <div class="product-cart d-flex" item-id="${item.itemId}">
+                <div class="product-cart d-flex" product-id="${item.productId}"  product_info_id="${item.productInfoId}">
                     <div class="one-forth">
                         <div class="product-img" style="background-image: url(${item.img});">
                         </div>
@@ -72,7 +73,7 @@ function renderItems(items) {
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <button style="border:none;cursor: pointer;" onclick="removeItem(${item.itemId})">
+                            <button style="border:none;cursor: pointer;" onclick="removeItem(${item.productId} , ${item.productInfoId})">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </div>
@@ -89,9 +90,12 @@ function renderItems(items) {
     }
 }
 
-function removeItem(itemId) {
-    let itemElement = document.querySelector(`.product-cart[item-id="${itemId}"]`);
-    if (itemElement) {
+function removeItem(productId , productInfoId) {
+
+    let logged = localStorage.getItem("loggedInUserId");
+    let itemElement = document.querySelector(`.product-cart[product-id="${productId}"][product_info_id="${productInfoId}"]`);
+
+        if (itemElement) {
         let itemPrice = parseInt(itemElement.querySelector('.price[id="total"]').textContent.replace("$" , ""));
         subTotal -= itemPrice;
         itemElement.remove();
@@ -100,10 +104,30 @@ function removeItem(itemId) {
         updateCartCount();
     }
 
-    // let xhr = new XMLHttpRequest();
-    // xhr.open("POST", "cart/remove", true);
-    // xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    // xhr.send(JSON.stringify({ id: itemId }));
+    let cartLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
+    cartLocalStorage = cartLocalStorage.filter(item => 
+        !(item.product_id === productId && item.product_info_id === productInfoId)
+    );
+    localStorage.setItem("cart", JSON.stringify(cartLocalStorage));    
+    console.log("Number cart in local storage:", cartLocalStorage);
+    
+    
+    if(logged != null)
+    {
+        $.ajax({
+            url: '/project/removeItem',
+            type: 'POST',
+            async: false,
+            data: {
+                userId: logged,
+                product_id: productId,
+                product_info_id: productInfoId
+            },
+            error: function() {
+                console.log("Error in ajax");
+            }
+        });
+    }
 }
 
 function updateItem(itemId)
@@ -187,6 +211,31 @@ function applyCoupon()
     }
     setContent();
 }
+
+function handleProceedButton()
+{
+    let logged = localStorage.getItem("loggedInUserId");
+    // if(logged != null)
+    // {
+    //     $.ajax({
+    //         url: '/project/placeOrder',
+    //         type: 'POST',
+    //         async: false,
+    //         data: {
+    //             userId: logged
+    //         },
+    //         error: function() {
+    //             console.log("Error in ajax");
+    //         }
+    //     });
+    // }
+    if(logged != null)
+        window.location.href = '/project/checkout.jsp';
+    else
+        window.location.href = '/project/login.jsp';
+
+}
+
 
 function showError(str, message) {
     let emailInput = document.getElementById(str);

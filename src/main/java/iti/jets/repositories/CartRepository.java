@@ -1,13 +1,19 @@
 package iti.jets.repositories;
 
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
+import iti.jets.model.entities.Order;
+import iti.jets.model.entities.OrderItem;
+import iti.jets.model.entities.ProductImg;
 import iti.jets.model.entities.ProductInfo;
 import iti.jets.model.entities.ShoppingCart;
 import iti.jets.model.entities.User;
+import iti.jets.model.entities.UserAddress;
 import jakarta.jws.soap.SOAPBinding.Use;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -70,7 +76,8 @@ public class CartRepository {
         EntityTransaction transaction = em.getTransaction();
         try {
             transaction.begin();
-    
+            System.out.println("userId in update quantity repo:" + userId);
+            System.out.println("productInfoId in update quantity repo:" + productInfoId);
             Query query = em.createQuery(
                 "select sh from ShoppingCart sh where sh.user.userId = :userId and sh.productInfo.productInfoId = :productInfoId"
             );
@@ -91,5 +98,150 @@ public class CartRepository {
             e.printStackTrace();
         }
     }
+
+    public static void removeItem(String userId , String productId , String productInfoId , EntityManager em)
+    {   
+
+        System.out.println("I am in the remove Cart repo");
+        EntityTransaction transaction = em.getTransaction();
+
+        try
+        {
+            transaction.begin();
+            Query query = em.createQuery(
+                "delete from ShoppingCart sh where sh.user.userId = :userId and sh.productInfo.productInfoId = :productInfoId"
+            );
+
+            query.setParameter("userId", Integer.valueOf(userId));
+            query.setParameter("productInfoId", Integer.valueOf(productInfoId));
+
+
+            int deletedCount = query.executeUpdate();
+            System.out.println("num of items: " + deletedCount);
+
+            transaction.commit();
+        } 
+        catch (Exception e) 
+        {
+            if (transaction.isActive()) 
+            {
+                transaction.rollback(); 
+            }
+        }
+            
+    }
+
+    public static int placeOrder(String userId, String totalPayment ,EntityManager em) 
+    {
+        EntityTransaction transaction = em.getTransaction();
+
+        try {
+    
+            User user = UserRepository.findUserById(userId, em);
+            System.out.println("get User");
+            if(user.getCreditLimit().intValue() < Integer.parseInt(totalPayment))
+            {
+                
+                return -1;
+            }
+            else
+            {
+                transaction.begin();
+
+                Order order = new Order();
+                order.setUser(user);
+                // order.setAddresses(user.getAddresses().stream().filter(a -> a.getIsDefault()).findFirst());
+
+                user.getAddresses().stream()
+                .filter(UserAddress::getIsDefault)
+                .findFirst()
+                .ifPresent(order::setUserAddress);
+                
+                // order.setOrderStatus();
+                order.setTotalAmount(BigDecimal.valueOf(Double.valueOf(totalPayment)));
+                order.setCreatedAt(Timestamp.from(Instant.now()));
+                if(user.getOrders() == null)
+                {
+                    user.setOrders(new ArrayList<Order>());
+                    user.getOrders().add(order);                    
+                }
+                else
+                {
+                    user.getOrders().add(order);        
+                }
+
+                user.setCreditLimit(BigDecimal.valueOf(user.getCreditLimit().intValue() - Integer.parseInt(totalPayment)));
+                em.persist(order);
+                em.merge(user);
+                System.out.println("set Order");
+
+                transaction.commit();                 
+                 try 
+                {
+                    System.out.println("1---------");
+                    transaction.begin();
+                    System.out.println("2---------");
+                    Query query = em.createQuery("select sh from ShoppingCart sh where sh.user.userId = :userId");
+                    query.setParameter("userId", userId);
+                    List<ShoppingCart> shoppingCartList = query.getResultList();
+                    System.out.println("3---------");
+                    transaction.commit();
+                    System.out.println("4---------");
+
+
+                    System.out.println("5---------");
+
+                    for (ShoppingCart cart : shoppingCartList) 
+                    {
+                        System.out.println("6---------");
+                        ProductInfo productInfo= ProductRepository.getProductInfoById(cart.getProductInfo().getProductInfoId(), em);
+                        productInfo.setQuantity(productInfo.getQuantity() - cart.getQuantity());
+
+                        transaction.begin();
+                        OrderItem orderItem = new OrderItem();
+                        orderItem.setOrder(order);
+                        orderItem.setProductInfo(productInfo);
+                        orderItem.setPriceAtPurchase(BigDecimal.valueOf(Double.valueOf(totalPayment)));
+                        orderItem.setQuantity(cart.getQuantity());
+                        em.persist(orderItem);
+                        transaction.commit();
+
+                    }
+                    System.out.println("7---------");
+
+                    System.out.println("set Order Item");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+            }
+            
+            removeAllItems(userId, em);
+            System.out.println("remove Item");
+        } 
+        catch (Exception e) 
+        {
+            if (em.getTransaction().isActive()) 
+            {
+                em.getTransaction().rollback();
+            }
+        }
+        return 1;
+
+    }
+    
+    public static void removeAllItems(String userId , EntityManager em)
+    {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        Query query = em.createQuery("delete from ShoppingCart sh where sh.user.userId = :userId");
+        query.setParameter("userId", userId);
+        
+        int rowsDeleted = query.executeUpdate();
+        System.out.println("deleted items" + rowsDeleted);
+        transaction.commit();
+    }
+
     
 }

@@ -61,4 +61,26 @@ public class UserRepository {
 
     }
 
+    public static User findUserById(String userId , EntityManager em)
+    {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        try 
+        {
+
+            Query query = em.createQuery("from User u where u.userId= :userId");
+            query.setParameter("userId", userId);
+            User user = (User) query.getSingleResult();
+
+            transaction.commit();
+            return user;
+        } catch (NoResultException ex) {
+            transaction.rollback();
+            return null;
+        }
+
+
+
+    }
+
 }
