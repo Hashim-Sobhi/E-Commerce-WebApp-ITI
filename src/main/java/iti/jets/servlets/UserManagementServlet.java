@@ -1,8 +1,10 @@
 package iti.jets.servlets;
 
 import iti.jets.Managers.DatabaseManager;
-import iti.jets.model.dtos.ProductManageDTO;
-import iti.jets.services.ProductService;
+import iti.jets.model.dtos.UserManageDTO;
+import iti.jets.model.entities.Order;
+import iti.jets.services.OrderService;
+import iti.jets.services.UserService;
 import jakarta.persistence.EntityManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,19 +15,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-//@WebServlet("/admin/products")
-public class ProductManagementServlet extends HttpServlet {
-    @Override
+
+public class UserManagementServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         EntityManager em = DatabaseManager.getEntityManager();
         try {
-            List<ProductManageDTO> productList = ProductService.getAllProductManageDTOs(em);
-            if (productList == null || productList.isEmpty()) {
-                System.out.println("No products found.");
+            List<UserManageDTO> userList = UserService.getAllUserManageDTOs(em);
+            if (userList == null || userList.isEmpty()) {
+                System.out.println("No Users found.");
             }
 
-            req.setAttribute("products", productList);
-            req.getRequestDispatcher("adminProduct.jsp").forward(req, resp);
+            List<Order> orderList = OrderService.getAllOrders(em);
+            req.setAttribute("orders", orderList);
+            req.setAttribute("users", userList);
+            req.getRequestDispatcher("adminUser.jsp").forward(req, resp);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -37,4 +40,5 @@ public class ProductManagementServlet extends HttpServlet {
     public void destroy() {
         DatabaseManager.close();
     }
+
 }

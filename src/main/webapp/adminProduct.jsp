@@ -1,6 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="iti.jets.model.dtos.ProductManageDTO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <html>
 <head>
@@ -49,10 +50,12 @@
         <div class="card p-4">
             <h2 class="text-center">Product Management</h2>
 
+            <a href="addProductForm.jsp?mode=add" class="btn btn-success">Add Product</a>
+
             <table class="table table-bordered">
                 <thead class="thead-dark"></thead>
                 <tr>
-                    <th>ID</th> <th>Name</th> <th>Description</th> <th>Price</th> <th>Quantity</th>
+                    <th>ID</th> <th>Name</th> <th>Price</th> <th>Quantity</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -66,6 +69,18 @@
                     <td><%= p.getName() %></td>
                     <td><%= p.getPrice() %></td>
                     <td><%= p.getQuantity() %></td>
+                    <td>
+                        <form action="editproduct" method="get" style="display:inline;">
+                            <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
+                            <button type="submit" class = "">Edit</button>
+                        </form>
+
+                        <form action="deleteproduct" method="post" style="display:inline;"
+                              onsubmit="return confirm('Are you sure you want to delete this product?');">
+                            <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <%
                         }

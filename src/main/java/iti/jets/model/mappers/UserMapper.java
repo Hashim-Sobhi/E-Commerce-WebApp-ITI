@@ -7,12 +7,23 @@ import java.util.ArrayList;
 import iti.jets.model.dtos.OrderDTO;
 import iti.jets.model.dtos.UserAddressDTO;
 import iti.jets.model.dtos.UserDTO;
+import iti.jets.model.dtos.UserManageDTO;
 import iti.jets.model.dtos.UserProfileDataDTO;
 import iti.jets.model.entities.User;
 import iti.jets.model.entities.UserAddress;
 
 public class UserMapper {
 
+    public static UserManageDTO toUserManageDTO(User user) {
+        return new UserManageDTO(
+          user.getUserId(),
+          user.getName(),
+          user.getPhoneNumber(),
+          user.getEmail(),
+          user.getJob(),
+          user.getBirthdate()
+        );
+    }
     public static User toEntity(UserDTO userDto) {
         System.out.println("I am in User Mapper");
 

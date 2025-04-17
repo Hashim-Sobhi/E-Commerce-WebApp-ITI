@@ -4,9 +4,15 @@ import iti.jets.model.dtos.ProductDetailDTO;
 import iti.jets.model.dtos.ProductInfoDTO;
 import iti.jets.model.dtos.ProductManageDTO;
 import iti.jets.model.dtos.ProductSummaryDTO;
+import iti.jets.model.dtos.ProductCreateDTO;
 import iti.jets.model.entities.Product;
 import iti.jets.model.entities.ProductImg;
 import iti.jets.model.entities.ProductInfo;
+
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductMapper {
 
@@ -58,6 +64,51 @@ public class ProductMapper {
         });
         return dto;
 
+    }
+
+    public static Product fromProductCreateDTO(ProductCreateDTO dto, List<String> imageFileNames) {
+        Timestamp now = Timestamp.from(Instant.now());
+
+        // Create Product entity
+        Product product = new Product(
+                dto.getName(),
+                dto.getDescription(),
+                dto.getCategory(),
+                dto.getGender(),
+                dto.getPrice(),
+                dto.getBrand(),
+                now,
+                dto.getSold() != null ? dto.getSold() : 0,
+                now
+        );
+
+        // Create ProductInfo entries from variations list
+        List<ProductInfo> productInfos = new ArrayList<>();
+        if (dto.getVariations() != null && !dto.getVariations().isEmpty()) {
+            for (iti.jets.model.dtos.ProductVariationDTO varDTO : dto.getVariations()) {
+                ProductInfo info = new ProductInfo();
+                info.setProduct(product);
+                // Using size value from ShoeSize (assume getValue() returns an integer)
+                info.setSize(varDTO.getSize().getValue());
+                info.setColor(varDTO.getColour());
+                info.setQuantity(varDTO.getQuantity());
+                productInfos.add(info);
+            }
+        }
+        product.setProductInfos(productInfos);
+
+        // Create ProductImg entries
+        List<ProductImg> productImgs = new ArrayList<>();
+        for (int i = 0; i < imageFileNames.size(); i++) {
+            ProductImg img = new ProductImg();
+            img.setProduct(product);
+            img.setImg(imageFileNames.get(i));
+            img.setIsDefault(i == 0); // First image is default
+            productImgs.add(img);
+        }
+        product.setProductImgs(productImgs);
+
+        return product;
     }
 }
 

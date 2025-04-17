@@ -16,7 +16,7 @@ public class ProductImg {
     private Product product;
 
     @Column(name = "img", nullable = false, length = 100)
-    private String img;
+    private String img; // path
 
     @Column(name = "is_default", nullable = false)
     private Boolean isDefault;

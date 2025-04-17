@@ -3,14 +3,17 @@ package iti.jets.repositories;
 
 import iti.jets.model.dtos.ProductSummaryDTO;
 import iti.jets.model.entities.Product;
+import iti.jets.model.entities.ProductImg;
 import iti.jets.model.entities.ProductInfo;
 import iti.jets.model.enums.Gender;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.EntityResult;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
+import org.hibernate.engine.spi.EntityUniqueKey;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +21,7 @@ import java.util.List;
 
 
 public class ProductRepository {
+
     public static List<Product> getFilteredProducts(
             String[] brands, String[] sizes, String[] colors,
             String orderBy, String category, String page,
@@ -139,6 +143,7 @@ public class ProductRepository {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Product> cq = cb.createQuery(Product.class);
         Root<Product> productRoot = cq.from(Product.class);
+        productRoot.fetch("productInfos", JoinType.LEFT);
         cq.where(cb.equal(productRoot.get("product_id"), product_id));
         cq.select(productRoot);
         try{
@@ -172,4 +177,47 @@ public class ProductRepository {
         return (ProductInfo)query.getSingleResult();
 
     }
+
+    public static void addNewProduct(Product product, EntityManager em) {
+        em.getTransaction().begin();
+
+        if (product.getProductInfos() != null) {
+            for (ProductInfo info : product.getProductInfos()) {
+                info.setProduct(product);
+            }
+        }
+
+        if (product.getProductImgs() != null) {
+            for (ProductImg img : product.getProductImgs()) {
+                img.setProduct(product);
+            }
+        }
+        em.persist(product);
+        em.getTransaction().commit();
+    }
+    public static void deleteProductById(Integer productId, EntityManager em) {
+        em.getTransaction().begin();
+        Product product = em.find(Product.class, productId);
+        if (product != null) {
+            em.remove(product);
+        }
+        em.getTransaction().commit();
+    }
+    public static void updateProduct(Product product, EntityManager em) {
+        em.getTransaction().begin();
+        em.merge(product);
+        em.getTransaction().commit();
+    }
+    public static void deleteProductImgById(Integer imgId, EntityManager em) {
+        em.getTransaction().begin();
+
+        ProductImg img = em.find(ProductImg.class, imgId);
+        if (img != null) {
+            em.remove(img);
+        }
+
+        em.getTransaction().commit();
+    }
+
+
 }

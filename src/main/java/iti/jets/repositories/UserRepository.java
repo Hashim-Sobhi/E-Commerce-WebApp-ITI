@@ -2,16 +2,15 @@ package iti.jets.repositories;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.List;
 
 
 import com.mysql.cj.util.DnsSrv.SrvRecord;
 
 import iti.jets.model.dtos.UserDTO;
+import iti.jets.model.entities.Product;
 import iti.jets.model.entities.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.Query;
+import jakarta.persistence.*;
 
 public class UserRepository {
     public static int addNewUser(User newUser , EntityManager em)
@@ -57,8 +56,10 @@ public class UserRepository {
         {
             return true;
         }
-
-
+    }
+    public static List<User> getAllUsers(EntityManager em) {
+        TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
+        return query.getResultList();
     }
 
     public static User findUserById(String userId , EntityManager em)
