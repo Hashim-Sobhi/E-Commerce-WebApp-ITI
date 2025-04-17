@@ -32,7 +32,6 @@ import java.util.List;
         maxRequestSize = 1024 * 1024 * 20)  // 20MB
 public class EditProductServlet extends HttpServlet {
 
-    // GET: Load existing product data and forward to the edit form JSP
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -44,7 +43,6 @@ public class EditProductServlet extends HttpServlet {
         int productId = Integer.parseInt(idParam);
         EntityManager em = DatabaseManager.getEntityManager();
         try {
-            // Retrieve product details as a DTO (assumed to contain fields for basic info and at least one variation)
             Product productDetail = ProductService.getProductById(productId, em);
             if (productDetail == null) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found");
@@ -54,7 +52,6 @@ public class EditProductServlet extends HttpServlet {
         } finally {
             em.close();
         }
-        // Forward to the JSP form for editing
         request.getRequestDispatcher("editProductForm.jsp").forward(request, response);
     }
 
@@ -169,7 +166,6 @@ public class EditProductServlet extends HttpServlet {
 
             ProductService.updateProduct(product, em);
 
-            // Redirect back to the product management page (using the servlet mapping)
             response.sendRedirect("adminproduct");
         } catch(Exception ex) {
             em.getTransaction().rollback();
