@@ -195,5 +195,17 @@ public class ProductRepository {
         em.getTransaction().commit();
     }
 
+    public static List<Product> findByNameContaining(String search, EntityManager em) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Product> cq = cb.createQuery(Product.class);
+        Root<Product> root = cq.from(Product.class);
+        // case‐insensitive search
+        cq.select(root)
+                .where(cb.like(cb.lower(root.get("name")), "%" + search.toLowerCase() + "%"));
+        return em.createQuery(cq).getResultList();
+    }
+
+
+
 
 }

@@ -71,5 +71,15 @@ public class ProductService {
         ProductRepository.deleteProductImgById(imgId, em);
     }
 
+    public static List<ProductManageDTO> searchProductsByName(String name, EntityManager em) {
+        List<Product> list = ProductRepository.findByNameContaining(name, em);
+        List<ProductManageDTO> dtos = new ArrayList<>();
+        for (Product p : list) {
+            dtos.add(ProductMapper.toProductManageDTO(p));
+        }
+        return dtos;
+    }
+
+
 
 }
