@@ -48,44 +48,43 @@
             <h2 class="text-center">Product Management</h2>
 
             <a href="addProductForm.jsp?mode=add" class="btn btn-success">Add Product</a>
-            <div class = "table-responsive">
-                <table class="table table-bordered">
-                    <thead class="thead-dark"></thead>
-                    <tr>
-                        <th>ID</th> <th>Name</th> <th>Price</th> <th>Quantity</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%
-                        List<ProductManageDTO> products = (List<ProductManageDTO>) request.getAttribute("products");
-                        if (products != null) {
-                            for (ProductManageDTO p : products) {
-                    %>
-                    <tr>
-                        <td><%= p.getProduct_id() %></td>
-                        <td><%= p.getName() %></td>
-                        <td><%= p.getPrice() %></td>
-                        <td><%= p.getQuantity() %></td>
-                        <td>
-                            <form action="editproduct" method="get" style="display:inline;">
-                                <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
-                                <button type="submit" class = "btn btn-sm btn-primary">Edit</button>
-                            </form>
 
-                            <form action="deleteproduct" method="post" style="display:inline;"
-                                onsubmit="return confirm('Are you sure you want to delete this product?');">
-                                <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
-                                <button type="submit" class = "btn btn-sm btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <%
-                            }
+            <table class="table table-bordered">
+                <thead class="thead-dark"></thead>
+                <tr>
+                    <th>ID</th> <th>Name</th> <th>Price</th> <th>Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                    List<ProductManageDTO> products = (List<ProductManageDTO>) request.getAttribute("products");
+                    if (products != null) {
+                        for (ProductManageDTO p : products) {
+                %>
+                <tr>
+                    <td><%= p.getProduct_id() %></td>
+                    <td><%= p.getName() %></td>
+                    <td><%= p.getPrice() %></td>
+                    <td><%= p.getQuantity() %></td>
+                    <td>
+                        <form action="editproduct" method="get" style="display:inline;">
+                            <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
+                            <button type="submit" class = "">Edit</button>
+                        </form>
+
+                        <form action="deleteproduct" method="post" style="display:inline;"
+                              onsubmit="return confirm('Are you sure you want to delete this product?');">
+                            <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <%
                         }
-                    %>
-                    </tbody>
-                </table>
-            </div>
+                    }
+                %>
+                </tbody>
+            </table>
         </div>
     </div>
 
