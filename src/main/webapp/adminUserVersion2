@@ -1,0 +1,148 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="iti.jets.model.dtos.UserManageDTO" %>
+<%@ page import="iti.jets.model.entities.Order" %>
+<%@ page import="java.util.List" %>
+<html>
+<head>
+    <title>Users</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Ion Icon Fonts-->
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="css/flexslider.css">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <!-- Flaticons  -->
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="colorlib-loader"></div>
+<div id="page">
+
+    <div class="container">
+        <div class="card p-4">
+            <h2 class="text-center">Users Review</h2>
+
+            <table class="table table-bordered">
+                <thead class="thead-dark"></thead>
+                <tr>
+                    <th>ID</th> <th>Name</th> <th>Phone Number</th> <th>Email</th> <th>Job</th> <th>BirthDate</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                    List<UserManageDTO> users = (List<UserManageDTO>) request.getAttribute("users");
+                    if (users != null) {
+                        for (UserManageDTO u : users) {
+                %>
+                <tr>
+                    <td><%= u.getId() %></td>
+                    <td><%= u.getName() %></td>
+                    <td><%= u.getPhoneNumber() %></td>
+                    <td><%= u.getEmail() %></td>
+                    <td><%= u.getJob() %></td>
+                    <td><%= u.getBirthdate() %></td>
+                </tr>
+                <%
+                        }
+                    }
+                %>
+                </tbody>
+            </table>
+
+            <!--ORDER TABLE -->
+
+            <h2 class="text-center">Orders Review</h2>
+
+                <table class="table table-bordered">
+                    <thead class="thead-dark"></thead>
+                        <tr>
+                            <th>Order_ID</th> <th>User_ID</th> <th>Email</th> <th>Phone Number</th> <th>Total Amount</th> <th>Ordered At</th> <th>Order Status</th> <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var = "order" items = "${orders}">
+                            <tr>
+                                <td>${order.orderId}</td>
+                                <td>${order.user.userId}</td>
+                                <td>${order.user.email}</td>
+                                <td>${order.user.phoneNumber}</td>
+                                <td>${order.totalAmount}</td>
+                                <td>${order.createdAt}</td>
+                                <td>
+                                <!-- Form for updating order status -->
+                                    <form action="UpdateOrderStatusServlet" method="post" style="margin:0; padding:0;">
+                                    <!-- Hidden field to pass order id -->
+                                        <input type="hidden" name="orderId" value="${order.orderId}" />
+                                        <select name="orderStatus" class="form-control" style="width: auto; display: inline-block;">
+                                            <c:forEach var="status" items="${orderStatuses}">
+                                                <option value="${status}"
+                                                    <c:if test="${status == order.orderStatus}">selected</c:if>>
+                                                    ${status}
+                                                </option>
+                                            </c:forEach>
+                                        </select>
+                                </td>
+                                <td>
+                                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+</div>
+<!-- jQuery -->
+<script src="js/template/jquery.min.js"></script>
+<!-- popper -->
+<script src="js/template/popper.min.js"></script>
+<!-- bootstrap 4.1 -->
+<script src="js/template/bootstrap.min.js"></script>
+<!-- jQuery easing -->
+<script src="js/template/jquery.easing.1.3.js"></script>
+<!-- Waypoints -->
+<script src="js/template/jquery.waypoints.min.js"></script>
+<!-- Flexslider -->
+<script src="js/template/jquery.flexslider-min.js"></script>
+<!-- Owl carousel -->
+<script src="js/template/owl.carousel.min.js"></script>
+<!-- Magnific Popup -->
+<script src="js/template/jquery.magnific-popup.min.js"></script>
+<script src="js/template/magnific-popup-options.js"></script>
+<!-- Date Picker -->
+<script src="js/template/bootstrap-datepicker.js"></script>
+<!-- Stellar Parallax -->
+<script src="js/template/jquery.stellar.min.js"></script>
+<!-- Main -->
+<script src="js/template/main.js"></script>
+</body>
+</html>

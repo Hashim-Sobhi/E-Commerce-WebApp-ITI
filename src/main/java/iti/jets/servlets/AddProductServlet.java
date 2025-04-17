@@ -34,7 +34,6 @@ public class AddProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EntityManager em = DatabaseManager.getEntityManager();
-        // 1. Extract fields from request
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         String categoryParam = request.getParameter("category");
@@ -50,17 +49,10 @@ public class AddProductServlet extends HttpServlet {
         int sold = soldParam != null && !soldParam.isEmpty() ? Integer.parseInt(soldParam) : 0;
 
 
-        // 2. Handle uploaded images
-
-
-
-
-
         List<String> imageFileNames = new ArrayList<>();
 
 // Directory where uploaded files will be saved
 //        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
-        // Use "images" instead of "uploads"
         String baseFolder = "images";
         String uploadPath = getServletContext().getRealPath("") + File.separator + baseFolder;
 
@@ -68,9 +60,8 @@ public class AddProductServlet extends HttpServlet {
         if (!uploadDir.exists()) uploadDir.mkdirs();
 
         for (Part part : request.getParts()) {
-            // Check if this part is a file upload and matches the 'images' field
             if (part.getName().equals("images") && part.getSubmittedFileName() != null && part.getSize() > 0) {
-                String fileName = extractFileName(part); // You can also generate a unique name here
+                String fileName = extractFileName(part);
                 String filePath = uploadPath + File.separator + fileName;
                 part.write(filePath);
 //                imageFileNames.add(fileName);
@@ -104,7 +95,6 @@ public class AddProductServlet extends HttpServlet {
             int count = variationSizes.length; // Expect all arrays are same length
             for (int i = 0; i < count; i++) {
                 iti.jets.model.dtos.ProductVariationDTO varDTO = new iti.jets.model.dtos.ProductVariationDTO();
-                // Convert string to ShoeSize:
                 ShoeSize shoeSize = ShoeSize.valueOf(variationSizes[i]);
                 varDTO.setSize(shoeSize);
                 varDTO.setColour(variationColours[i]);
@@ -114,13 +104,10 @@ public class AddProductServlet extends HttpServlet {
         }
         dto.setVariations(variations);
 
-        // 4. Convert to Product entity
         Product product = ProductMapper.fromProductCreateDTO(dto, imageFileNames);
 
-        // 5. Save to DB
         ProductService.addNewProduct(product, em);
 
-        // 6. Redirect to product management page
         response.sendRedirect("adminproduct");
     }
 
