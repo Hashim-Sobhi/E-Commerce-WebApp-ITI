@@ -36,8 +36,9 @@ public class WishlistServlet extends HttpServlet {
         if(WishlistService.addToWishlist(user_id, items, em)){
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.getWriter().write("items added");
+        }else{
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error while adding wishlist");
         }
-        resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error while adding wishlist");
     }
 
     @Override

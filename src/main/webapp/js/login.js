@@ -28,9 +28,6 @@ function handleLoginForm(event) {
         return;
     }
 
-    console.log("Email:", email);
-    console.log("Password:", password);
-
     $.ajax({
         url: '/project/loginServlet',
         type: 'POST',
@@ -78,7 +75,6 @@ function handleLoginForm(event) {
                                 items:JSON.stringify(transformedCart)
                             },
                             success: function(res) {
-                                console.log("Cart updated on server:", res);
                                 updateCartCount();
                             },
                             error: function(err) {
@@ -103,10 +99,8 @@ function handleLoginForm(event) {
                 }
                 else
                 {
-
                     let localWishListStr = localStorage.getItem('wishlist');
                     if (localWishListStr && JSON.parse(localWishListStr).length > 0) {
-                        console.log("localWishlist" + localWishListStr.length);
                         let LocalWishList = JSON.parse(localWishListStr);
 
                         $.ajax({

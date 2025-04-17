@@ -43,14 +43,14 @@ function renderWishlistItems(wishlistItems) {
             `					
             <div class="col-md-3 col-lg-3 mb-4 text-center">
                 <div class="product-entry border" wishlist-item-id="${wishlistItem.product_id}">	
-                    <a href="#" class="prod-img">
+                    <a href="product?product_id=${wishlistItem.product_id}" class="prod-img">
                         <img src=${wishlistItem.img} class="img-fluid" alt=${wishlistItem.name}>
                     </a>
                     <button class="heart-btn" onclick="removeItem(${wishlistItem.product_id})">
                         <i class="fa fa-times" style="font-size: 24px;"></i>
                     </button>
                     <div class="desc">
-                        <h2><a href="#">${wishlistItem.name}</a></h2>
+                        <h2>${wishlistItem.name}</h2>
                         <span class="price">$${wishlistItem.price}</span>
                     </div>
                 </div>

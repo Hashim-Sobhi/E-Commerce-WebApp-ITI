@@ -16,16 +16,28 @@ function bestSeller() {
 function renderProducts(products) {
     let container = document.getElementById("bestsellerview");
 
+    let wishlistItems = localStorage.getItem("wishlist") || "[]";
+    let items = JSON.parse(wishlistItems);
+
+    // Extract only the product IDs
+    let wishlistIds = items.map(item => item.productId);
+
+    container.innerHTML = '';
     products.forEach(product => {
+        // Check if this product is in the wishlist
+        let isInWishlist = wishlistIds.includes(product.product_id);
+
+        // Choose heart color
+        let heartColor = isInWishlist ? "rgb(136, 200, 188)" : "rgb(235, 232, 232)";
 
         let productHTML = `
-            <div class="col-lg-3 mb-4 text-center">
+            <div class="col-lg-4 mb-4 text-center">
                 <div class="product-entry border">
                     <a href="product?product_id=${product.product_id}" class="prod-img">
                         <img src="${product.img}" class="img-fluid" alt="${product.name}">
                     </a>
                     <button class="heart-btn" product_id="${product.product_id}" onclick="toggleWishlist(${product.product_id})">
-                        <i class="fa fa-heart" style="font-size: 24px;"></i>
+                        <i class="fa fa-heart" style="font-size: 24px; color: ${heartColor};"></i>
                     </button>
                     <div class="desc">
                         <h2>${product.name}</h2>
@@ -34,7 +46,6 @@ function renderProducts(products) {
                 </div>
             </div>
         `;
-
         container.innerHTML += productHTML;
     });
 }

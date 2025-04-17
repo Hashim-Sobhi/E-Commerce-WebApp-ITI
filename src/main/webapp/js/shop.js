@@ -107,13 +107,12 @@ function updateFilters() {
 
     // Send XHR request to get total products
     let xhr1 = new XMLHttpRequest();
-    xhr1.open("POST", "http://localhost:8080/project/shopServlet?" + params.toString(), true);
+    xhr1.open("POST", "shopServlet?" + params.toString(), true);
     xhr1.setRequestHeader("Accept", "text/plain");
     xhr1.onreadystatechange = function () {
         if (xhr1.readyState === 4 && xhr1.status === 200) {
             let totalProducts = xhr1.responseText;
-            console.log("total product: " + totalProducts);
-            renderPagination(Math.ceil(totalProducts / productsPerPage)); // Assuming 3 products per page
+            renderPagination(Math.ceil(totalProducts / productsPerPage)); // Assuming 9 products per page
         }
     };
     xhr1.send();
@@ -137,7 +136,6 @@ function updateFilters() {
             } else {
                 renderProducts(data);  // Render the products if available
             }
-            console.log(data);
         }
     };
     xhr.send();
@@ -145,8 +143,20 @@ function updateFilters() {
 
 function renderProducts(products) {
     let container = document.getElementById("product-container");
+    let wishlistItems = localStorage.getItem("wishlist") || "[]";
+    let items = JSON.parse(wishlistItems);
+
+    // Extract only the product IDs
+    let wishlistIds = items.map(item => item.productId);
+
     container.innerHTML = '';
     products.forEach(product => {
+        // Check if this product is in the wishlist
+        let isInWishlist = wishlistIds.includes(product.product_id);
+
+        // Choose heart color
+        let heartColor = isInWishlist ? "rgb(136, 200, 188)" : "rgb(235, 232, 232)";
+
         let productHTML = `
             <div class="col-lg-4 mb-4 text-center">
                 <div class="product-entry border">
@@ -154,7 +164,7 @@ function renderProducts(products) {
                         <img src="${product.img}" class="img-fluid" alt="${product.name}">
                     </a>
                     <button class="heart-btn" product_id="${product.product_id}" onclick="toggleWishlist(${product.product_id})">
-                        <i class="fa fa-heart" style="font-size: 24px;"></i>
+                        <i class="fa fa-heart" style="font-size: 24px; color: ${heartColor};"></i>
                     </button>
                     <div class="desc">
                         <h2>${product.name}</h2>
@@ -166,6 +176,7 @@ function renderProducts(products) {
         container.innerHTML += productHTML;
     });
 }
+
 
 function renderPagination(totalPages) {
     let pagination = document.querySelector('.block-27 ul');
@@ -209,12 +220,10 @@ function toggleWishlist(product_id) {
 
 
         const heartIcon = document.querySelector(`.heart-btn[product_id="${product_id}"] i`);
-        // console.log("toggle")
 
 
         // Check if the heart is currently filled 
-        console.log(heartIcon.style.color);
-        if (heartIcon.style.color == 'rgb(136, 200, 188)')
+        if (heartIcon.style.color === 'rgb(136, 200, 188)')
         {
             heartIcon.style.color = 'rgb(235, 232, 232)'; // default color
 

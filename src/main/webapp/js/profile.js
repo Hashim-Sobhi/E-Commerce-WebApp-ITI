@@ -292,6 +292,7 @@ async function logout() {
                 // Remove user ID from local storage after successful logout
                 localStorage.removeItem("loggedInUserId");
                 localStorage.removeItem("cart");
+                localStorage.removeItem("wishlist");
 
                 // Redirect to the login page
                 window.location.href = "/project/login";
