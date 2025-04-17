@@ -17,20 +17,21 @@ import java.util.List;
 public class ProductManagementServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String search = req.getParameter("search");
         EntityManager em = DatabaseManager.getEntityManager();
+        List<ProductManageDTO> products;
         try {
-            List<ProductManageDTO> productList = ProductService.getAllProductManageDTOs(em);
-            if (productList == null || productList.isEmpty()) {
-                System.out.println("No products found.");
+            if (search != null && !search.trim().isEmpty()) {
+                products = ProductService.searchProductsByName(search.trim(), em);
+            } else {
+                products = ProductService.getAllProductManageDTOs(em);
             }
-
-            req.setAttribute("products", productList);
-            req.getRequestDispatcher("adminProduct.jsp").forward(req, resp);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         } finally {
             em.close();
         }
+        req.setAttribute("products", products);
+        req.setAttribute("search", search);      // so JSP can re‑show the term
+        req.getRequestDispatcher("adminProduct.jsp").forward(req, resp);
     }
 
     @Override

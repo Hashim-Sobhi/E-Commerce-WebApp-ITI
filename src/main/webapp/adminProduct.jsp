@@ -3,6 +3,7 @@
 <%@ page import="iti.jets.model.dtos.ProductManageDTO" %>
 <%@ page import="iti.jets.model.entities.Product" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.List" %>
 <html>
 <head>
@@ -52,6 +53,15 @@
             <h2 class="text-center">Product Management</h2>
 
             <a href="addProductForm.jsp?mode=add" class="btn btn-success">Add Product</a>
+            <form action="adminproduct" method="get" class="form-inline mb-3">
+              <input type="text"
+                     name="search"
+                     class="form-control mr-2"
+                     placeholder="Search by product name"
+                     value="${fn:escapeXml(search)}"/>
+              <button type="submit" class="btn btn-primary">Search</button>
+              <a href="adminproduct" class="btn btn-secondary ml-2">Reset</a>
+            </form>
             <div class = "table-responsive">
                 <table class="table table-bordered">
                     <thead class="thead-dark"></thead>
