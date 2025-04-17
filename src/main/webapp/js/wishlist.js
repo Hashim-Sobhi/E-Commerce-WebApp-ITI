@@ -54,7 +54,7 @@ function renderWishlistItems(wishlistItems) {
                     </button>
                     <div class="desc">
                         <h2>${wishlistItem.name}</h2>
-                        <span class="price">$${wishlistItem.price}</span>
+                        <span class="price">£${wishlistItem.price}</span>
                     </div>
                 </div>
             </div>`;
@@ -82,7 +82,7 @@ function removeItem(wishlistItemId) {
     if(logged != null)
     {
         $.ajax({
-            url: '/project/removeWishlistServlet',
+            url: '/shoeshow/removeWishlistServlet',
             type: 'POST',
             async: false,
             data: {

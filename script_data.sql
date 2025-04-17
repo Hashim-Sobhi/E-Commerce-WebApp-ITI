@@ -10,30 +10,30 @@ VALUES
     (2, 'Giza', 'Mohandessin Ave.', 3, true),
     (3, 'Alexandria', 'Stanley Beach Rd.', 10, true);
 
-INSERT INTO Product (name, description, category, gender, price, brand)
+INSERT INTO Product (name, description, category, gender, price, brand, sold)
 VALUES
-	('Nike Daily Dash (Male)', 'Daily sneakers.', 'SNEAKERS', 'MALE', 2200.00, 'Nike'),
-    ('Adidas Sprint She (Female)', 'Running shoes.', 'SNEAKERS', 'FEMALE', 2500.00, 'Adidas'),
-    ('Merrel Swift She (Female)', 'Running shoes.', 'SNEAKERS', 'FEMALE', 1800.00, 'Merrel'),
-    ('Gucci Glide Femme (Female)', 'Daily sneakers.', 'SNEAKERS', 'FEMALE', 1600.00, 'Gucci'),
-    ('Sketchers Power Trainer (Male)', 'Training sneakers.', 'SNEAKERS', 'MALE', 2800.00, 'Sketchers'),
+    ('Nike Daily Dash (Male)', 'Daily sneakers.', 'SNEAKERS', 'MALE', 2200.00, 'Nike', 10),
+    ('Adidas Sprint She (Female)', 'Running shoes.', 'SNEAKERS', 'FEMALE', 2500.00, 'Adidas', 37),
+    ('Merrel Swift She (Female)', 'Running shoes.', 'SNEAKERS', 'FEMALE', 1800.00, 'Merrel', 22),
+    ('Gucci Glide Femme (Female)', 'Daily sneakers.', 'SNEAKERS', 'FEMALE', 1600.00, 'Gucci', 17),
+    ('Sketchers Power Trainer (Male)', 'Training sneakers.', 'SNEAKERS', 'MALE', 2800.00, 'Sketchers', 29),
 
-    ('Merrel Precision Trainer (Male)', 'Training sneakers.', 'SNEAKERS', 'Male', 2100.00, 'Merrel'),    
-    ('Adidas Casual Champion (Male)', 'Comfortable casual wear.', 'CASUAL', 'MALE', 3000.00, 'Adidas'),
-    ('Gucci Relax Max (Male)', 'Comfortable casual wear.', 'CASUAL', 'MALE', 1900.00, 'Gucci'),
-    ('Sketchers Sprint She II (Female)', 'Running shoes.', 'SNEAKERS', 'FEMALE', 1700.00, 'Sketchers'),
-    ('Nike Timeless Chic (Female)', 'Affordable classic formal.', 'CLASSIC', 'FEMALE', 1500.00, 'Nike'),
+    ('Merrel Precision Trainer (Male)', 'Training sneakers.', 'SNEAKERS', 'MALE', 2100.00, 'Merrel', 14),    
+    ('Adidas Casual Champion (Male)', 'Comfortable casual wear.', 'CASUAL', 'MALE', 3000.00, 'Adidas', 42),
+    ('Gucci Relax Max (Male)', 'Comfortable casual wear.', 'CASUAL', 'MALE', 1900.00, 'Gucci', 11),
+    ('Sketchers Sprint She II (Female)', 'Running shoes.', 'SNEAKERS', 'FEMALE', 1700.00, 'Sketchers', 25),
+    ('Nike Timeless Chic (Female)', 'Affordable classic formal.', 'CLASSIC', 'FEMALE', 1500.00, 'Nike', 30),
     
-	('Merrel Classic Prime (Male)', 'Affordable classic formal.', 'CLASSIC', 'MALE', 2400.00, 'Merrel'),
-    ('Gucci Elite Classic (Male)', 'Formal classic shoes.', 'CLASSIC', 'MALE', 3000.00, 'Gucci'),
-    ('Nike Casual Ace (Male)', 'Soft casual style.', 'CASUAL', 'MALE', 3200.00, 'Nike'),
-    ('Nike Formal Essential (Male)', 'Affordable classic formal.', 'CLASSIC', 'MALE', 1200.00, 'Nike'),
-    ('Sketchers Pro Cleats (Male)', 'High-performance cleats.', 'CASUAL', 'MALE', 2700.00, 'Sketchers'),
+    ('Merrel Classic Prime (Male)', 'Affordable classic formal.', 'CLASSIC', 'MALE', 2400.00, 'Merrel', 18),
+    ('Gucci Elite Classic (Male)', 'Formal classic shoes.', 'CLASSIC', 'MALE', 3000.00, 'Gucci', 38),
+    ('Nike Casual Ace (Male)', 'Soft casual style.', 'CASUAL', 'MALE', 3200.00, 'Nike', 40),
+    ('Nike Formal Essential (Male)', 'Affordable classic formal.', 'CLASSIC', 'MALE', 1200.00, 'Nike', 21),
+    ('Sketchers Pro Cleats (Male)', 'High-performance cleats.', 'CASUAL', 'MALE', 2700.00, 'Sketchers', 34),
     
-    ('Sketchers Style Glide (Male)', 'Soft casual style.', 'CASUAL', 'MALE', 2000.00, 'Sketchers'),
-    ('Nike Classic Elegance (Female)', 'Formal classic shoes.', 'CLASSIC', 'FEMALE', 2500.00, 'Nike'),
-    ('Merrel Chic Classic (Female)', 'Affordable classic formal.', 'CLASSIC', 'FEMALE', 1500.00, 'Merrel'),
-    ('Gucci Formal Luxe (Female)', 'Formal classic shoes.', 'CLASSIC', 'FEMALE', 2800.00, 'Gucci');
+    ('Sketchers Style Glide (Male)', 'Soft casual style.', 'CASUAL', 'MALE', 2000.00, 'Sketchers', 16),
+    ('Nike Classic Elegance (Female)', 'Formal classic shoes.', 'CLASSIC', 'FEMALE', 2500.00, 'Nike', 27),
+    ('Merrel Chic Classic (Female)', 'Affordable classic formal.', 'CLASSIC', 'FEMALE', 1500.00, 'Merrel', 13),
+    ('Gucci Formal Luxe (Female)', 'Formal classic shoes.', 'CLASSIC', 'FEMALE', 2800.00, 'Gucci', 32);
 
 -- Product 1 (CU-1)
 INSERT INTO ProductInfo (product_id, size, color, quantity) VALUES

@@ -30,7 +30,7 @@ function getItems()
     };
     let xhr1 = new XMLHttpRequest();
     let user_id = localStorage.getItem("loggedInUserId");
-    xhr1.open("GET", `http://localhost:8080/project/profileServlet?user_id=${user_id}`, true);
+    xhr1.open("GET", `http://localhost:8080/shoeshow/profileServlet?user_id=${user_id}`, true);
     xhr1.setRequestHeader("Accept", "application/json");
     xhr1.onreadystatechange = function() {
         if (xhr1.readyState === 4 && xhr1.status === 200) {
@@ -66,7 +66,7 @@ function renderItems(items)
             let productHTML = `
             <li>
                 <ul>
-                    <li><span>${item.quantity} x ${item.name}</span> <span>$${(item.quantity * item.price).toFixed(2)}</span></li>
+                    <li><span>${item.quantity} x ${item.name}</span> <span>£${(item.quantity * item.price).toFixed(2)}</span></li>
                 </ul>
             </li>
             `;
@@ -75,9 +75,9 @@ function renderItems(items)
         });
 
     container.innerHTML += `
-                    <li><span>Subtotal</span> <span>$${subTotal}</span></li>
-                    <li><span>Shipping</span> <span>$40.00</span></li>
-                    <li><span>Order Total</span> <span>$${subTotal+40.0}</span></li>
+                    <li><span>Subtotal</span> <span>£${subTotal}</span></li>
+                    <li><span>Shipping</span> <span>£40.00</span></li>
+                    <li><span>Order Total</span> <span>£${subTotal+40.0}</span></li>
                     `
 }
 
@@ -89,7 +89,7 @@ function handlePayNowButton()
     if(logged != null)
     {
         $.ajax({
-            url: '/project/placeOrderServlet',
+            url: '/shoeshow/placeOrderServlet',
             type: 'POST',
             async: false,
             data: {
@@ -98,7 +98,7 @@ function handlePayNowButton()
             },
             success: function() {
                 localStorage.removeItem('cart');
-                window.location.href = '/project/order-complete';
+                window.location.href = '/shoeshow/order-complete';
             },
             error: function() {
                 showWarningSweetAlert("Your purchases exceed your credit limit. Please review your payment options.")

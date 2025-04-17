@@ -119,7 +119,7 @@ function updateFilters() {
 
     // Send XHR request to get filtered products
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/project/shopServlet?" + params.toString(), true);
+    xhr.open("GET", "http://localhost:8080/shoeshow/shopServlet?" + params.toString(), true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onreadystatechange = function () {
@@ -168,7 +168,7 @@ function renderProducts(products) {
                     </button>
                     <div class="desc">
                         <h2>${product.name}</h2>
-                        <span class="price">$${product.price}</span>
+                        <span class="price">£${product.price}</span>
                     </div>
                 </div>
             </div>
@@ -235,7 +235,7 @@ function toggleWishlist(product_id) {
             if(logged != null)
             {
                 $.ajax({
-                    url: '/project/removeWishlistServlet',
+                    url: '/shoeshow/removeWishlistServlet',
                     type: 'POST',
                     async: false,
                     data: {
@@ -253,7 +253,7 @@ function toggleWishlist(product_id) {
             if(logged != null)
             {
                 $.ajax({
-                    url: '/project/wishlistServlet',
+                    url: '/shoeshow/wishlistServlet',
                     type: 'POST',
                     async: false,
                     data: {

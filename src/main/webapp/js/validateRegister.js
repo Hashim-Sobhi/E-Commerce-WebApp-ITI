@@ -56,7 +56,7 @@ function validateRegister(e) {
     {
         var found = false;
         $.ajax({
-            url: '/project/validateEmailServlet',
+            url: '/shoeshow/validateEmailServlet',
             type: 'POST',
             async:false,
             data: { email: email.value },

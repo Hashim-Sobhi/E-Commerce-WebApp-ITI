@@ -56,7 +56,7 @@ function renderItems(items) {
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <span class="price" id="price">$${item.price}</span>
+                            <span class="price" id="price">£${item.price}</span>
                         </div>
                     </div>
                     <div class="one-eight text-center">
@@ -66,7 +66,7 @@ function renderItems(items) {
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <span class="price" id="total">$${(item.quantity * item.price).toFixed(2)}</span>
+                            <span class="price" id="total">£${(item.quantity * item.price).toFixed(2)}</span>
                         </div>
                     </div>
                     <div class="one-eight text-center">
@@ -111,7 +111,7 @@ function removeItem(productId , productInfoId) {
     if(logged != null)
     {
         $.ajax({
-            url: '/project/removeItemServlet',
+            url: '/shoeshow/removeItemServlet',
             type: 'POST',
             async: false,
             data: {
@@ -155,7 +155,7 @@ function updateItem(itemId)
     let newTotal = (newQuantity * itemPrice).toFixed(2);
     subTotal += (newQuantity * itemPrice);
 
-    itemTotal.textContent = `$${newTotal}`;
+    itemTotal.textContent = `£${newTotal}`;
 
     setContent();
     // let xhr = new XMLHttpRequest();
@@ -172,12 +172,12 @@ function setContent()
     let discountValue = document.getElementById("discount");
     let totalCart = document.getElementById("totalCart");
 
-    subTotalValue.textContent = `$${subTotal}`;
-    deliveryValue.textContent = `$${delivery}`;
-    discountValue.textContent = `$${subTotal * discount}`;
+    subTotalValue.textContent = `£${subTotal}`;
+    deliveryValue.textContent = `£${delivery}`;
+    discountValue.textContent = `£${subTotal * discount}`;
 
     let v = (subTotal + delivery) - (subTotal * discount);
-    totalCart.textContent = `$${v}`;
+    totalCart.textContent = `£${v}`;
 
 }
 
@@ -217,9 +217,9 @@ function handleProceedButton()
         return;
     }
     if(logged != null)
-        window.location.href = '/project/checkout';
+        window.location.href = '/shoeshow/checkout';
     else
-        window.location.href = '/project/login';
+        window.location.href = '/shoeshow/login';
 
 }
 

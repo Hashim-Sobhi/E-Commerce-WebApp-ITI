@@ -3,7 +3,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-7 col-md-9">
-                    <div id="colorlib-logo"><a href="home">ShoeShow</a></div>
+                    <div id="colorlib-logo">
+                        <a href="home" style="display: flex; align-items: center;">
+                            <img src="images/logo.png" alt="Logo" style="height: 30px; margin-right: 8px;">
+                            ShoeShow
+                        </a>
+                    </div>
                 </div>
                 <div class="col-sm-5 col-md-3">
                     <form action="#" class="search-wrap">
@@ -40,9 +45,6 @@
                     <ul>
                         <li class="<%= "1".equals(id) ? "active has-dropdown" : "has-dropdown" %>">
                             <a href="home">Home</a>
-                            <ul class="dropdown">
-                                <li><a href="add-to-wishlist">Wishlist</a></li>
-                            </ul>
                         </li>
                         <li class="<%= "2".equals(id) ? "active" : "" %>"><a href="shop">Shop</a></li>
                         <li class="<%= "3".equals(id) ? "active" : "" %>"><a href="about">About</a></li>

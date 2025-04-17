@@ -88,11 +88,11 @@
 					</div>
 					<div class="col-sm-4">
 						<div class="product-desc">
-							<h3 id="product_name">#</h3>
+							<h3 id="product_name"></h3>
 							<p class="price">
-								<span id="product_price">$</span>
+								<span id="product_price">£</span>
 							</p>
-							<p id="product_desc">#</p>
+							<p id="product_desc"></p>
 
 							<div class="block-26 mb-4">
 								<h4>Pick color first to show available sizes</h4>

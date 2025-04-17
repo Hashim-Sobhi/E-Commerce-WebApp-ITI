@@ -2,12 +2,12 @@ let userInfo = {}
 window.onload = function() {
     if(localStorage.getItem('loggedInUserId') == null)
     {
-        window.location.href = '/project/login';
+        window.location.href = '/shoeshow/login';
     }
     let user_id = localStorage.getItem('loggedInUserId');
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", `http://localhost:8080/project/profileServlet?user_id=${user_id}`, true);
+    xhr.open("GET", `http://localhost:8080/shoeshow/profileServlet?user_id=${user_id}`, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -265,7 +265,7 @@ function checkConfirmChangesButton() {
 function confirmChanges() {
     // Add your confirmation changes logic here (e.g., save to the server or display a success message)
     $.ajax({
-        url:"http://localhost:8080/project/profileServlet",
+        url:"http://localhost:8080/shoeshow/profileServlet",
         method:"POST",
         contentType: "application/json",
         data: JSON.stringify(userInfo),
@@ -286,7 +286,7 @@ async function logout() {
         let userID = localStorage.getItem("loggedInUserId");
 
         $.ajax({
-            url: "http://localhost:8080/project/logoutServlet?user_id=" + userID,  // Send userID as a query parameter
+            url: "http://localhost:8080/shoeshow/logoutServlet?user_id=" + userID,  // Send userID as a query parameter
             method: "GET",
             success: function (data) {
                 // Remove user ID from local storage after successful logout
@@ -295,7 +295,7 @@ async function logout() {
                 localStorage.removeItem("wishlist");
 
                 // Redirect to the login page
-                window.location.href = "/project/login";
+                window.location.href = "/shoeshow/login";
             },
             error: function (xhr, status, error) {
                 showErrorSweetAlert("Logout failed!");

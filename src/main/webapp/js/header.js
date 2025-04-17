@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function fetchSuggestions(searchQuery) {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/project/searchServlet?query=" + searchQuery,
+        url: "http://localhost:8080/shoeshow/searchServlet?query=" + searchQuery,
         dataType: "json",
         success: function (result) {
             const suggestionsList = document.getElementById("suggestionsList");

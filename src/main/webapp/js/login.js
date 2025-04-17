@@ -29,7 +29,7 @@ function handleLoginForm(event) {
     }
 
     $.ajax({
-        url: '/project/loginServlet',
+        url: '/shoeshow/loginServlet',
         type: 'POST',
         async:false,
         data: {
@@ -69,7 +69,7 @@ function handleLoginForm(event) {
 
                         // Send transformed cart to backend
                         $.ajax({
-                            url: `/project/cartServlet?`,
+                            url: `/shoeshow/cartServlet?`,
                             type: 'POST',
                             data: {
                                 items:JSON.stringify(transformedCart)
@@ -104,7 +104,7 @@ function handleLoginForm(event) {
                         let LocalWishList = JSON.parse(localWishListStr);
 
                         $.ajax({
-                            url: '/project/wishlistServlet',
+                            url: '/shoeshow/wishlistServlet',
                             type: 'POST',
                             data: {
                                 items:JSON.stringify(LocalWishList)
@@ -117,7 +117,7 @@ function handleLoginForm(event) {
                     }
 
                 }
-                window.location.href="/project";
+                window.location.href="/shoeshow";
             }
             else {
                 document.getElementById("email").value = "";

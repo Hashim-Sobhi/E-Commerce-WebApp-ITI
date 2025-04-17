@@ -3,7 +3,7 @@ let selectedColor = null;
 let selectedSize = null;
 function loadProduct(product_id) {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/project/productDetailServlet?product_id=" + product_id);
+    xhr.open("GET", "http://localhost:8080/shoeshow/productDetailServlet?product_id=" + product_id);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -157,7 +157,7 @@ function addToCart() {
         if(logged != null)
         {
         $.ajax({
-            url: '/project/updateQuantityServlet',
+            url: '/shoeshow/updateQuantityServlet',
             type: 'POST',
             async: false,
             data: {
@@ -185,7 +185,7 @@ function addToCart() {
         if(logged != null)
         {
             $.ajax({
-                url: '/project/addToCartServlet',
+                url: '/shoeshow/addToCartServlet',
                 type: 'POST',
                 async: false,
                 data: {

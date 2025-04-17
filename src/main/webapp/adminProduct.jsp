@@ -76,10 +76,9 @@
                                 <button type="submit" class = "btn btn-sm btn-primary">Edit</button>
                             </form>
 
-                            <form action="deleteproduct" method="post" style="display:inline;"
-                                onsubmit="return confirm('Are you sure you want to delete this product?');">
+                            <form action="deleteproduct" method="post" class="delete-form" style="display:inline;">
                                 <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
-                                <button type="submit" class = "btn btn-sm btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -121,5 +120,6 @@
 <script src="js/template/jquery.stellar.min.js"></script>
 <!-- Main -->
 <script src="js/template/main.js"></script>
+<script src="js/adminProduct.js"></script>
 </body>
 </html>
