@@ -88,6 +88,10 @@
             </div>
         </div>
     </div>
+    <div class="text-center mt-4">
+        <a href="adminuser" class="btn btn-outline-primary">Go to User Management</a>
+    </div>
+
 
 </div>
 <!-- jQuery -->

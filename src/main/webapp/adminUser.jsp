@@ -137,6 +137,10 @@
             </div>
         </div>
     </div>
+    <div class="text-center mt-4">
+        <a href="adminproduct" class="btn btn-outline-primary">Go to Product Management</a>
+    </div>
+
 
 </div>
 
