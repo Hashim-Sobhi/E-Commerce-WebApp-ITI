@@ -38,7 +38,7 @@
     <div class="error-box">
         <h3>Login Failed</h3>
         <p>Invalid username or password.</p>
-        <a href="login.jsp">Try Again</a>
+        <a href="adminLogin.jsp">Try Again</a>
     </div>
 </body>
 </html>

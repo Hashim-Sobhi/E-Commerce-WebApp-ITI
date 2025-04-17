@@ -7,6 +7,9 @@ function getWishlistItem() {
     {
         wishListLocalStorage.forEach(item => wishlist.push(item.productId));
     }
+    if(wishlist.length === 0){
+        return;
+    }
 
     let xhr = new XMLHttpRequest();
     xhr.open("GET", `wishlistServlet?items=${encodeURIComponent(JSON.stringify(wishListLocalStorage))}`, true);

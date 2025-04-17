@@ -7,12 +7,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import iti.jets.model.entities.Order;
-import iti.jets.model.entities.OrderItem;
-import iti.jets.model.entities.ProductInfo;
-import iti.jets.model.entities.ShoppingCart;
-import iti.jets.model.entities.User;
-import iti.jets.model.entities.UserAddress;
+import iti.jets.model.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
@@ -178,7 +173,8 @@ public class CartRepository {
                     {
                         ProductInfo productInfo= ProductRepository.getProductInfoById(cart.getProductInfo().getProductInfoId(), em);
                         productInfo.setQuantity(productInfo.getQuantity() - cart.getQuantity());
-
+                        Product product = productInfo.getProduct();
+                        product.setSold(product.getSold() + cart.getQuantity());
                         transaction.begin();
                         OrderItem orderItem = new OrderItem();
                         orderItem.setOrder(order);
@@ -186,8 +182,8 @@ public class CartRepository {
                         orderItem.setPriceAtPurchase(BigDecimal.valueOf(Double.valueOf(totalPayment)));
                         orderItem.setQuantity(cart.getQuantity());
                         em.persist(orderItem);
+                        em.merge(product);
                         transaction.commit();
-
                     }
 
 

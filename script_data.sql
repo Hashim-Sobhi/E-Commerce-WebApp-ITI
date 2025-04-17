@@ -33,8 +33,7 @@ VALUES
     ('Sketchers Style Glide (Male)', 'Soft casual style.', 'CASUAL', 'MALE', 2000.00, 'Sketchers'),
     ('Nike Classic Elegance (Female)', 'Formal classic shoes.', 'CLASSIC', 'FEMALE', 2500.00, 'Nike'),
     ('Merrel Chic Classic (Female)', 'Affordable classic formal.', 'CLASSIC', 'FEMALE', 1500.00, 'Merrel'),
-    ('Gucci Formal Luxe (Female)', 'Formal classic shoes.', 'CLASSIC', 'FEMALE', 2800.00, 'Gucci'),
-    ('Merrel Timeless Class (Female)', 'Classic Formal shoes.', 'CLASSIC', 'FEMALE', 1800.00, 'Merrel');
+    ('Gucci Formal Luxe (Female)', 'Formal classic shoes.', 'CLASSIC', 'FEMALE', 2800.00, 'Gucci');
 
 -- Product 1 (CU-1)
 INSERT INTO ProductInfo (product_id, size, color, quantity) VALUES
@@ -140,10 +139,6 @@ INSERT INTO ProductInfo (product_id, size, color, quantity) VALUES
     (19, 41, 'Grey', 10),
     (19, 42, 'Blue', 8);
 
--- Product 20 (LX-10)
-INSERT INTO ProductInfo (product_id, size, color, quantity) VALUES
-    (20, 41, 'Black', 5),
-    (20, 42, 'Brown', 7);
 
 
 -- Product 1
@@ -279,9 +274,3 @@ INSERT INTO ProductImg (product_id, img, is_default) VALUES
      (19, 'images/product-19/item19-3.jpg', FALSE),
      (19, 'images/product-19/item19-4.jpg', FALSE);
 
--- Product 20
-INSERT INTO ProductImg (product_id, img, is_default) VALUES
-     (20, 'images/product-20/item20-1.jpg', TRUE),
-     (20, 'images/product-20/item20-2.jpg', FALSE),
-     (20, 'images/product-20/item20-3.jpg', FALSE),
-     (20, 'images/product-20/item20-4.jpg', FALSE);
