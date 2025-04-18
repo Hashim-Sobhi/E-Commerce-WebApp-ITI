@@ -222,7 +222,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Admin Area</web-resource-name>
-            <url-pattern>/admindashdoard</url-pattern>
+            <url-pattern>/admindashboard</url-pattern>
             <url-pattern>/adminuser</url-pattern>
             <url-pattern>/adminproduct</url-pattern>
             <url-pattern>/adminorder</url-pattern>
