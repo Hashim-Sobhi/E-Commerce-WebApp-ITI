@@ -94,7 +94,8 @@ function removeItem(productId , productInfoId) {
     let itemElement = document.querySelector(`.product-cart[product-id="${productId}"][product_info_id="${productInfoId}"]`);
 
         if (itemElement) {
-        let itemPrice = parseInt(itemElement.querySelector('.price[id="total"]').textContent.replace("$" , ""));
+        let itemPrice = parseInt(itemElement.querySelector('.price[id="total"]').textContent.replace("£" , ""));
+
         subTotal -= itemPrice;
         itemElement.remove();
         setContent();
@@ -145,13 +146,11 @@ function updateItem(itemId)
             itemQuantity.value = 1;
         }
 
-        subTotal -= parseInt(itemTotal.textContent.replace("$" ,  ""));
+        subTotal -= parseInt(itemTotal.textContent.replace("£" ,  ""));
     }
-
-    let itemPrice = itemElement.querySelector('.price[id="price"]').textContent.replace("$" , "");
+    
+    let itemPrice = itemElement.querySelector('.price[id="price"]').textContent.replace("£" , "");
     itemPrice = parseInt(itemPrice)
-
-
     let newTotal = (newQuantity * itemPrice).toFixed(2);
     subTotal += (newQuantity * itemPrice);
 
