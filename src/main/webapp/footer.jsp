@@ -30,7 +30,7 @@
                 <p>
                 <ul class="colorlib-footer-links">
                     <li><a href="about">About us</a></li>
-                    <li><a href="profile">Delivery Information</a></li>i>
+                    <li><a href="profile">Delivery Information</a></li>
                     <li><a href="profile">Order Tracking</a></li>
                 </ul>
                 </p>

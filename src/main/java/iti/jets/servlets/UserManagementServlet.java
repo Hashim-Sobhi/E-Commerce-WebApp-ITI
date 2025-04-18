@@ -31,7 +31,7 @@ public class UserManagementServlet extends HttpServlet {
             req.setAttribute("orders", orderList);
             req.setAttribute("users", userList);
             req.setAttribute("orderStatuses", OrderStatus.values());
-            req.getRequestDispatcher("adminUser.jsp").forward(req, resp);
+            req.getRequestDispatcher("adminDashBoard.jsp").forward(req, resp);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {

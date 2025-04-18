@@ -146,3 +146,38 @@
 <script src="js/template/main.js"></script>
 </body>
 </html>
+
+
+
+
+<tr>
+    <div class="row row-pb-lg">
+        <div class="col-md-12">
+            <div class="product-name d-flex">
+                <div class="one-eight text-center">
+                    <span>ID</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Name</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Phone Number</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Email</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Jon</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Birth Date</span>
+                </div>
+            </div>
+            
+            <!-- items -->
+            <div id="UserView">
+                
+            </div>
+        </div>
+    </div>
+</tr>

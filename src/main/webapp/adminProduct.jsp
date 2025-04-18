@@ -46,67 +46,205 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <nav class="colorlib-nav" role="navigation">
+        <div class="top-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-7 col-md-9">
+                        <div id="colorlib-logo">
+                            <a href="home" style="display: flex; align-items: center;">
+                                <img src="images/logo.png" alt="Logo" style="height: 30px; margin-right: 8px;">
+                                ShoeShow
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-5 col-md-3">
+                        <form action="#" class="search-wrap">
+                            <div class="form-group">
+                                <input id="searchInput" type="search" class="form-control search" placeholder="Search">
+                                <button class="btn btn-primary submit-search text-center" type="submit">
+                                    <i class="icon-search"></i>
+                                </button>
+                            </div>
+                            <ul id="suggestionsList"></ul> 
+                        </form>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="sale">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 offset-sm-2 text-center">
+                        <div class="row">
+                            <div class="owl-carousel2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+<!--Body-->
+
 <div class="colorlib-loader"></div>
-<div id="page">
-    <div class="container">
-        <div class="card p-4">
-            <h2 class="text-center">Product Management</h2>
 
-            <a href="addProductForm.jsp?mode=add" class="btn btn-success">Add Product</a>
-            <form action="adminproduct" method="get" class="form-inline mb-3">
-              <input type="text"
-                     name="search"
-                     class="form-control mr-2"
-                     placeholder="Search by product name"
-                     value="${fn:escapeXml(search)}"/>
-              <button type="submit" class="btn btn-primary">Search</button>
-              <a href="adminproduct" class="btn btn-secondary ml-2">Reset</a>
-            </form>
-            <div class = "table-responsive">
-                <table class="table table-bordered">
-                    <thead class="thead-dark"></thead>
-                    <tr>
-                        <th>ID</th> <th>Name</th> <th>Price</th> <th>Quantity</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%
-                        List<ProductManageDTO> products = (List<ProductManageDTO>) request.getAttribute("products");
-                        if (products != null) {
-                            for (ProductManageDTO p : products) {
-                    %>
-                    <tr>
-                        <td><%= p.getProduct_id() %></td>
-                        <td><%= p.getName() %></td>
-                        <td><%= p.getPrice() %></td>
-                        <td><%= p.getQuantity() %></td>
-                        <td>
-                            <form action="editproduct" method="get" style="display:inline;">
-                                <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
-                                <button type="submit" class = "btn btn-sm btn-primary">Edit</button>
-                            </form>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card p-4">
+                    <h2 class="text-center mb-4">Product Management</h2>       
 
-                            <form action="deleteproduct" method="post" class="delete-form" style="display:inline;">
-                                <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <%
-                            }
-                        }
-                    %>
-                    </tbody>
-                </table>
+                    <form action="adminproduct" method="get" class="form-inline mb-3">
+                    <input type="text"
+                            name="search"
+                            class="form-control mr-2"
+                            placeholder="Search by product name"
+                            value="${fn:escapeXml(search)}"/>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <a href="adminproduct" class="btn btn-secondary ml-2">Reset</a>
+                    <a href="addProductForm.jsp?mode=add" style="margin-left:580px ;width:100px; height:40px;color:white;background-color:rgb(136, 200, 188);border-radius: 5px;text-align: center;padding-top: 6px;">Add Product</a>
+                    </form>
+
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <div class="product-name d-flex">
+                                        <div style="color:#000;font-weight: 400;font-size: 15px;padding-left: 20px;">
+                                            <span>ID</span>
+                                        </div>
+                                        <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 220px;">
+                                            <span>Name</span>
+                                        </div>
+
+                                        <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 250px;">
+                                            <span>Price</span>
+                                        </div>
+                                        <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 80px;">
+                                            <span>Quantity</span>
+                                        </div>
+                                        <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 150px;">
+                                            <span>Action</span>
+                                        </div>  
+                                    </div> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%
+                                    List<ProductManageDTO> products = (List<ProductManageDTO>) request.getAttribute("products");
+                                    if (products != null) {
+                                        for (ProductManageDTO p : products) {
+                                %>
+                                <tr>
+
+                                    <td><div class="one-eight text-center">
+                                        <span><%= p.getProduct_id() %></span>
+                                    </div></td>
+
+                                    <td><div class="one-eight text-center">
+                                        <span><%= p.getName() %></span>
+                                    </div></td>
+
+                                    <td><div class="one-eight text-center">
+                                        <span><%= p.getPrice() %></span>
+                                    </div></td>
+
+                                    <td><div class="one-eight text-center">
+                                        <span><%= p.getQuantity() %></span>
+                                    </div></td>
+
+                                    <td>
+                                        <form action="editproduct" method="get" style="display:inline;">
+                                            <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
+                                            <button type="submit" class = "btn btn-sm btn-primary">Edit</button>
+                                        </form>
+            
+                                        <form action="deleteproduct" method="post" class="delete-form" style="display:inline;">
+                                            <input type="hidden" name="id" value="<%= p.getProduct_id() %>"/>
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <%
+                                        }
+                                    }
+                                %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="text-center mt-4">
-        <a href="adminuser" class="btn btn-outline-primary">Go to User Management</a>
+        <a href="adminproduct" class="btn btn-outline-primary">Go to Product Management</a>
+    </div>
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
     </div>
 
+<footer id="colorlib-footer" role="contentinfo">
+    <div class="container">
+        <div class="row row-pb-md">
+            <div class="col footer-col colorlib-widget">
+                <h4>About ShoeShow</h4>
+                <p> we believe every step tells a story. 
+                    That's why we bring you a curated collection of high-quality, stylish, and comfortable
+                    footwear for every occasion, from everyday wear to special moments.</p>
+                <p>
+                <ul class="colorlib-social-icons">
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                </ul>
+                </p>
+            </div>
+            <div class="col footer-col colorlib-widget">
+                <h4>Customer Care</h4>
+                <p>
+                <ul class="colorlib-footer-links">
+                    <li><a href="contact">Contact</a></li>
+                    <li><a href="add-to-wishlist">Wishlist</a></li>
+                    <li><a href="contact">Site maps</a></li>
+                </ul>
+                </p>
+            </div>
+            <div class="col footer-col colorlib-widget">
+                <h4>Information</h4>
+                <p>
+                <ul class="colorlib-footer-links">
+                    <li><a href="about">About us</a></li>
+                    <li><a href="profile">Delivery Information</a></li>
+                    <li><a href="profile">Order Tracking</a></li>
+                </ul>
+                </p>
+            </div>
 
-</div>
+
+            <div class="col footer-col">
+                <h4>Contact Information</h4>
+                <ul class="colorlib-footer-links">
+                    <li> 15 El Tahrir Street, Dokki,<br>Giza Governorate, Egypt</li>
+                    <li><a href="tel://1234567920">+20 109 099 4198</a></li>
+                    <li><a href="mailto:info@yoursite.com">info@ShoeShow.com</a></li>
+                    <li><a href="/shoeshow">Shoe Show</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
 <!-- jQuery -->
 <script src="js/template/jquery.min.js"></script>
 <!-- popper -->

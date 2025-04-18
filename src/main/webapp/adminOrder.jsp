@@ -88,10 +88,9 @@
 
             <div class="container mt-5">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-10">
+                    <div class="col-12">
                         <div class="card p-4">
-                            <h2 class="text-center mb-4">Users Review</h2>
-        
+                            <h2 class="text-center mb-4">Orders Review</h2>        
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead class="thead-dark">
@@ -100,66 +99,77 @@
                                                 <div style="color:#000;font-weight: 400;font-size: 15px;padding-left: 12px;">
                                                     <span>ID</span>
                                                 </div>
-                                                <div style="color: #000;font-weight: 400;font-size: 15px;padding-left: 70px;">
-                                                    <span>Name</span>
-                                                </div>
-                                                <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 85px;">
-                                                    <span>Phone Number</span>
-                                                </div>
+                                                <!-- <div style="color: #000;font-weight: 400;font-size: 15px;padding-left: 70px;">
+                                                    <span>User ID</span>
+                                                </div> -->
                                                 <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 120px;">
                                                     <span>Email</span>
                                                 </div>
-                                                <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 150px;">
-                                                    <span>Jon</span>
+                                                <!-- <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 120px;">
+                                                    <span>Phone Number</span>
+                                                </div> -->
+                                                <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 120px;">
+                                                    <span>Total Amount</span>
                                                 </div>
                                                 <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 80px;">
-                                                    <span>Birth Date</span>
-                                                </div>   
-                                            </div>                                     
-                                     
+                                                    <span>Ordered At</span>
+                                                </div>
+                                                <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 150px;">
+                                                    <span>Order Status</span>
+                                                </div>
+                                                <div style=" color: #000;font-weight: 400;font-size: 15px;padding-left: 120px;">
+                                                    <span>Action</span>
+                                                </div>  
+                                            </div> 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <%
-                                        List<UserManageDTO> users = (List<UserManageDTO>) request.getAttribute("users");
-                                        if (users != null) {
-                                            for (UserManageDTO u : users) {
-                                    %>
-                                    <tr>
-                                        <td><div class="one-eight text-center">
-                                            <span><%= u.getId() %></span>
-                                        </div></td>
-                                        <td><div class="one-eight text-center">
-                                            <span><%= u.getName() %></span>
-                                        </div></td>
-                                        <td><div class="one-eight text-center">
-                                            <span><%= u.getPhoneNumber() %></span>
-                                        </div></td>
-                                        <td><div class="one-eight text-center">
-                                            <span><%= u.getEmail() %></span>
-                                        </div></td>
-                                        <td><div class="one-eight text-center">
-                                            <span><%= u.getJob() %></span>
-                                        </div></td>
-                                        <td><div class="one-eight text-center">
-                                            <span><%= u.getBirthdate() %></span>
-                                        </div></td>
+                                        <c:forEach var="order" items="${orders}">
+                                            <tr>
+                                                <td>
+                                                <div class="one-eight text-center">
+                                                    <span>${order.orderId}</span>
+                                                </div>
+                                                </td>
 
+                                                <td>
+                                                    <div class="one-eight text-center">
+                                                        <span>${order.user.email}</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="one-eight text-center">
+                                                        <span>${order.totalAmount}</span>
+                                                    </div>
+                                                </td>
 
-                                        <!-- <td><%= u.getId() %></td>
-                                        <td><%= u.getName() %></td>
-                                        <td><%= u.getPhoneNumber() %></td>
-                                        <td><%= u.getEmail() %></td>
-                                        <td><%= u.getJob() %></td>
-                                        <td><%= u.getBirthdate() %></td> -->
-                                    </tr>
-                                    <%
-                                            }
-                                        }
-                                    %>
+                                                <td>
+                                                    <div class="one-eight text-center">
+                                                        <span>${order.createdAt}</span>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <form action="UpdateOrderStatusServlet" method="post" style="margin:0; padding:0;">
+                                                        <input type="hidden" name="orderId" value="${order.orderId}" />
+                                                        <select name="orderStatus" class="form-control form-control-sm d-inline w-auto">
+                                                            <c:forEach var="status" items="${orderStatuses}">
+                                                                <option value="${status}" <c:if test="${status == order.orderStatus}">selected</c:if>>
+                                                                    ${status}
+                                                                </option>
+                                                            </c:forEach>
+                                                        </select>
+                                                </td>
+                                                <td>
+                                                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
+        
                         </div>
                     </div>
                 </div>
