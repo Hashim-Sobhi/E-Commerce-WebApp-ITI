@@ -145,7 +145,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="bread"><span><a href="admindashboard">Dash Board</a></span></p>
+                    <p class="bread"><span><a href="admindashboard">Dashboard</a></span></p>
                 </div>
             </div>
         </div>
