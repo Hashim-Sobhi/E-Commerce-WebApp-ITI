@@ -47,6 +47,6 @@ public class UpdateOrderStatusServlet extends HttpServlet {
         } finally {
             em.close();
         }
-        response.sendRedirect("adminuser");
+        response.sendRedirect("adminorder");
     }
 }

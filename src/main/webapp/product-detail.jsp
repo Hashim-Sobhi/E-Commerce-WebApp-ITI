@@ -90,7 +90,7 @@
 						<div class="product-desc">
 							<h3 id="product_name"></h3>
 							<p class="price">
-								<span id="product_price">£</span>
+								<span id="product_price">&pound;</span>
 							</p>
 							<p id="product_desc"></p>
 

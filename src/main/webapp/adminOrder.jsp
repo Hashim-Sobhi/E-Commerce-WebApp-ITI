@@ -79,6 +79,16 @@
                 </div>
             </div>
         </nav>
+
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="bread"><span><a href="admindashboard">Dashboard</a></span> / <span>Orders</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     
 
         <!--Body-->
@@ -173,9 +183,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="adminproduct" class="btn btn-outline-primary">Go to Product Management</a>
             </div>
         <div class="gototop js-top">
             <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>

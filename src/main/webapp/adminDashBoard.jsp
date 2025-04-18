@@ -53,7 +53,7 @@
             background-color: #f9f9f9;
         }
 
-        .card {
+        .d-card {
             width: 250px;
             padding: 20px;
             border-radius: 8px;
@@ -64,7 +64,7 @@
             position: relative;
         }
 
-        .icon-circle {
+        .i-circle {
             width: 60px;
             height: 60px;
             background-color: #f2f4fa;
@@ -75,12 +75,12 @@
             margin: 0 auto 15px;
         }
 
-        .icon-circle img {
+        .i-circle img {
             width: 40px;
             height: 40px;
         }
 
-        .card h3 {
+        .d-card h3 {
             font-size: 18px;
             color: #333;
             margin-bottom: 10px;
@@ -103,6 +103,7 @@
         }
 
         </style>
+
 	</head>
 	<body>
 		
@@ -139,52 +140,60 @@
         </div>
     </nav>
 
+
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="bread"><span><a href="admindashboard">Dash Board</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 		
 
     <div class="dashboard">
         <!-- Total Products -->
-        <div class="card">
-            <div class="icon-circle">
-                <img src="product-icon.png" alt="Products Icon">
+        <div class="d-card">
+            <div class="i-circle">
+                <img src="images\product.png" alt="Products Icon">
             </div>
             <h3>Total Products</h3>
-            <p class="metric-number">12,345</p>
-            <a href="adminProduct.jsp" class="details-link">View Products</a>
+            <p class="metric-number">20</p>
+            <a href="adminproduct" class="details-link">View Products</a>
         </div>
     
         <!-- Total Orders -->
-        <div class="card">
-            <div class="icon-circle">
-                <img src="order-icon.png" alt="Orders Icon">
+        <div class="d-card">
+            <div class="i-circle">
+                <img src="images\order.png" alt="Orders Icon">
             </div>
             <h3>Total Orders</h3>
-            <p class="metric-number">£66,556</p>
-            <a href="adminOrder.jsp" class="details-link">Full Details</a>
+            <p class="metric-number">30</p>
+            <a href="adminorder" class="details-link">View Orders</a>
         </div>
     
         <!-- Total Customers -->
-        <div class="card">
-            <div class="icon-circle">
-                <img src="customer-icon.png" alt="Customers Icon">
+        <div class="d-card">
+            <div class="i-circle">
+                <img src="images\customer.png" alt="Customers Icon">
             </div>
             <h3>Total Customers</h3>
-            <p class="metric-number">45,678</p>
-            <a href="adminUser.jsp" class="details-link">Customer Info</a>
+            <p class="metric-number">15</p>
+            <a href="adminuser" class="details-link">View Customers</a>
         </div>
     
         <!-- Total Revenue -->
-        <div class="card">
-            <div class="icon-circle">
-                <img src="revenue-icon.png" alt="Revenue Icon">
+        <div class="d-card">
+            <div class="i-circle">
+                <img src="images\revenue.png" alt="Revenue Icon">
             </div>
             <h3>Total Revenue</h3>
-            <p class="metric-number">$ 123,456</p>
+            <p class="metric-number">&pound; 123,456</p>
         </div>
     </div>
     
-
-    
-
 
 
     <footer id="colorlib-footer" role="contentinfo">
@@ -268,8 +277,6 @@
 	<script src="js/template/jquery.stellar.min.js"></script>
 	<!-- Main -->
 	<script src="js/template/main.js"></script>
-    <!-- Header -->
-    <script src="js/header.js"></script>
 
 	</body>
 </html>

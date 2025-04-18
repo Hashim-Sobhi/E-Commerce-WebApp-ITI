@@ -26,6 +26,16 @@
         <url-pattern>/adminuser</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AdminOrder</servlet-name>
+        <servlet-class>iti.jets.servlets.OrderManagmentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminOrder</servlet-name>
+        <url-pattern>/adminorder</url-pattern>
+    </servlet-mapping>
+
   <servlet>
     <servlet-name>IndexServletJSP</servlet-name>
     <jsp-file>/index.jsp</jsp-file>
@@ -153,6 +163,28 @@
     <url-pattern>/about</url-pattern>
   </servlet-mapping>
 
+<!-- <servlet>
+    <servlet-name>AdminLoginJSP</servlet-name>
+    <jsp-file>/adminLogin.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminLoginJSP</servlet-name>
+    <url-pattern>/adminlogin</url-pattern>
+  </servlet-mapping> -->
+
+  <servlet>
+    <servlet-name>AdminDashBoardJSP</servlet-name>
+    <jsp-file>/adminDashBoard.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminDashBoardJSP</servlet-name>
+    <url-pattern>/admindashboard</url-pattern>
+  </servlet-mapping>
+
+
+
     <servlet>
         <servlet-name>AddProduct</servlet-name>
         <servlet-class>iti.jets.servlets.AddProductServlet</servlet-class>
@@ -190,8 +222,10 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Admin Area</web-resource-name>
+            <url-pattern>/admindashdoard</url-pattern>
             <url-pattern>/adminuser</url-pattern>
             <url-pattern>/adminproduct</url-pattern>
+            <url-pattern>/adminorder</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
