@@ -102,8 +102,8 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
    mvn clean install compile tomcat7:deploy.
   
 4. **Access Application**
-  - Navigate to `http://localhost:8080/shoeshow` in your browser. (User Home Page)
-  - Navigate to `http://localhost:8080/shoeshow/admindashboard` in your browser. (Admin Home Page)
+   - Navigate to `http://localhost:8080/shoeshow` in your browser. (User Home Page)
+   - Navigate to `http://localhost:8080/shoeshow/admindashboard` in your browser. (Admin Home Page)
 ---
 
 ## 👥 Contributors
