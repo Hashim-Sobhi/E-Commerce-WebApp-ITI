@@ -1,4 +1,4 @@
-# ShoeShow - Shoe E-Commerce Web Application 👟✨
+# ShoeShow - E-Commerce Web Application 👟✨
 
 ## 📋 Project Overview
 ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whether you're shopping for classic, casual, or trendy sneakers, ShoeShow is designed to provide a seamless and enjoyable shopping experience. The platform includes robust functionalities for both administrators and users, along with a wishlist feature to save favorite products.
