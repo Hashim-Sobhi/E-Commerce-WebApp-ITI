@@ -18,12 +18,8 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
 3. [Installation](#installation)  
    - [Prerequisites](#prerequisites)  
    - [Steps](#steps)  
-4. [Usage](#usage)  
-   - [Admin Panel](#admin-panel)  
-   - [User Panel](#user-panel)  
-5. [Future Enhancements](#future-enhancements)  
-6. [Contributors](#contributors)  
-7. [Contact](#contact)  
+4. [Contributors](#contributors)  
+5. [Contact](#contact)  
 
 ---
 
@@ -39,8 +35,7 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
 ### 🔧 Administrator Functions
 - **Manage Products:** Add, edit, delete, and view products like shoes (CRUD operations).  
 - **Review User Profiles:** Access all user profiles in the database.  
-- **Order Management:** Oversee customer orders with detailed status updates.  
-- **Pagination:** Smooth browsing on admin pages using pagination.
+- **Order Management:** Oversee customer orders with detailed status updates.
 
 ---
 
@@ -76,8 +71,8 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
 ---
 
 ### 🔄 Asynchronous Development
-- **AJAX:** Real-time updates for filtering products, shopping cart and wishlist.  
-- **Username Availability Check:** Quick validation during registration.
+- **AJAX:** Real-time updates for products filtering, shopping cart and wishlist.  
+- **Email Availability Check:** Quick validation during registration.
 
 ---
 
@@ -94,42 +89,29 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
 ### 📝 Steps
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/your-username/ShoeStop.git  
-   cd ShoeShow
+   git clone https://github.com/Hashim-Sobhi/E-Commerce-WebApp-ITI.git.
+   cd E-Commerce-WebApp-ITI.
    
 2. **Cofigure Database**
    - Create a database in MySQl
-   - Update credentials in persistence.xml or hibernate.cfg.xml.
+   - run `db_script.sql` for tables then `script_data.sql` for data.
+   - Update credentials in `persistence.xml` if needed.
   
-3. **Build the Project**
+3. **Deploy the Project**
    ```bash
-   mvn clean install
+   mvn clean install compile tomcat7:deploy.
   
 4. **Access Application**
-  - Navigate to http://localhost:8080/ShoeShow in your browser.
-
----
-
-## 🛠 Usage
-
-### 🔧 Admin Panel
-- **Login:** Access with predefined admin credentials.
-- **Manage Products:** Add, update, or delete shoe entries, and view user profiles
-
----
-
-## 👤 User Panel
-  - **Sign Up & Profile:** Register and manage your personal account.
-  - **Browse & Filter:** Search for shoes by category or features.
-  - **Wishlist:** Save favorite products for future purchases.
-  - **Cart:** Seamlessly manage items and proceed to checkout.
-
+  - Navigate to `http://localhost:8080/shoeshow` in your browser. (User Home Page)
+  - Navigate to `http://localhost:8080/shoeshow/admindashboard` in your browser. (Admin Home Page)
 ---
 
 ## 👥 Contributors
-Hashim Sobhi
-Youssef Salah Eldin
-Nada Mohammed
+- Hashim Sobhi
+- Yusuf Salah Eldin
+- Nada Mohammed
 
 ## 📞 Contact
-nadamohammed01123@gmail.com
+- hashimsobhi97@gmail.com
+- yusuf_mustafa1553@outlook.com
+- nadamohammed01123@gmail.com
