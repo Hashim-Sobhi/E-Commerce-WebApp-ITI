@@ -10,12 +10,12 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
    - [General Features](#-general-features)  
    - [Administrator Functions](#-administrator-functions)  
    - [User Functions](#-user-functions)  
-2. [Technologies Used](#-technologies-used)  
+2. [Tools & Frameworks](#-tools--frameworks)  
    - [Frontend](#-frontend)  
    - [Backend](#-backend)  
    - [Database](#-database)  
-   - [Asynchronous Development](#-asynchronous-development)  
-3. [Installation](#-installation)  
+   - [Dynamic Interactions](#-dynamic-interactions)  
+3. [Setup Guide](#-setup-guide)  
    - [Prerequisites](#-prerequisites)  
    - [Steps](#-steps)  
 4. [Contributors](#-contributors)  
@@ -49,7 +49,7 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
 
 ---
 
-## 💻 Technologies Used
+## 💻 Tools & Frameworks
 
 ### 🎨 Frontend
 - **HTML5:** Semantic page structuring.  
@@ -70,13 +70,13 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
 
 ---
 
-### 🔄 Asynchronous Development
+### 🔄 Dynamic Interactions
 - **AJAX:** Real-time updates for products filtering, shopping cart and wishlist.  
 - **Email Availability Check:** Quick validation during registration.
 
 ---
 
-## 🛠 Installation
+## 🛠 Setup Guide
 
 ### 🔧 Prerequisites
 - Java JDK: Version 8 or higher  
@@ -93,7 +93,7 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
    cd E-Commerce-WebApp-ITI.
    
 2. **Cofigure Database**
-   - Create a database in MySQl
+   - Create a database in MySQL
    - run `db_script.sql` for tables then `script_data.sql` for data.
    - Update credentials in `persistence.xml` if needed.
   
