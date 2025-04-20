@@ -6,20 +6,20 @@ ShoeShow is a dynamic e-commerce platform crafted for selling stylish shoes. Whe
 ---
 
 ## 📜 Table of Contents
-1. [Main Features](#main-features)  
-   - [General Features](#general-features)  
-   - [Administrator Functions](#administrator-functions)  
-   - [User Functions](#user-functions)  
-2. [Technologies Used](#technologies-used)  
-   - [Frontend](#frontend)  
-   - [Backend](#backend)  
-   - [Database](#database)  
-   - [Asynchronous Development](#asynchronous-development)  
-3. [Installation](#installation)  
-   - [Prerequisites](#prerequisites)  
-   - [Steps](#steps)  
-4. [Contributors](#contributors)  
-5. [Contact](#contact)  
+1. [Main Features](#-main-features)  
+   - [General Features](#-general-features)  
+   - [Administrator Functions](#-administrator-functions)  
+   - [User Functions](#-user-functions)  
+2. [Technologies Used](#-technologies-used)  
+   - [Frontend](#-frontend)  
+   - [Backend](#-backend)  
+   - [Database](#-database)  
+   - [Asynchronous Development](#-asynchronous-development)  
+3. [Installation](#-installation)  
+   - [Prerequisites](#-prerequisites)  
+   - [Steps](#-steps)  
+4. [Contributors](#-contributors)  
+5. [Contact](#-contact)  
 
 ---
 
