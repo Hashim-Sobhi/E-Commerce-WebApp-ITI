@@ -150,7 +150,7 @@ function renderProducts(products) {
     let wishlistIds = items.map(item => item.productId);
 
     container.innerHTML = '';
-    products.forEach(product => {
+    products.forEach((product, index) => {
         // Check if this product is in the wishlist
         let isInWishlist = wishlistIds.includes(product.product_id);
 
@@ -158,23 +158,24 @@ function renderProducts(products) {
         let heartColor = isInWishlist ? "rgb(136, 200, 188)" : "rgb(235, 232, 232)";
 
         let productHTML = `
-            <div class="col-lg-4 mb-4 text-center">
-                <div class="product-entry border">
-                    <a href="product?product_id=${product.product_id}" class="prod-img">
-                        <img src="${product.img}" class="img-fluid" alt="${product.name}">
-                    </a>
-                    <button class="heart-btn" product_id="${product.product_id}" onclick="toggleWishlist(${product.product_id})">
-                        <i class="fa fa-heart" style="font-size: 24px; color: ${heartColor};"></i>
-                    </button>
-                    <div class="desc">
-                        <h2>${product.name}</h2>
-                        <span class="price">£${product.price}</span>
-                    </div>
+        <div class="col-lg-4 mb-4 text-center animated fadeIn" style="animation-duration: 1s; animation-delay: ${index * 0.2}s;">
+            <div class="product-entry border">
+                <a href="product?product_id=${product.product_id}" class="prod-img">
+                    <img src="${product.img}" class="img-fluid" alt="${product.name}">
+                </a>
+                <button class="heart-btn" product_id="${product.product_id}" onclick="toggleWishlist(${product.product_id})">
+                    <i class="fa fa-heart" style="font-size: 24px; color: ${heartColor};"></i>
+                </button>
+                <div class="desc">
+                    <h2>${product.name}</h2>
+                    <span class="price">£${product.price}</span>
                 </div>
             </div>
-        `;
+        </div>
+    `;
         container.innerHTML += productHTML;
     });
+
 }
 
 
@@ -212,6 +213,9 @@ function renderPagination(totalPages) {
 function changePage(page) {
     currentPage = page;
     updateFilters(); // Update filters to load the correct page of products
+
+    // Scroll to the top of the product container after changing the page
+    document.getElementById("product-container").scrollIntoView({ behavior: 'smooth' });
 }
 
 function toggleWishlist(product_id) {

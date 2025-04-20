@@ -53,7 +53,7 @@ public class AddProductServlet extends HttpServlet {
 
 // Directory where uploaded files will be saved
 //        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
-        String baseFolder = "images";
+        String baseFolder = "images/product-20";
         String uploadPath = getServletContext().getRealPath("") + File.separator + baseFolder;
 
         File uploadDir = new File(uploadPath);

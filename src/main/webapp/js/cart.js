@@ -126,6 +126,8 @@ function removeItem(productId , productInfoId) {
             error: function() {
             }
         });
+    }else{
+        updateCartCount();
     }
 }
 
